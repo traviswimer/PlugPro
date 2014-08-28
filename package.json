@@ -1,0 +1,47 @@
+{
+  "name": "PlugPro",
+  "version": "0.0.1",
+  "description": "Plug.dj Chrome extension",
+  "main": "build/js/plug_pro.js",
+  "private": true,
+  "homepage": "https://github.com/traviswimer/plugpro",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/traviswimer/plugpro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/traviswimer/plugpro/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-env": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-contrib-sass": "~0.5.1",
+    "grunt-browserify": "~1.3.1",
+    "chai": "~1.9.0",
+    "grunt-coveralls": "~0.3.0",
+    "grunt-magic-mocha": "0.0.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-istanbul-coverage": "0.0.5",
+    "grunt-istanbul": "^0.3.0",
+    "grunt-not-constantinople": "0.0.5",
+    "jquery": "^2.1.1"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "contributors": [
+    {
+      "name": "Travis Wimer",
+      "url": "http://traviswimer.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/traviswimer/plugpro/blob/master/LICENSE-MIT"
+    }
+  ],
+}
