@@ -1,9 +1,9 @@
 // Room constructor
-var Room = function(){
+function Room(){
 	this.listeners = {};
 
 	this.checkRoomLoaded();
-};
+}
 
 // Initializes checking if application ("room") has loaded
 Room.prototype.checkRoomLoaded = function(){
@@ -22,8 +22,7 @@ Room.prototype.checkRoomLoaded = function(){
 // chceks if application ("room") has loaded
 Room.prototype.checkRoomLoaded = function(){
 	if( $('#room') &&
-		$('#plug_pro_chrome_extension_id') &&
-		document.body.style.backgroundImage
+		$('#plug_pro_chrome_extension_id')
 	){
 		clearInterval( this.loadedCheckInterval );
 		this.emit( "load" );
