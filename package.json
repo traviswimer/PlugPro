@@ -28,7 +28,8 @@
     "grunt-istanbul": "^0.3.0",
     "grunt-not-constantinople": "0.0.5",
     "jquery": "^2.1.1",
-    "grunt-contrib-imagemin": "^0.8.1"
+    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-contrib-copy": "^0.5.0"
   },
   "scripts": {
     "test": "grunt test"

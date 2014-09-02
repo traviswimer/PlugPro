@@ -83,6 +83,21 @@ module.exports = function(grunt){
 			}
 		},
 
+		copy: {
+			build: {
+				files: [
+					{
+						flatten: true,
+						src: [
+							'src/manifest.json'
+						],
+						dest: 'build/manifest.json',
+						filter: 'isFile'
+					},
+				]
+			}
+		},
+
 		magic_mocha: {
 			tests: {
 				options: {
@@ -146,6 +161,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-env');
 	grunt.loadNpmTasks('grunt-not-constantinople');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	grunt.registerTask('default', ['build', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
