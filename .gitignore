@@ -5,7 +5,7 @@ node_modules
 .grunt
 
 #Sass
-.sass-chache
+.sass-cache/
 
 #production-code
 build
