@@ -4,8 +4,8 @@ var resourceAdder = require('./util/resourceAdder');
 /** Initializes PlugPro */
 function init(){
 
-	resourceAdder.addStyle('style.css');
-	resourceAdder.addScript('scripts/plug_pro.js');
+	resourceAdder.addStyle('css/style.css');
+	resourceAdder.addScript('js/plug_pro.js');
 
 	/*
 	var addViewSelector = setInterval(function(){

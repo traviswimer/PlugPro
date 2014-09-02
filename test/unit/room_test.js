@@ -3,7 +3,8 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var room = require('../../src/js/room');
+var requireHelper = require('../require_helper');
+var room = requireHelper('room');
 
 describe("room", function(){
 	it("should exist", function(){

@@ -18,7 +18,7 @@ chrome.runtime.onInstalled.addListener(function(install){
 				chrome.tabs.executeScript(
 					tabs[tabCount].id,
 					{
-						"file": "scripts/" + injectFileName
+						"file": "js/" + injectFileName
 					},
 					function(injectback){
 						console.log("Injected");

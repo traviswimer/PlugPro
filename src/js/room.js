@@ -4,26 +4,30 @@ var $ = window.$ || require("jquery");
 function Room(){
 	this.listeners = {};
 
-	this.checkRoomLoaded();
+	this.init();
 }
 
 // Initializes checking if application ("room") has loaded
-Room.prototype.checkRoomLoaded = function(){
-
-	// Removes the dancing avatar loading image
-	if( $('#room-loader') ){
-		$('#room-loader').html( "Loading..." );
-	}
+Room.prototype.init = function(){
 
 	// A messy way to check if the app has completed loading
-	this.loadedCheckInterval = setInterval( this.checkRoomLoaded, 200 );
+	this.loadedCheckInterval = setInterval( this.checkRoomLoaded.bind(this), 200 );
 	this.checkRoomLoaded();
 
 };
 
 // chceks if application ("room") has loaded
 Room.prototype.checkRoomLoaded = function(){
-	if( $('#room') &&
+
+	var loadingMessage = "Loading...";
+
+	// Removes the dancing avatar loading image
+	if( $('#room-loader') && $('#room-loader').html() !== loadingMessage ){
+		$('#room-loader').html( loadingMessage );
+	}
+
+	// Check if loaded
+	if( $('#room').length > 0 &&
 		$('#plug_pro_chrome_extension_id')
 	){
 		clearInterval( this.loadedCheckInterval );

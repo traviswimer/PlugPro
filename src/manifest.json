@@ -37,8 +37,8 @@
 
    "web_accessible_resources": [
       "js/plug_pro.js",
-      "style.css",
-      "media.css",
+      "css/style.css",
+      "css/media.css",
       "images/logo.png",
       "images/logo_large.png",
       "images/view-icon.png",

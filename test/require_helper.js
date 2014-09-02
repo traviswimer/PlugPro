@@ -2,5 +2,5 @@
 // when using istanbul code coverage through grunt.
 
 module.exports = function (path) {
-	return require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../src/') + path);
+	return require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../src/js/') + path);
 };

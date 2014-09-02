@@ -1,1 +1,3 @@
-console.log('PLUG PRO LOADED!');
+
+var room = require('./room');
+

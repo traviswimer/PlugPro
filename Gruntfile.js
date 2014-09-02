@@ -30,8 +30,18 @@ module.exports = function(grunt){
 
 		// Build modules into single file with browserify
 		browserify: {
-			'./build/js/plug_pro.js': ['./src/main.js'],
-			'./build/js/init.js': ['./src/init.js']
+			options: {
+				bundleOptions : {
+					debug: true 
+				}
+			},
+			build: {
+				files: {
+					'./build/js/plug_pro.js': ['./src/js/main.js'],
+					'./build/js/init.js': ['./src/js/init.js'],
+					'./build/js/event_page.js': ['./src/js/event_page.js']
+				}
+			}
 		},
 
 		// Watch for changes to source or test code
@@ -44,7 +54,6 @@ module.exports = function(grunt){
 					'src/**/*'
 				],
 				tasks: [
-					'test',
 					'build'
 				],
 			},
@@ -136,7 +145,7 @@ module.exports = function(grunt){
 		// Use alternate path when running istanbul
 		env: {
 			coverage: {
-				APP_DIR_FOR_CODE_COVERAGE: '../test/coverage/instrument/src/'
+				APP_DIR_FOR_CODE_COVERAGE: '../test/coverage/instrument/src/js/'
 			}
 		},
 
