@@ -15,6 +15,11 @@ module.exports = function(grunt){
 
 	grunt.initConfig({
 
+		// Clear everything from build directory
+		clean: {
+			build: ["build/"]
+		},
+
 		// javascript minification
 		uglify: {
 			build: {
@@ -34,13 +39,14 @@ module.exports = function(grunt){
 			options: {
 				livereload: true,
 			},
-			browserify: {
-				files: ['src/**/*.js'],
-				tasks: ['browserify'],
-			},
-			sass: {
-				files: ['sass/**/*.scss'],
-				tasks: ['sass'],
+			build: {
+				files: [
+					'src/**/*'
+				],
+				tasks: [
+					'test',
+					'build'
+				],
 			},
 			tests: {
 				files: [
@@ -57,12 +63,23 @@ module.exports = function(grunt){
 				files: [
 					{
 						expand: true,
-						cwd: './sass',
+						cwd: './src/css',
 						src: ['*.scss'],
 						dest: './build/css',
 						ext: '.css'
 					}
 				]
+			}
+		},
+
+		imagemin: {
+			dynamic: {
+				files: [{
+					expand: true,
+					cwd: 'src/images/',
+					src: ['**/*.{png,jpg,gif}'],
+					dest: 'build/images/'
+				}]
 			}
 		},
 
@@ -128,10 +145,11 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-magic-mocha');
 	grunt.loadNpmTasks('grunt-env');
 	grunt.loadNpmTasks('grunt-not-constantinople');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['browserify', 'sass', 'watch']);
+	grunt.registerTask('default', ['build', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
-	grunt.registerTask('build', ['browserify', 'sass']);
+	grunt.registerTask('build', ['clean:build', 'browserify', 'sass', 'imagemin']);
 
 
 };

@@ -27,7 +27,8 @@
     "grunt-istanbul-coverage": "0.0.5",
     "grunt-istanbul": "^0.3.0",
     "grunt-not-constantinople": "0.0.5",
-    "jquery": "^2.1.1"
+    "jquery": "^2.1.1",
+    "grunt-contrib-imagemin": "^0.8.1"
   },
   "scripts": {
     "test": "grunt test"
@@ -43,5 +44,5 @@
       "type": "MIT",
       "url": "https://github.com/traviswimer/plugpro/blob/master/LICENSE-MIT"
     }
-  ],
+  ]
 }
