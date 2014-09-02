@@ -19,13 +19,13 @@
          "css/plug_pro.css"
        ],
       "js": [
-         "scripts/init.js"
+         "js/init.js"
       ],
       "matches": [ "http://plug.dj/*", "https://plug.dj/*" ]
    } ],
    
    "background": {
-      "scripts": ["scripts/event_page.js"],
+      "scripts": ["js/event_page.js"],
       "persistent": false
    },
    
@@ -36,7 +36,7 @@
    ],
 
    "web_accessible_resources": [
-      "scripts/plug_pro.js",
+      "js/plug_pro.js",
       "style.css",
       "media.css",
       "images/logo.png",
@@ -47,6 +47,6 @@
       "images/close.png",
       "images/delete.png",
       "backgrounds/*",
-      "scripts/init.js"
+      "js/init.js"
    ]
 }
