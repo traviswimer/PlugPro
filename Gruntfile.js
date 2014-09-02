@@ -165,7 +165,7 @@ module.exports = function(grunt){
 
 	grunt.registerTask('default', ['build', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
-	grunt.registerTask('build', ['clean:build', 'browserify', 'sass', 'imagemin']);
+	grunt.registerTask('build', ['clean:build', 'browserify', 'sass', 'imagemin', 'copy']);
 
 
 };
