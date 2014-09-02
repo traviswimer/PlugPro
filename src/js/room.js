@@ -1,3 +1,5 @@
+var $ = window.$ || require("jquery");
+
 // Room constructor
 function Room(){
 	this.listeners = {};
@@ -31,7 +33,7 @@ Room.prototype.checkRoomLoaded = function(){
 
 // Add a room "event" callback
 Room.prototype.on = function( label, callback ){
-	if( typeof this.listeners === "undefined" ){
+	if( typeof this.listeners[ label ] === "undefined" ){
 		this.listeners[ label ] = [];
 	}
 
@@ -40,6 +42,10 @@ Room.prototype.on = function( label, callback ){
 
 // Fire a room "event"
 Room.prototype.emit = function( label, parameters ){
+	if( typeof this.listeners[ label ] === "undefined" ){
+		return;
+	}
+
 	for( var i=0; i<this.listeners[ label ].length; i++ ){
 		this.listeners[ label ][ i ].apply( this, parameters );
 	}

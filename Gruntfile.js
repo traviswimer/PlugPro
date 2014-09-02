@@ -25,7 +25,8 @@ module.exports = function(grunt){
 
 		// Build modules into single file with browserify
 		browserify: {
-			'./src/main.js': ['./build/js/plug_pro.js']
+			'./build/js/plug_pro.js': ['./src/main.js'],
+			'./build/js/init.js': ['./src/init.js']
 		},
 
 		// Watch for changes to source or test code
@@ -130,7 +131,7 @@ module.exports = function(grunt){
 
 	grunt.registerTask('default', ['browserify', 'sass', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
-	grunt.registerTask('build', ['browserify', 'uglify', 'sass']);
+	grunt.registerTask('build', ['browserify', 'sass']);
 
 
 };
