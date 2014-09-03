@@ -25,10 +25,5 @@ describe("resourceAdder", function(){
 			resourceAdder.addStyle('test.css');
 			expect( $("link[href*='test.css']").length ).to.equal( 1 );
 		});
-
-		it("should remove on load", function(){
-			$("link[href*='test.css']")[0].onload();
-			expect( $("link[href*='test.css']").length ).to.equal( 0 );
-		});
 	});
 });
