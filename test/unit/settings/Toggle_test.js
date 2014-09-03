@@ -10,8 +10,6 @@ describe("Toggle", function(){
 
 	var toggle;
 
-	beforeEach(function(){
-	});
 
 	describe("constructor", function(){
 
@@ -26,6 +24,35 @@ describe("Toggle", function(){
 			toggle = new Toggle( true, storage );
 			expect( toggle.isOn ).to.be.true;
 			expect( toggle.storage ).to.equal( storage );
+		});
+
+	});
+
+	describe("methods", function(){
+
+		var storage = {};
+
+		beforeEach(function(){
+			toggle = new Toggle( true, storage );
+		});
+
+		it("should toggle state on toggle()", function(){
+			expect( toggle.isOn ).to.be.true;
+			toggle.toggle();
+			expect( toggle.isOn ).to.be.false;
+			toggle.toggle();
+			expect( toggle.isOn ).to.be.true;
+		});
+
+		it("should call onchange on toggle", function(){
+			var changed;
+			toggle.onChange = function( newValue ){
+				changed = newValue;
+			}
+			toggle.toggle();
+			expect( changed ).to.be.false;
+			toggle.toggle();
+			expect( changed ).to.be.true;
 		});
 
 	});
