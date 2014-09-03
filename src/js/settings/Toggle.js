@@ -57,9 +57,9 @@ Toggle.prototype.callChange = function(){
  * Stores the current ON/OFF state
  */
 Toggle.prototype.saveSetting = function(){
-	if( typeof this.localStorageName === "string" ){
+	/*if( typeof this.localStorageName === "string" ){
 		this.storage.set(this.localStorageName, this.isOn);
-	}
+	}*/
 };
 
 
