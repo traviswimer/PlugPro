@@ -28,9 +28,6 @@ resourceAdder.addStyle = function( path ){
 	styleElement.rel = "stylesheet";
 	styleElement.type = "text/css";
 	styleElement.href = chrome.extension.getURL( path );
-	styleElement.onload = function(){
-		this.parentNode.removeChild( this );
-	};
 	(document.head).appendChild( styleElement );
 };
 
