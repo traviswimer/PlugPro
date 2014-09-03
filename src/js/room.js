@@ -1,4 +1,3 @@
-var $ = window.$ || require("jquery");
 
 // Room constructor
 function Room(){
