@@ -1,0 +1,27 @@
+/* Universal chat styles */
+#chat{
+	.from.staff{
+		color: #FBFFA5 !important;
+	}
+	.welcome {
+		color: #00CCFF !important;
+		font-weight: bold !important;
+	}
+	.mention{
+		background-color: #414040;
+	}
+	.from.dj{
+		color: #FBFFA5 !important;
+	}
+	.is-dj .name{
+		color: #60E665 !important;
+	}
+	.moderation{
+		color: #C94304 !important;
+
+		.from{
+			color: #C94304 !important;
+		}
+	}
+	z-index: 30 !important;
+}
