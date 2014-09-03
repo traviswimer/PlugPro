@@ -16,7 +16,7 @@ resourceAdder.addScript = function( path ){
 	scriptElement.onload = function(){
 		this.parentNode.removeChild( this );
 	};
-	(document.body||document.documentElement).appendChild( scriptElement );
+	(document.body).appendChild( scriptElement );
 };
 
 /** 
@@ -31,7 +31,7 @@ resourceAdder.addStyle = function( path ){
 	styleElement.onload = function(){
 		this.parentNode.removeChild( this );
 	};
-	(document.head||document.documentElement).appendChild( styleElement );
+	(document.head).appendChild( styleElement );
 };
 
 module.exports = resourceAdder;
