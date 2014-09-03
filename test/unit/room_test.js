@@ -4,24 +4,66 @@ var chai = require('chai');
 var expect = chai.expect;
 
 var requireHelper = require('../require_helper');
-var room = requireHelper('room');
+var Room = requireHelper('room');
 
 describe("room", function(){
 
-	var emitted = false;
+	var room;
+
+	beforeEach(function(){
+		$('body').html('');
+		room = new Room();
+	});
 
 	it("should add listeners", function(){
+
+		room.on("test", function(){});
+		room.on("test", function(){});
+		expect( room.listeners.test.length ).to.equal(2);
+	});
+
+	it("should fire listeners on emit", function(){
+		var emitted = false;
 
 		room.on("test", function(){
 			emitted = true;
 		});
 		expect( room.listeners.test.length ).to.equal(1);
-	});
-
-	it("should fire listeners on emit", function(){
 
 		room.emit("test");
 		expect( emitted ).to.be.true;
+	});
+
+	it("should ignore emit with no listeners", function(){
+		room.emit("test");
+	});
+
+	describe("init()", function(){
+
+		it("should emit load", function( done ){
+
+			room.on('load', function(){
+				done();
+			});
+
+			room.init();
+			var roomDiv = document.createElement('div');
+			roomDiv.id = "room";
+			$('body').append( roomDiv );
+		});
+
+		it("should set loading message if necessary", function( done ){
+
+			var loaderDiv = document.createElement('div');
+			loaderDiv.id = "room-loader";
+			$('body').append( loaderDiv );
+
+			room.init();
+
+			expect( loaderDiv.innerHTML ).to.equal( "Loading..." );
+
+			setTimeout( done, 200 ); // Make sure message set branch is called
+		});
 	});
 
 });

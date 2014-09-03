@@ -1,22 +1,5 @@
-
-// Room constructor
-function Room(){
-	this.listeners = {};
-
-	this.init();
-}
-
-// Initializes checking if application ("room") has loaded
-Room.prototype.init = function(){
-
-	// A messy way to check if the app has completed loading
-	this.loadedCheckInterval = setInterval( this.checkRoomLoaded.bind(this), 200 );
-	this.checkRoomLoaded();
-
-};
-
 // chceks if application ("room") has loaded
-Room.prototype.checkRoomLoaded = function(){
+function checkRoomLoaded(){
 
 	var loadingMessage = "Loading...";
 
@@ -32,7 +15,23 @@ Room.prototype.checkRoomLoaded = function(){
 		clearInterval( this.loadedCheckInterval );
 		this.emit( "load" );
 	}
+}
+
+
+// Room constructor
+function Room(){
+	this.listeners = {};
+}
+
+// Initializes checking if application ("room") has loaded
+Room.prototype.init = function(){
+
+	// A messy way to check if the app has completed loading
+	this.loadedCheckInterval = setInterval( checkRoomLoaded.bind(this), 200 );
+	checkRoomLoaded.apply(this);
+
 };
+
 
 // Add a room "event" callback
 Room.prototype.on = function( label, callback ){
@@ -54,4 +53,4 @@ Room.prototype.emit = function( label, parameters ){
 	}
 };
 
-module.exports = new Room();
+module.exports = Room;
