@@ -9,7 +9,7 @@
  * @param {object} toggler - The Toggle API used to keep track of state.
  */
 function AutoWoot( toggler, userId ){
-	this.toggler = toggler || {};
+	this.toggler = toggler;
 	this.userId = userId;
 	this.localStorageName = "autowoot";
 
