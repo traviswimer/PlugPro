@@ -4,7 +4,7 @@ var resourceAdder = require('./util/resourceAdder');
 /** Initializes PlugPro */
 function init(){
 
-	resourceAdder.addStyle('css/main.css');
+	resourceAdder.addStyle('css/plug_pro.css');
 	resourceAdder.addScript('js/plug_pro.js');
 
 	/*

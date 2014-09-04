@@ -16,7 +16,7 @@
 
    "content_scripts": [ {
       "css": [
-         "css/plug_pro.css"
+         "css/background.css"
        ],
       "js": [
          "js/init.js"
@@ -37,7 +37,7 @@
 
    "web_accessible_resources": [
       "js/plug_pro.js",
-      "css/style.css",
+      "css/plug_pro.css",
       "css/media.css",
       "images/logo.png",
       "images/logo_large.png",
