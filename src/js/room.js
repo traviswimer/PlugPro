@@ -10,7 +10,8 @@ function checkRoomLoaded(){
 
 	// Check if loaded
 	if( $('#room').length > 0 &&
-		$('#plug_pro_chrome_extension_id')
+		$('#plug_pro_chrome_extension_id') &&
+		$('#room-loader').length === 0
 	){
 		clearInterval( this.loadedCheckInterval );
 		this.emit( "load" );
