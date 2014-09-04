@@ -44,11 +44,11 @@ describe("Toggle", function(){
 			expect( toggle.isOn ).to.be.true;
 		});
 
-		it("should call onchange on toggle", function(){
+		it("should call listeners onChange()", function(){
 			var changed;
-			toggle.onChange = function( newValue ){
-				changed = newValue;
-			}
+			toggle.onChange(function( isOn ){
+				changed = isOn;
+			});
 			toggle.toggle();
 			expect( changed ).to.be.false;
 			toggle.toggle();

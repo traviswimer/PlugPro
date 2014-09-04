@@ -12,6 +12,10 @@
 function Toggle( defaultOn, storage ){
 	this.isOn = defaultOn || false;
 	this.storage = storage;
+
+	this.listeners = {
+		"change": []
+	};
 }
 
 /** 
@@ -48,8 +52,17 @@ Toggle.prototype.off = function(){
  * Fires change event
  */
 Toggle.prototype.callChange = function(){
-	if( typeof this.onChange === "function" ){
-		this.onChange(this.isOn);
+	for( var i=0; i<this.listeners.change.length; i++ ){
+		this.listeners.change[i]( this.isOn );
+	}
+};
+
+/** 
+ * Adds function to call when toggle state changes
+ */
+Toggle.prototype.onChange = function( callback ){
+	if( typeof callback === "function" ){
+		this.listeners.change.push( callback );
 	}
 };
 
