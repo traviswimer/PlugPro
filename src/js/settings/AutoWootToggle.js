@@ -13,14 +13,7 @@ function AutoWoot( toggler, userId ){
 	this.userId = userId;
 	this.localStorageName = "autowoot";
 
-	toggler.onChange(function( isOn ){
-		if( isOn ){
-			startWooting();
-			API.on( API.DJ_ADVANCE, this.startWooting.bind(this) );
-		}else{
-			API.off( API.DJ_ADVANCE, this.startWooting.bind(this) );
-		}
-	});
+	toggler.onChange( this.setWootState.bind( this ) );
 
 	if( toggler.isOn ){
 		this.startWooting();
@@ -42,6 +35,19 @@ function AutoWoot( toggler, userId ){
 	}
 	*/
 }
+
+/**
+ * Sets auto-woot to ON/OFF
+ * @param {boolean} isOn - true to turn auto-woot on, false to turn it off
+ */
+AutoWoot.prototype.setWootState = function( isOn ){
+	if( isOn ){
+		this.startWooting.apply(this);
+		API.on( API.DJ_ADVANCE, this.startWooting.bind(this) );
+	}else{
+		API.off( API.DJ_ADVANCE, this.startWooting.bind(this) );
+	}
+};
 
 /**
  * Determines when to start wooting for current song
