@@ -44,6 +44,18 @@ module.exports = function(grunt){
 			}
 		},
 
+		// Compile HTML templates to javascript
+		jst: {
+			compile: {
+				options: {
+					commonjs: true
+				},
+				files: {
+					"src/js/ui/templates.js": ["src/html_templates/**/*.html"]
+				}
+			}
+		},
+
 		// Watch for changes to source or test code
 		watch: {
 			options: {
@@ -173,10 +185,12 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-not-constantinople');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-jst');
+
 
 	grunt.registerTask('default', ['build', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
-	grunt.registerTask('build', ['clean:build', 'browserify', 'sass', 'imagemin', 'copy']);
+	grunt.registerTask('build', ['clean:build', 'browserify', 'sass', 'jst', 'imagemin', 'copy']);
 
 
 };
