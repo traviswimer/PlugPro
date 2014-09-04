@@ -19,21 +19,6 @@ function AutoWoot( toggler, userId ){
 		this.startWooting();
 	}
 
-	/*
-	this.onChange = function(isOn){
-		if(isOn){
-			startWooting();
-			API.on(API.DJ_ADVANCE, startWooting);
-		}else{
-			API.off(API.DJ_ADVANCE, startWooting);
-		}
-	};
-
-	// Initialize if setting is already turned on
-	if(this.isOn){
-		this.onChange(this.isOn);
-	}
-	*/
 }
 
 /**
