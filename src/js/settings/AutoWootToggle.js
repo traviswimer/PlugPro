@@ -44,7 +44,7 @@ AutoWoot.prototype.startWooting = function( newSongInfo ){
 
 	// Immediately start wooting if the user just turned the feature on
 	if( !newSongInfo ){
-		wootButton.click();
+		this.clickWoot();
 		return;
 	}
 
@@ -55,11 +55,16 @@ AutoWoot.prototype.startWooting = function( newSongInfo ){
 
 	// woot at a random time in the first 35 seconds of each song
 	var randTimeout = Math.round( 35 * Math.random() ) * 1000;
-	setTimeout(function(){
-		wootButton.click();
-	}, randTimeout);
+	setTimeout( this.clickWoot.bind(this), randTimeout );
 
 	return randTimeout;
+};
+
+/**
+ * Clicks the woot button
+ */
+AutoWoot.prototype.clickWoot = function(){
+	$('#woot').click();
 };
 
 module.exports = AutoWoot;
