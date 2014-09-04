@@ -113,7 +113,8 @@ module.exports = function(grunt){
 					globals: {
 						// Add the jQuery module to the window object
 						'$': 'jquery',
-						'chrome': '../../../test/chrome'
+						'chrome': '../../../test/chrome',
+						'API': '../../../test/API'
 					}
 				},
 				files: {
