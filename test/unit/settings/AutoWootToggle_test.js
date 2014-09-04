@@ -105,14 +105,14 @@ describe("AutoWootToggle", function(){
 			API.off.restore();
 		});
 
-		it("should start listening for DJ_ADVANCE when turning on", function(){
+		it("should start listening for ADVANCE when turning on", function(){
 			autoWoot = new AutoWootToggle( toggle, 10 );
 			autoWoot.setWootState( true );
 
 			expect( API.on.calledOnce ).to.be.true;
 		});
 
-		it("should stop listening for DJ_ADVANCE when turning off", function(){
+		it("should stop listening for ADVANCE when turning off", function(){
 			autoWoot = new AutoWootToggle( toggle, 10 );
 			autoWoot.setWootState( false );
 

@@ -6,10 +6,8 @@ var Toggle = require('./settings/Toggle');
 var AutoWootToggle = require('./settings/AutoWootToggle');
 room.on("load", function(){
 	var userId = API.getUser().id;
-	var toggler = new Toggle();
-	toggler.on();
+	var toggler = new Toggle( true );
 	new AutoWootToggle( toggler, userId );
 
-	setTimeout( toggler.on.bind(toggler), 15000);
 });
 room.init();

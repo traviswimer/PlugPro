@@ -16,7 +16,7 @@ function AutoWoot( toggler, userId ){
 	toggler.onChange( this.setWootState.bind( this ) );
 
 	if( toggler.isOn ){
-		this.startWooting();
+		this.setWootState( true );
 	}
 
 }
@@ -55,7 +55,9 @@ AutoWoot.prototype.startWooting = function( newSongInfo ){
 
 	// woot at a random time in the first 35 seconds of each song
 	var randTimeout = Math.round( 35 * Math.random() ) * 1000;
-	setTimeout(wootButton.click, randTimeout);
+	setTimeout(function(){
+		wootButton.click();
+	}, randTimeout);
 
 	return randTimeout;
 };
