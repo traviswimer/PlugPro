@@ -2,6 +2,7 @@
 
 var chai = require('chai');
 var expect = chai.expect;
+var sinon = require('sinon');
 
 var requireHelper = require('../../require_helper');
 var AutoWootToggle = requireHelper('settings/AutoWootToggle');
@@ -23,11 +24,17 @@ describe("AutoWootToggle", function(){
 		});*/
 
 		var wootButton;
+		var toggle;
+		var toggleStub;
 
 		beforeEach(function(){
 			wootButton = document.createElement("div");
 			wootButton.id = "woot";
 			$('body').append( wootButton );
+
+
+			toggle = new Toggle();
+			toggleStub = sinon.stub(toggle, "onChange");
 		});
 
 		afterEach(function(){
@@ -39,7 +46,7 @@ describe("AutoWootToggle", function(){
 				done();
 			});
 
-			autoWoot = new AutoWootToggle();
+			autoWoot = new AutoWootToggle( toggle );
 			autoWoot.startWooting();
 		});
 
@@ -51,7 +58,7 @@ describe("AutoWootToggle", function(){
 			});
 
 			var userId = 10;
-			autoWoot = new AutoWootToggle( {}, userId );
+			autoWoot = new AutoWootToggle( toggle, userId );
 			autoWoot.startWooting({
 				dj: {
 					id: userId
@@ -65,7 +72,7 @@ describe("AutoWootToggle", function(){
 		it("should normally woot at random time", function(){
 
 			var userId = 10;
-			autoWoot = new AutoWootToggle( {}, userId );
+			autoWoot = new AutoWootToggle( toggle, userId );
 			var randTime = autoWoot.startWooting({
 				dj: {
 					id: 11

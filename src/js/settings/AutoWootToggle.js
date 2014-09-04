@@ -13,6 +13,19 @@ function AutoWoot( toggler, userId ){
 	this.userId = userId;
 	this.localStorageName = "autowoot";
 
+	toggler.onChange(function( isOn ){
+		if( isOn ){
+			startWooting();
+			API.on( API.DJ_ADVANCE, this.startWooting.bind(this) );
+		}else{
+			API.off( API.DJ_ADVANCE, this.startWooting.bind(this) );
+		}
+	});
+
+	if( toggler.isOn ){
+		this.startWooting();
+	}
+
 	/*
 	this.onChange = function(isOn){
 		if(isOn){
