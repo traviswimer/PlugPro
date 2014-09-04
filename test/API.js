@@ -1,5 +1,5 @@
 module.exports = {
 	on: function(){},
 	off: function(){},
-	DJ_ADVANCE: 0
+	ADVANCE: 1
 };
