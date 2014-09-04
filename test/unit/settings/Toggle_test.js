@@ -55,6 +55,12 @@ describe("Toggle", function(){
 			expect( changed ).to.be.true;
 		});
 
+		it("should not add listeners if no onChange() callback", function(){
+			var changed;
+			toggle.onChange();
+			expect( toggle.listeners.change.length ).to.equal( 0 );
+		});
+
 	});
 
 });
