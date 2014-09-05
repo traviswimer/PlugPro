@@ -12,12 +12,9 @@ function Menu( JST ){
 	this.visible = false;
 
 	var menuHTML = JST['src/html_templates/menu.html']({
-		chromeDir: "chromeDir"
+		chromeDir: 'chrome-extension://' + $('#plug_pro_chrome_extension_id').val()
 	});
 	this.$parent.append( menuHTML );
-
-	//this.$parent.find('.button').click( this.toggle.bind(this) );
-
 
 	this.$parent.find('.list')[0].addEventListener(
 		this.getTransitionEvent(),

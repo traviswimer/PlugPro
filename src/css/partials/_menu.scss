@@ -1,9 +1,6 @@
 // The PlugPro menu addition
 #plugpro-menu{
 	background-color: #111;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box; 
 	height: 900px;
 	left: 0;
 	overflow: hidden;
@@ -11,10 +8,21 @@
 	width: 0;
 	z-index: -9999;
 
-	transition: width .15s ease-out;
+	@include transition (width .15s ease-out);
 
 	&.expanded{
 		width: 480px;
+	}
+
+	.inner-pro-menu{
+		margin: 10px;
+		margin-left: 190px;
+		text-align: center;
+
+		.pro-logo{
+			height: 50px;
+			margin: 0 auto;
+		}
 	}
 }
 
