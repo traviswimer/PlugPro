@@ -7,6 +7,12 @@ function init(){
 	resourceAdder.addStyle('css/plug_pro.css');
 	resourceAdder.addScript('js/plug_pro.js');
 
+	var extId = document.createElement('input');
+	extId.id = "plug_pro_chrome_extension_id";
+	extId.type = "hidden";
+	extId.value = chrome.runtime.id;
+	document.body.appendChild(extId);
+
 	/*
 	var addViewSelector = setInterval(function(){
 
