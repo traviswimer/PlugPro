@@ -1,6 +1,28 @@
 #plugpro-menu{
 	background-color: #111;
-	height: 100%;
-	margin-left: 180px;
-	width: 300px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box; 
+	height: 900px;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	width: 0;
+	z-index: -9999;
+
+	transition: width .15s ease-out;
+
+	&.expanded{
+		width: 480px;
+	}
+}
+
+#app-menu{
+	.button{
+		background-color: #282C35;
+	}
+
+	.list{
+		z-index: 98000;
+	}
 }
