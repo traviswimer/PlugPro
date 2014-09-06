@@ -3,7 +3,7 @@
 var JST = require("./ui/templates").JST;
 var Menu = require('./ui/Menu');
 
-var Room = require('./room');
+var Room = require('./Room');
 var room = new Room();
 
 var Toggle = require('./settings/Toggle');
