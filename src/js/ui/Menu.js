@@ -70,8 +70,8 @@ Menu.prototype.hide = function(){
  * Determine correct transition event name
  * @returns {string} The name of the transition event used by the user's browser
  */
-Menu.prototype.getTransitionEvent = function(){
-	var el = document.createElement('div');
+Menu.prototype.getTransitionEvent = function( el ){
+	var el = el || document.createElement('div');
 	var animations = {
 		'animation':'transitionend',
 		'OAnimation':'oTransitionEnd',
