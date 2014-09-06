@@ -21,6 +21,19 @@ function Menu( JST ){
 		this.toggle.bind(this),
 		false
 	);
+
+	// Prevent menu from closing when clicking in the Pro Menu
+	document.addEventListener("mousedown", function(event){
+		var target = $(event.target);
+		if(
+			event.target.id === "plugpro-menu" ||
+			target.parents('#plugpro-menu').length > 0
+		){
+			event.stopPropagation();
+		}
+	}, true);
+
+	
 }
 
 
