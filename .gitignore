@@ -13,3 +13,6 @@ build
 # Test coverage reports
 /test/coverage
 
+# JsDocs
+/docs
+
