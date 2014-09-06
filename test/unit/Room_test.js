@@ -4,9 +4,9 @@ var chai = require('chai');
 var expect = chai.expect;
 
 var requireHelper = require('../require_helper');
-var Room = requireHelper('room');
+var Room = requireHelper('Room');
 
-describe("room", function(){
+describe("Room", function(){
 
 	var room;
 
