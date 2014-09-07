@@ -13,10 +13,12 @@ room.on("load", function(){
 	// Add Autowoot
 	var userId = API.getUser().id;
 	var toggler = new Toggle( true );
-	new AutoWootToggle( toggler, userId );
+	var autowootToggle = new AutoWootToggle( toggler, userId );
 
 	// Add PlugPro menu
-	new Menu( JST );
+	new Menu( JST, {
+		"AutoWoot": autowootToggle
+	});
 
 });
 room.init();

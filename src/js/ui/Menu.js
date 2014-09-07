@@ -6,8 +6,10 @@
 /**
  * Menu UI constructor
  * @constructor
+ * @param {object} JST - Javascript HTML templates
+ * @param {object} toggleSettings - List of settings and their corresponding togglers
  */
-function Menu( JST ){
+function Menu( JST, toggleSettings ){
 	this.$parent = $('#app-menu');
 	this.visible = false;
 
@@ -16,6 +18,17 @@ function Menu( JST ){
 		chromeDir: 'chrome-extension://' + $('#plug_pro_chrome_extension_id').val()
 	});
 	this.$parent.append( menuHTML );
+
+	// Add toggle settings
+	var toggleSettingsUL = this.$parent.find('#pro-toggle-settings');
+	var setting;
+	for( setting in toggleSettings ){
+		var toggleSettingHTML = JST['src/html_templates/toggle_setting.html']({
+			title: setting
+		});
+
+		toggleSettingsUL.append( toggleSettingHTML );
+	}
 
 	// Detect Plug.DJ menu animations to trigger Pro menu open/close
 	this.$parent.find('.list')[0].addEventListener(
