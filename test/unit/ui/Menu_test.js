@@ -5,17 +5,26 @@ var expect = chai.expect;
 
 var requireHelper = require('../../require_helper');
 var Menu = requireHelper('ui/Menu');
-var JST = requireHelper('ui/templates').JST;
+//var JST = requireHelper('ui/templates').JST;
+
+var templateLoader = require('../../template_loader');
 
 describe("Menu", function(){
 
+	var JST;
 	var menu;
 
 	beforeEach(function(){
+		JST = templateLoader([
+			'src/html_templates/menu.html',
+			'src/html_templates/toggle_setting.html'
+		]);
+
 		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'></div>");
 		menu = new Menu( JST, {
 			"fakeToggleSetting": {}
 		});
+
 	});
 
 	it("should show and hide", function(){
