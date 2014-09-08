@@ -75,4 +75,55 @@ describe("Menu", function(){
 		});
 	});
 
+	describe('document mousedown event',function( done ){
+
+		var origDocumentAddEventListener = document.addEventListener;
+		var mouseDownCallback;
+
+		beforeEach(function(){
+			document.addEventListener = function(event, callback){
+				mouseDownCallback = callback;
+			};
+
+			menu = new Menu( JST, {
+				"fakeToggleSetting": {}
+			});
+		});
+
+		afterEach(function(){
+			document.addEventListener = origDocumentAddEventListener;
+		});
+
+		it("should stop event bubbling if clicked on Pro menu", function( done ){
+			
+			mouseDownCallback({
+				"target": $('#plugpro-menu')[0],
+				stopPropagation: function(){
+					done();
+				}
+			});
+
+		});
+
+		it("should stop event bubbling if clicked on element inside Pro menu", function( done ){
+			
+			mouseDownCallback({
+				"target": $('.inner-pro-menu')[0],
+				stopPropagation: function(){
+					done();
+				}
+			});
+
+		});
+
+		it("should do nothing if not pro-menu", function(  ){
+			
+			mouseDownCallback({
+				"target": document
+			});
+
+		});
+
+	});
+
 });
