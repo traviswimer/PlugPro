@@ -30,6 +30,14 @@ function Menu( JST, toggleSettings ){
 		toggleSettingsUL.append( toggleSettingHTML );
 	}
 
+	this.initializeEvents();
+	
+}
+
+/**
+ * Adds change events to menu items
+ */
+Menu.prototype.initializeEvents = function(){
 	// Detect Plug.DJ menu animations to trigger Pro menu open/close
 	this.$parent.find('.list')[0].addEventListener(
 		this.getTransitionEvent(),
@@ -47,9 +55,7 @@ function Menu( JST, toggleSettings ){
 			event.stopPropagation();
 		}
 	}, true);
-
-	
-}
+};
 
 /**
  * Toggle Pro menu visibility
