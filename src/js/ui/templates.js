@@ -18,7 +18,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<li>\n\t<div class="setting-title">' +
 ((__t = ( title )) == null ? '' : __t) +
-'</div>\n\t<div id="autowoot-toggle-button" class="toggle-button">\n\t\t<input id="autowoot-setting" type="checkbox">\n\t</div>\n</li>';
+'</div>\n\t<div class="autowoot-toggle-button" class="toggle-button">\n\t\t<input class="autowoot-setting" type="checkbox">\n\t</div>\n</li>';
 
 }
 return __p
