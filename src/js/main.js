@@ -10,6 +10,9 @@ var Toggle = require('./settings/Toggle');
 var AutoWootToggle = require('./settings/AutoWootToggle');
 room.on("load", function(){
 
+	// create global API object
+	var plugPro = window.plugPro = {};
+
 	// Add Autowoot
 	var userId = API.getUser().id;
 	var toggler = new Toggle( true );
@@ -19,6 +22,10 @@ room.on("load", function(){
 	new Menu( JST, {
 		"AutoWoot": autowootToggle
 	});
+
+	plugPro.settings = {
+		autowoot: autowootToggle
+	}
 
 });
 room.init();
