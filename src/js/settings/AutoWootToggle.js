@@ -28,9 +28,9 @@ function AutoWoot( toggler, userId ){
 AutoWoot.prototype.setWootState = function( isOn ){
 	if( isOn ){
 		this.startWooting.apply(this);
-		API.on( API.ADVANCE, this.startWooting.bind(this) );
+		API.on( API.ADVANCE, this.startWooting );
 	}else{
-		API.off( API.ADVANCE, this.startWooting.bind(this) );
+		API.off( API.ADVANCE, this.startWooting );
 	}
 };
 
