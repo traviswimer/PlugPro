@@ -1,11 +1,16 @@
 
+// create global API object
+var plugPro = window.plugPro = {};
+
+// Load html templates
+var JST = require("./templates").JST;
+plugPro.JST = JST;
+
 var Room = require('./Room');
 var room = new Room();
 
 room.on("load", function(){
 
-	// HTML templates
-	var JST = require("./templates").JST;
 	var Menu = require('./views/MenuView');
 
 
@@ -14,8 +19,7 @@ room.on("load", function(){
 
 
 
-	// create global API object
-	var plugPro = window.plugPro = {};
+
 
 	// Add Autowoot
 	var userId = API.getUser().id;
@@ -24,7 +28,6 @@ room.on("load", function(){
 
 	// Add PlugPro menu
 	var menu = new Menu( {
-		JST: JST,
 		toggleSettings: {
 			"AutoWoot": autowootToggle
 		}

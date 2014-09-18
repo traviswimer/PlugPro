@@ -3,8 +3,6 @@
  * @module views/ToggleSettingView
  */
 
-var JST = require("../templates").JST;
-
 var ToggleSettingView = Backbone.View.extend(
 /** @lends ToggleSettingView.prototype */
 {
@@ -18,6 +16,8 @@ var ToggleSettingView = Backbone.View.extend(
 	* @param {object} toggler - The toggler object
 	*/
 	initialize: function( options ){
+		var JST = window.plugPro.JST;
+		
 		this.toggleHTML = JST['src/html_templates/toggle_setting.html']({
 			title: options.name
 		});

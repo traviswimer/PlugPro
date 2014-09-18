@@ -18,7 +18,8 @@ var MenuView = Backbone.View.extend(
 	* @param {object} toggleSettings - List of settings and their corresponding togglers
 	*/
 	initialize: function( options ){
-		var JST = options.JST;
+		var JST = window.plugPro.JST;
+
 		var toggleSettings = options.toggleSettings;
 
 		this.menuHTML = JST['src/html_templates/menu.html']({
