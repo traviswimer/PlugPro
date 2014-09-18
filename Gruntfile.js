@@ -62,7 +62,7 @@ module.exports = function(grunt){
 					commonjs: true
 				},
 				files: {
-					"src/js/ui/templates.js": ["src/html_templates/**/*.html"]
+					"src/js/templates.js": ["src/html_templates/**/*.html"]
 				}
 			}
 		},

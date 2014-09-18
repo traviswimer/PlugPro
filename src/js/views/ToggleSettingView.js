@@ -3,7 +3,7 @@
  * @module views/ToggleSettingView
  */
 
-var JST = require("../ui/templates").JST;
+var JST = require("../templates").JST;
 
 var ToggleSettingView = Backbone.View.extend(
 /** @lends ToggleSettingView.prototype */

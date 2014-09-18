@@ -5,7 +5,7 @@ var room = new Room();
 room.on("load", function(){
 
 	// HTML templates
-	var JST = require("./ui/templates").JST;
+	var JST = require("./templates").JST;
 	var Menu = require('./views/MenuView');
 
 
