@@ -2,6 +2,7 @@
 
 var chai = require('chai');
 var expect = chai.expect;
+var sinon = require('sinon');
 
 var requireHelper = require('../../require_helper');
 var Menu = requireHelper('ui/Menu');
@@ -125,5 +126,29 @@ describe("Menu", function(){
 		});
 
 	});
+
+	describe('settings',function(){
+
+		var toggleSpy;
+
+		beforeEach(function(){
+			toggleSpy = sinon.spy();
+		});
+
+		it("should toggle setting on click", function(  ){
+			
+			menu = new Menu( JST, {
+				"fakeToggleSetting": {
+					toggler: {
+						toggle: toggleSpy
+					}
+				}
+			});
+			
+			$('.autowoot-setting').trigger("change");
+			expect( toggleSpy.called ).to.be.true;
+
+		});
+	})
 
 });

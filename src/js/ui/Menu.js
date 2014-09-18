@@ -20,22 +20,9 @@ function Menu( JST, toggleSettings ){
 	this.$parent.append( menuHTML );
 
 	// Add all toggle settings
-	var $toggleSettingsUL = this.$parent.find('#pro-toggle-settings');
 	var setting;
 	for( setting in toggleSettings ){
-
-		// Add setting HTML
-		var toggleSettingHTML = JST['src/html_templates/toggle_setting.html']({
-			title: setting
-		});
-		var $toggleSettingElement = $($.parseHTML( toggleSettingHTML ));
-		$toggleSettingsUL.append( $toggleSettingElement );
-
-		// Link checkbox to toggler
-		var currentSetting = toggleSettings[ setting ];
-		$toggleSettingElement.find('.autowoot-setting').change(function(){
-			currentSetting.toggler.toggle.apply(currentSetting.toggler);
-		});
+		this.detectCheckboxChanges( setting, toggleSettings[setting] );
 	}
 
 	this.initializeEvents();
@@ -63,6 +50,25 @@ Menu.prototype.initializeEvents = function(){
 			event.stopPropagation();
 		}
 	}, true);
+};
+
+/**
+ * Makes toggle checkboxes functional
+ */
+Menu.prototype.detectCheckboxChanges = function( settingName, setting ){
+	var $toggleSettingsUL = this.$parent.find('#pro-toggle-settings');
+
+	// Add setting HTML
+	var toggleSettingHTML = JST['src/html_templates/toggle_setting.html']({
+		title: settingName
+	});
+	var $toggleSettingElement = $($.parseHTML( toggleSettingHTML ));
+	$toggleSettingsUL.append( $toggleSettingElement );
+
+	// Link checkbox to toggler
+	$toggleSettingElement.find('.'+settingName.toLowerCase()+'-setting').change(function(){
+		setting.toggler.toggle.apply(setting.toggler);
+	});
 };
 
 /**

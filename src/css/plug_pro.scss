@@ -1,6 +1,10 @@
+// Load vendors
 @import "vendor/bourbon/bourbon";
 
-@import "partials/base";
+// Load all modules
+@import "modules/all";
 
+// Load partials
+@import "partials/base";
 @import "partials/chat";
 @import "partials/menu";

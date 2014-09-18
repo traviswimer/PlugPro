@@ -1,14 +1,18 @@
 
-// HTML templates
-var JST = require("./ui/templates").JST;
-var Menu = require('./ui/Menu');
-
 var Room = require('./Room');
 var room = new Room();
 
-var Toggle = require('./settings/Toggle');
-var AutoWootToggle = require('./settings/AutoWootToggle');
 room.on("load", function(){
+
+	// HTML templates
+	var JST = require("./ui/templates").JST;
+	var Menu = require('./views/MenuView');
+
+
+	var Toggle = require('./settings/Toggle');
+	var AutoWootToggle = require('./settings/AutoWootToggle');
+
+
 
 	// create global API object
 	var plugPro = window.plugPro = {};
@@ -19,9 +23,14 @@ room.on("load", function(){
 	var autowootToggle = new AutoWootToggle( toggler, userId );
 
 	// Add PlugPro menu
-	new Menu( JST, {
-		"AutoWoot": autowootToggle
+	var menu = new Menu( {
+		JST: JST,
+		toggleSettings: {
+			"AutoWoot": autowootToggle
+		}
 	});
+	$('#app-menu').append( menu.$el );
+	menu.render();
 
 	plugPro.settings = {
 		autowoot: autowootToggle
