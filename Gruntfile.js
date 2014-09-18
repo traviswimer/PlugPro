@@ -201,7 +201,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-jsdoc');
 
 
-	grunt.registerTask('default', ['build', 'test', 'watch']);
+	grunt.registerTask('default', ['build', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
 	grunt.registerTask('build', ['clean:build', 'jst', 'browserify', 'sass', 'imagemin', 'copy']);
 	grunt.registerTask('docs', ['clean:docs', 'jsdoc']);
