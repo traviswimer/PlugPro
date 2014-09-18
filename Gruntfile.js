@@ -17,7 +17,8 @@ module.exports = function(grunt){
 
 		// Clear everything from build directory
 		clean: {
-			build: ["build/"]
+			build: ["build/"],
+			docs: ["docs/"]
 		},
 
 		// Generate documentation
@@ -203,7 +204,7 @@ module.exports = function(grunt){
 	grunt.registerTask('default', ['build', 'test', 'watch']);
 	grunt.registerTask('test', ['env:coverage', 'not_constantinople']);
 	grunt.registerTask('build', ['clean:build', 'jst', 'browserify', 'sass', 'imagemin', 'copy']);
-	grunt.registerTask('docs', ['jsdoc']);
+	grunt.registerTask('docs', ['clean:docs', 'jsdoc']);
 
 
 };
