@@ -4,9 +4,9 @@ var chai = require('chai');
 var expect = chai.expect;
 var sinon = require('sinon');
 
-var requireHelper = require('../../require_helper');
-var AutoWootToggle = requireHelper('settings/AutoWootToggle');
-var Toggle = requireHelper('settings/Toggle');
+var rewireHelper = require('../../rewire_helper');
+var AutoWootToggle = rewireHelper('settings/AutoWootToggle');
+var Toggle = rewireHelper('settings/Toggle');
 
 describe("AutoWootToggle", function(){
 

@@ -4,8 +4,8 @@ var chai = require('chai');
 var expect = chai.expect;
 var sinon = require('sinon');
 
-var requireHelper = require('../../require_helper');
-var Menu = requireHelper('ui/Menu');
+var rewireHelper = require('../../rewire_helper');
+var Menu = rewireHelper('ui/Menu');
 //var JST = requireHelper('ui/templates').JST;
 
 var templateLoader = require('../../template_loader');

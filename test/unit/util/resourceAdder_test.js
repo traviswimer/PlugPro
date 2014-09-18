@@ -3,8 +3,8 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var requireHelper = require('../../require_helper');
-var resourceAdder = requireHelper('util/resourceAdder');
+var rewireHelper = require('../../rewire_helper');
+var resourceAdder = rewireHelper('util/resourceAdder');
 
 describe("resourceAdder", function(){
 

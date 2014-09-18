@@ -138,7 +138,8 @@ module.exports = function(grunt){
 						'$': 'jquery',
 						'chrome': '../../../test/chrome',
 						'API': '../../../test/API',
-						'_': 'underscore'
+						'_': 'underscore',
+						'Backbone': 'backbone'
 					}
 				},
 				files: {

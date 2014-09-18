@@ -33,7 +33,9 @@
     "sinon": "^1.10.3",
     "grunt-contrib-jst": "^0.6.0",
     "grunt-jsdoc": "^0.5.7",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "rewire": "^2.1.0",
+    "backbone": "^1.1.2"
   },
   "scripts": {
     "test": "grunt test"

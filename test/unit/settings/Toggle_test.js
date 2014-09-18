@@ -3,8 +3,8 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var requireHelper = require('../../require_helper');
-var Toggle = requireHelper('settings/Toggle');
+var rewireHelper = require('../../rewire_helper');
+var Toggle = rewireHelper('settings/Toggle');
 
 describe("Toggle", function(){
 

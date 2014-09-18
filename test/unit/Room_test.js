@@ -3,8 +3,8 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-var requireHelper = require('../require_helper');
-var Room = requireHelper('Room');
+var rewireHelper = require('../rewire_helper');
+var Room = rewireHelper('Room');
 
 describe("Room", function(){
 
