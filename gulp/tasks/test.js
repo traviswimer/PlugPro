@@ -9,9 +9,18 @@ var jsdom = require('jsdom').jsdom;
 
 gulp.task('test', function(callback) {
 
-	// Initialize jsDOM
-	var document = global.document = jsdom('<html><head><script></script></head><body></body></html>');
-	global.window = document.createWindow();
+	if( typeof global.window === "undefined" ){
+
+		// Initialize jsDOM
+		var document = global.document = jsdom('<html><head><script></script></head><body></body></html>');
+		global.window = document.createWindow();
+
+	}
+
+	// Make sure body is empty
+	global.document.body.innerHTML = "";
+	global.document.head.innerHTML = "";
+
 
 	// Add all default window properties to the global object
 	for(var windowProp in global.window ){

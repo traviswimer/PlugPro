@@ -6,6 +6,6 @@ gulp.task('watch', function(){
 	gulp.watch( config.src + '/manifest.json', ['copy'] );
 	gulp.watch( config.jst.src, ['jst'] );
 	gulp.watch( config.images.src, ['imagemin'] );
-	gulp.watch( config.js.tests + '/**/*', ['test'] );
+	gulp.watch( [config.js.tests + '/**/*', config.js.src + '/**/*'], ['test'] );
 
 });
