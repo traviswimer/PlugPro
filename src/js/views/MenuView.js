@@ -83,9 +83,9 @@ var MenuView = Backbone.View.extend(
 	updateVisibility: function(){
 		var left = $('#app-menu').find('.list').css("left");
 		if( left === "0px" ){
-			this.$el.addClass("expanded");
+			$('#plugpro-menu').addClass("expanded");
 		}else{
-			this.$el.removeClass("expanded");
+			$('#plugpro-menu').removeClass("expanded");
 		}
 	},
 

@@ -6,26 +6,32 @@ var expect = chai.expect;
 var rewire = require('../../rewire_helper');
 var MenuView = rewire('views/MenuView');
 
-var plugPro = {};
+window.plugPro = {};
+var templateLoader = require('../../template_loader');
+Backbone.$ = $;
 
 describe("MenuView", function(){
 
 	var JST;
 	var menuView;
 
+	MenuView.__set__( "ToggleSettingView", new Backbone.View.extend() );
+
 	beforeEach(function(){
-		plugPro.JST = templateLoader([
+		window.plugPro.JST = templateLoader([
 			'src/html_templates/menu.html',
 			'src/html_templates/toggle_setting.html'
 		]);
 
 		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'></div>");
-		menuView = new menuView({
+		menuView = new MenuView({
 			"fakeToggleSetting": {}
 		});
+		$('#app-menu').append( menuView.$el );
 	});
 
 	it("should show and hide", function(){
+		menuView.render();
 
 		$('.list').css('left', '0px');
 		menuView.updateVisibility();
