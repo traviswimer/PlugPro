@@ -7,6 +7,8 @@
 /*																	*/
 /* gulp test		Runs all unit tests								*/
 /*																	*/
+/* gulp docs		Generates javascript documentation				*/
+/*																	*/
 /* gulp package		Builds chrome extension, preparing				*/
 /*					it for upload to the chrome store				*/
 /*																	*/
