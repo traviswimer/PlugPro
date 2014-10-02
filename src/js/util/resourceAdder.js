@@ -16,7 +16,7 @@ resourceAdder.addScript = function( path ){
 	scriptElement.onload = function(){
 		this.parentNode.removeChild( this );
 	};
-	(document.body).appendChild( scriptElement );
+	document.body.appendChild( scriptElement );
 };
 
 /** 

@@ -9,8 +9,12 @@ var resourceAdder = rewireHelper('util/resourceAdder');
 describe("resourceAdder", function(){
 
 	describe("scripts", function(){
-		it("should add", function(){
+
+		beforeEach(function(){
 			resourceAdder.addScript('test.js');
+		});
+
+		it("should add", function(){
 			expect( $("script[src*='test.js']").length ).to.equal( 1 );
 		});
 
