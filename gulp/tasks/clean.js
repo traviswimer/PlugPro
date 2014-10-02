@@ -4,6 +4,15 @@ var config = require('../config');
 var clean = require('gulp-clean');
 
 gulp.task('clean', function () {
-	return gulp.src( config.build + '/*', {read: false} )
+
+	var cleanDir;
+
+	if( process.env.build === "package" ){
+		cleanDir = config.pkg + '/*';
+	}else{
+		cleanDir = config.build + '/*';
+	}
+
+	return gulp.src( cleanDir, {read: false} )
 		.pipe( clean() );
 });

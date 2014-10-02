@@ -52,7 +52,9 @@
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^1.0.6",
     "browserify": "^5.12.1",
-    "gulp-imagemin": "^1.0.1"
+    "gulp-imagemin": "^1.0.1",
+    "gulp-browserify": "^0.5.0",
+    "gulp-uglify": "^1.0.1"
   },
   "scripts": {
     "test": "grunt test"

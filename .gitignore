@@ -8,7 +8,8 @@ node_modules
 .sass-cache/
 
 #production-code
-build
+/build
+/package
 
 # Test coverage reports
 /test/coverage

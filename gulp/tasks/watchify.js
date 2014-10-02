@@ -6,23 +6,7 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var browserify = require('browserify');
 
-var bundleOptions = [
-	{
-		src: config.js.src + '/main.js',
-		dest: config.js.build,
-		file: "plug_pro.js"
-	},
-	{
-		src: config.js.src + '/init.js',
-		dest: config.js.build,
-		file: "init.js"
-	},
-	{
-		src: config.js.src + '/event_page.js',
-		dest: config.js.build,
-		file: "event_page.js"
-	}
-];
+var bundleOptions = require('../browserifyBundles');
 
 function rebundle( bundler, dest, file ){
 	return bundler.bundle()
