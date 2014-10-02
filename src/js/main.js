@@ -3,8 +3,7 @@
 var plugPro = window.plugPro = {};
 
 // Load html templates
-var JST = require("./templates").JST;
-plugPro.JST = JST;
+var JST = require("./templates");
 
 var Room = require('./Room');
 var room = new Room();

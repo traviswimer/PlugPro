@@ -1,4 +1,4 @@
-(function() {(window["JST"] = window["JST"] || {})["menu.html"] = function(obj) {
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -9,7 +9,7 @@ __p += '<div class="inner-pro-menu">\n\t<img src="' +
 }
 return __p
 }})();
-(function() {(window["JST"] = window["JST"] || {})["toggle_setting.html"] = function(obj) {
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["toggle_setting.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {

@@ -22,7 +22,7 @@ var MenuView = Backbone.View.extend(
 
 		var toggleSettings = options.toggleSettings;
 
-		this.menuHTML = JST['src/html_templates/menu.html']({
+		this.menuHTML = JST['menu.html']({
 			chromeDir: 'chrome-extension://' + $('#plug_pro_chrome_extension_id').val()
 		});
 

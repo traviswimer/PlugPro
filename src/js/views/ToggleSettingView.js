@@ -18,7 +18,7 @@ var ToggleSettingView = Backbone.View.extend(
 	initialize: function( options ){
 		var JST = window.plugPro.JST;
 		
-		this.toggleHTML = JST['src/html_templates/toggle_setting.html']({
+		this.toggleHTML = JST['toggle_setting.html']({
 			title: options.name
 		});
 
