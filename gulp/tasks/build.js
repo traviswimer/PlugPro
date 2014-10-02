@@ -4,7 +4,7 @@ var runSequence = require('run-sequence');
 gulp.task('build', function( callback ){
 	runSequence(
 		'clean',
-		['sass','jst','copy'],
+		['sass','jst','copy', 'imagemin'],
 		'watchify',
 		'livereload',
 		callback

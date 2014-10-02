@@ -8,8 +8,12 @@ module.exports = {
 	build: build,
 	src: src,
 	docs: docs,
+	images: {
+		src: src + '/images',
+		build: build + '/images',
+	},
 	css:{
-		src: src + '/css/plug_pro.scss',
+		src: src + '/css/*.scss',
 		build: build + '/css'
 	},
 	js:{
