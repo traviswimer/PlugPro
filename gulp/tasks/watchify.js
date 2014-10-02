@@ -35,7 +35,6 @@ function rebundle( bundler, dest, file ){
 gulp.task('watchify', function() {
 
 	bundleOptions.forEach(function( options ){
-		console.log(options);
 		var bundler = watchify( browserify( options.src, watchify.args ) );
 		bundler.on( 'update', function(){
 			rebundle( bundler, options.dest, options.file );
