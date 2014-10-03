@@ -23,6 +23,7 @@ var ToggleSettingView = Backbone.View.extend(
 		});
 
 		this.setting = options.setting;
+
 	},
 
 	tagName: "li",
@@ -36,6 +37,10 @@ var ToggleSettingView = Backbone.View.extend(
 	*/
 	render: function(){
 		this.$el.append( this.toggleHTML );
+		
+		if( this.setting.toggler.isOn === true ){
+			this.$el.find('input[type="checkbox"]').prop('checked', true);
+		}
 	},
 
 	/**

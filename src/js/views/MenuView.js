@@ -19,7 +19,6 @@ var MenuView = Backbone.View.extend(
 	*/
 	initialize: function( options ){
 		var JST = window.plugPro.JST;
-		console.log(JST);
 
 		var toggleSettings = options.toggleSettings;
 
