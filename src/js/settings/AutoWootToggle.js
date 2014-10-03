@@ -55,8 +55,8 @@ AutoWoot.prototype.startWooting = function( newSongInfo ){
 		return;
 	}
 
-	// woot at a random time in the first 35 seconds of each song
-	var randTimeout = Math.round( 35 * Math.random() ) * 1000;
+	// woot at a random time in the first 20 seconds of each song
+	var randTimeout = Math.round( 20 * Math.random() ) * 1000;
 	setTimeout( this.clickWoot.bind(this), randTimeout );
 
 	return randTimeout;
