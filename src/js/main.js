@@ -12,11 +12,13 @@ room.on("load", function(){
 
 	var Menu = require('./views/MenuView');
 
+	var Toggle = require('./settings/Toggle');
 	var AutoWootToggle = require('./settings/AutoWootToggle');
 
 	// Add Autowoot
+	var toggle = new Toggle( true );
 	var userId = API.getUser().id;
-	var autowootToggle = new AutoWootToggle( userId );
+	var autowootToggle = new AutoWootToggle( toggle, userId );
 
 	// Add PlugPro menu
 	var menu = new Menu( {

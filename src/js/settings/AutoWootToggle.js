@@ -19,6 +19,8 @@ function AutoWoot( toggler, userId ){
 		this.setWootState( true );
 	}
 
+	this.songAdvanceCallback = this.startWooting.bind( this );
+
 }
 
 /**
@@ -28,9 +30,9 @@ function AutoWoot( toggler, userId ){
 AutoWoot.prototype.setWootState = function( isOn ){
 	if( isOn ){
 		this.startWooting.apply(this);
-		API.on( API.ADVANCE, this.startWooting );
+		API.on( API.ADVANCE, this.songAdvanceCallback );
 	}else{
-		API.off( API.ADVANCE, this.startWooting );
+		API.off( API.ADVANCE, this.songAdvanceCallback );
 	}
 };
 
