@@ -15,13 +15,16 @@ var VideoViewView = {
 	render: function(){
 
 		this.activeTimeout;
-		$('#playback-container').append("<div id='video-cover'></div>");
+		$('#playback').append("<div id='video-cover'></div>");
 
 		$('body').addClass('plugpro-video');
 
 		$('body, #playback-container').on( "mousemove", this.makeActive.bind(this) );
 
+		API.on( API.ADVANCE, this.updateArtwork.bind(this) );
+
 		this.makeActive();
+		this.updateArtwork();
 	},
 
 	makeActive: function(){
@@ -37,6 +40,22 @@ var VideoViewView = {
 	makeInactive: function(){
 		console.log("inactive");
 		$('body').addClass('inactive');
+	},
+
+	updateArtwork: function(){
+		var songInfo = API.getMedia();
+		console.log(songInfo);
+
+		if( songInfo.image.indexOf('sndcdn') !== -1 ){
+			var artFile = songInfo.image.replace( '-large', '-t500x500' );
+			$('#video-cover').css({
+				"background-image": "url('"+ artFile +"')"
+			});
+		}else{
+			$('#video-cover').css({
+				"background-image": "none"
+			});
+		}
 	}
 
 };
