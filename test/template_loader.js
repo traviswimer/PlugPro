@@ -6,7 +6,7 @@ function loadHtmlString( files, callback ){
 	JST = {};
 
 	files.forEach(function( filePath ){
-		var data = fs.readFileSync(filePath).toString();
+		var data = fs.readFileSync( 'src/html_templates/' + filePath ).toString();
 		JST[ filePath ] = function(){
 			return data;
 		};

@@ -19,8 +19,8 @@ describe("MenuView", function(){
 
 	beforeEach(function(){
 		window.plugPro.JST = templateLoader([
-			'src/html_templates/menu.html',
-			'src/html_templates/toggle_setting.html'
+			'menu.html',
+			'toggle_setting.html'
 		]);
 
 		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'></div>");
