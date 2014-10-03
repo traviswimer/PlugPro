@@ -23,14 +23,10 @@ $overlay-opacity: 0.7;
 		margin: 0px auto;
 		opacity: $overlay-opacity;
 		position: relative;
-
-		@extend .fade-out;
 	}
 
 	.app-header{
 		opacity: $overlay-opacity;
-
-		@extend .fade-out;
 	}
 
 	.app-right{
@@ -39,14 +35,10 @@ $overlay-opacity: 0.7;
 
 	#footer{
 		opacity: $overlay-opacity;
-
-		@extend .fade-out;
 	}
 
 	#app-menu{
 		opacity: $overlay-opacity;
-
-		@extend .fade-out;
 	}
 
 	#avatars-container{
@@ -55,40 +47,48 @@ $overlay-opacity: 0.7;
 
 	#dj-button{
 		opacity: $overlay-opacity;
-
-		@extend .fade-out;
 	}
 
 	#vote{
 		opacity: $overlay-opacity;
-
-		@extend .fade-out;
 	}
 
 	// Apply fadeout when inactive
 	&.inactive{
 		#playback-controls{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 
 		.app-header{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 
 		#footer{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 
 		#app-menu{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 
 		#dj-button{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 
 		#vote{
 			opacity: 0;
+
+			@extend .fade-out;
 		}
 	}
 
