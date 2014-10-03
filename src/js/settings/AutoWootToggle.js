@@ -13,13 +13,14 @@ function AutoWoot( toggler, userId ){
 	this.userId = userId;
 	this.localStorageName = "autowoot";
 
+	this.songAdvanceCallback = this.startWooting.bind( this );
+
 	toggler.onChange( this.setWootState.bind( this ) );
 
 	if( toggler.isOn ){
 		this.setWootState( true );
 	}
 
-	this.songAdvanceCallback = this.startWooting.bind( this );
 
 }
 
@@ -41,12 +42,11 @@ AutoWoot.prototype.setWootState = function( isOn ){
  * @param {object} newSongInfo - Info about the newly started song. (Provided by Plug.dj API)
  */
 AutoWoot.prototype.startWooting = function( newSongInfo ){
-
 	var wootButton = $('#woot');
 
 	// Immediately start wooting if the user just turned the feature on
 	if( !newSongInfo ){
-		this.clickWoot();
+		setTimeout( this.clickWoot.bind(this), 5000 );
 		return;
 	}
 
@@ -55,8 +55,8 @@ AutoWoot.prototype.startWooting = function( newSongInfo ){
 		return;
 	}
 
-	// woot at a random time in the first 20 seconds of each song
-	var randTimeout = Math.round( 20 * Math.random() ) * 1000;
+	// woot at a random time, 5-25 seconds afters start of each song
+	var randTimeout = (Math.round( 20 * Math.random() ) + 5) * 1000;
 	setTimeout( this.clickWoot.bind(this), randTimeout );
 
 	return randTimeout;
