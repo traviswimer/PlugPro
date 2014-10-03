@@ -27,8 +27,8 @@ var VideoViewView = {
 		this.updateArtwork();
 	},
 
-	makeActive: function(){
-		console.log("active");
+	makeActive: function( event ){
+		console.log(event);
 		$('body').removeClass('inactive');
 		if( this.activeTimeout ){
 			clearTimeout( this.activeTimeout );
@@ -38,13 +38,11 @@ var VideoViewView = {
 	},
 
 	makeInactive: function(){
-		console.log("inactive");
 		$('body').addClass('inactive');
 	},
 
 	updateArtwork: function(){
 		var songInfo = API.getMedia();
-		console.log(songInfo);
 
 		if( songInfo.image.indexOf('sndcdn') !== -1 ){
 			var artFile = songInfo.image.replace( '-large', '-t500x500' );
