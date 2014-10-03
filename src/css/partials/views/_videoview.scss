@@ -1,0 +1,55 @@
+$overlay-opacity: 0.7;
+
+
+.plugpro-video{
+
+	#playback{
+		height: 100%;
+		left: 0 !important;
+		top: 0;
+		width: 100%;
+	}
+
+	#playback-container{
+		height: 100% !important;
+		left: 0;
+		top: 0;
+		width: 100% !important;
+	}
+
+	#playback-controls{
+		display: block !important;
+		top: 50px;
+		margin: 0px auto;
+		opacity: $overlay-opacity;
+		position: relative;
+	}
+
+	.app-header{
+		opacity: $overlay-opacity;
+	}
+
+	.app-right{
+		opacity: $overlay-opacity;
+	}
+
+	#footer{
+		opacity: $overlay-opacity;
+	}
+
+	#app-menu{
+		opacity: $overlay-opacity;
+	}
+
+	#avatars-container{
+		display: none;
+	}
+
+	#dj-button{
+		opacity: $overlay-opacity;
+	}
+
+	#vote{
+		opacity: $overlay-opacity;
+	}
+}

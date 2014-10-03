@@ -33,5 +33,8 @@ room.on("load", function(){
 		autowoot: autowootToggle
 	}
 
+	var videoView = require('./views/views/VideoViewView');
+	videoView.render();
+
 });
 room.init();
