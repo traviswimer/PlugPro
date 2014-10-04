@@ -34,7 +34,7 @@ describe("MenuView", function(){
 				"fakeSetting2": {}
 			}
 		};
-		
+
 
 		menuView = new MenuView( fakeToggleSettings );
 		$('#app-menu').append( menuView.$el );
@@ -49,12 +49,40 @@ describe("MenuView", function(){
 
 		it("should load menu template", function(){
 
-			sinon.spy( window.plugPro.JST, 'menu.html' )
+			sinon.spy( window.plugPro.JST, 'menu.html' );
 
 			menuView = new MenuView( fakeToggleSettings );
 			$('#app-menu').append( menuView.$el );
 
 			expect( window.plugPro.JST['menu.html'].calledOnce ).to.be.true;
+		});
+
+	});
+
+	describe("render", function(){
+
+		beforeEach(function(){
+			sinon.stub( menuView, 'syncWithMainPlugMenu' );
+		});
+
+		it("should call syncWithMainPlugMenu", function(){
+			menuView.render();
+
+			expect( menuView.syncWithMainPlugMenu.calledOnce ).to.equal( true );
+		});
+
+		it("should render all settingViews", function(){
+			menuView.settingViews.forEach( function( setting ){
+				sinon.stub( setting, "render");
+			});
+
+			menuView.render();
+
+			menuView.settingViews.forEach( function( setting ){
+				expect( setting.render.calledOnce ).to.equal( true );
+			});
+
+
 		});
 
 	});
