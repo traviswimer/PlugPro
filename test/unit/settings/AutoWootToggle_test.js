@@ -32,13 +32,10 @@ describe("AutoWootToggle", function(){
 			$('body').html("");
 		});
 
-		it("should immediately woot if no song info (Setting just turned on)", function( done ){
-			$(wootButton).click(function(){
-				done();
-			});
-
-			autoWoot = new AutoWootToggle( toggle );
-			autoWoot.startWooting();
+		it("should immediately woot if no song info (Setting just turned on)", function( ){
+			var userId = 10;
+			autoWoot = new AutoWootToggle( toggle, userId );
+			expect( autoWoot.startWooting() ).to.be.undefined;
 		});
 
 		it("should not woot for yourself", function(){
