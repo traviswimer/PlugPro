@@ -15,7 +15,7 @@ describe("ToggleSettingView", function(){
 
 	var JST;
 	var toggleSettingView;
-	var fakeToggleHTML = "toggle_setting.html content";
+	var fakeToggleHTML = "toggle_setting.html content<input type='checkbox'>";
 
 
 	beforeEach(function(){
@@ -56,6 +56,59 @@ describe("ToggleSettingView", function(){
 			toggleSettingView = new ToggleSettingView( fakeOptions );
 
 			expect( toggleSettingView.setting ).to.equal( fakeOptions.setting );
+		});
+
+	});
+
+	describe("render", function(){
+
+		it("should append template", function(){
+			var fakeOptions = {
+				"setting": {
+					"name": "fakeName",
+					"toggler": {
+						isOn: true
+					}
+				}
+			};
+			toggleSettingView = new ToggleSettingView( fakeOptions );
+			var appendSpy = sinon.spy( toggleSettingView.$el, "append" );
+
+			toggleSettingView.render();
+
+			expect( appendSpy.calledWith( fakeToggleHTML ) ).to.be.true;
+		});
+
+		it("should check checkbox if toggler is on", function(){
+			var fakeOptions = {
+				"setting": {
+					"name": "fakeName",
+					"toggler": {
+						isOn: true
+					}
+				}
+			};
+			toggleSettingView = new ToggleSettingView( fakeOptions );
+			toggleSettingView.render();
+
+			var isChecked = toggleSettingView.$el.find('input[type="checkbox"]')[0].checked;
+			expect( isChecked ).to.be.true;
+		});
+
+		it("should not check checkbox if toggler is off", function(){
+			var fakeOptions = {
+				"setting": {
+					"name": "fakeName",
+					"toggler": {
+						isOn: false
+					}
+				}
+			};
+			toggleSettingView = new ToggleSettingView( fakeOptions );
+			toggleSettingView.render();
+
+			var isChecked = toggleSettingView.$el.find('input[type="checkbox"]')[0].checked;
+			expect( isChecked ).to.be.false;
 		});
 
 	});
