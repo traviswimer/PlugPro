@@ -27,7 +27,7 @@ describe("MenuView", function(){
 		]);
 		
 
-		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'></div>");
+		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'><div id='plugpro-menu-child'></div></div>");
 		fakeToggleSettings = {
 			"toggleSettings": {
 				"fakeSetting1": {},
@@ -87,6 +87,110 @@ describe("MenuView", function(){
 
 	});
 
+	describe("syncWithMainPlugMenu", function(){
+
+		var fakeTransitionEvent;
+
+		beforeEach(function(){
+			fakeTransitionEvent = 'webkitTransitionEnd';
+			sinon.stub( menuView, "getTransitionEvent", function(){
+				return fakeTransitionEvent;
+			});
+			sinon.stub( menuView, "updateVisibility", function(){} );
+		});
+
+		afterEach(function(){
+			menuView.getTransitionEvent.restore();
+			menuView.updateVisibility.restore();
+		});
+
+		it("should add transition listener to call updateVisibility()", function(){
+			
+			sinon.stub(
+				$('#app-menu')
+				.find('.list')[0],
+				"addEventListener",
+				function( evt, callback ){
+					callback();
+				}
+			);
+			menuView.syncWithMainPlugMenu();
+			expect( menuView.updateVisibility.calledOnce ).to.equal( true );
+		});
+
+		describe("mousedown listener", function(){
+
+			afterEach(function(){
+				document.addEventListener.restore();
+			});
+
+			it("should not close menu when clicking Pro menu", function( done ){
+				
+				var fakeEvent = {
+					target: menuView.el,
+					stopPropagation: function(){
+						done();
+					}
+				};
+
+				sinon.stub( document, "addEventListener",
+					function( evt, callback ){
+						expect( evt ).to.equal("mousedown");
+						callback( fakeEvent );
+					}
+				);
+				menuView.syncWithMainPlugMenu();
+
+			});
+
+			it("should not close menu when clicking child of Pro menu", function( done ){
+				menuView.$el.append('<div id="plugpro-menu-child"></div>');
+				
+				var fakeEvent = {
+					target: $('#plugpro-menu-child')[0],
+					stopPropagation: function(){
+						done();
+					}
+				};
+
+				sinon.stub( document, "addEventListener",
+					function( evt, callback ){
+						expect( evt ).to.equal("mousedown");
+						callback( fakeEvent );
+					}
+				);
+				menuView.syncWithMainPlugMenu();
+
+			});
+
+
+			it("should propagate if not pro menu", function( done ){
+				menuView.$el.append('<div id="plugpro-menu-child"></div>');
+				
+				var fakeEl = document.createElement('div');
+
+				var fakeEvent = {
+					target: fakeEl,
+					stopPropagation: sinon.stub()
+				};
+
+				sinon.stub( document, "addEventListener",
+					function( evt, callback ){
+						expect( evt ).to.equal("mousedown");
+						callback( fakeEvent );
+
+						expect( fakeEvent.stopPropagation.called ).to.be.false;
+						done();
+					}
+				);
+				menuView.syncWithMainPlugMenu();
+
+			});
+
+		});
+
+	});
+
 	describe("updateVisibility", function(){
 
 		it("should show and hide", function(){
@@ -99,6 +203,20 @@ describe("MenuView", function(){
 			$('.list').css('left', '10px');
 			menuView.updateVisibility();
 			expect( $('#plugpro-menu').hasClass('expanded') ).to.be.false;
+		});
+
+	});
+
+	describe("getTransitionEvent", function(){
+
+		it("should return correct transition", function(){
+			var transition = menuView.getTransitionEvent({
+				style: {
+					"WebkitAnimation": "WebkitAnimation"
+				}
+			});
+
+			expect( transition ).to.equal( "webkitTransitionEnd" );
 		});
 
 	});
