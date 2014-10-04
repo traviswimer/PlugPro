@@ -113,4 +113,26 @@ describe("ToggleSettingView", function(){
 
 	});
 
+	describe("toggleSetting", function(){
+
+		it("should toggle toggler", function(){
+			var fakeOptions = {
+				"setting": {
+					"name": "fakeName",
+					"toggler": {
+						isOn: true,
+						toggle: function(){}
+					}
+				}
+			};
+			toggleSettingView = new ToggleSettingView( fakeOptions );
+			var toggleSpy = sinon.spy( toggleSettingView.setting.toggler, "toggle" );
+
+			toggleSettingView.toggleSetting();
+
+			expect( toggleSpy.calledOnce ).to.be.true;
+		});
+
+	});
+
 });
