@@ -47,7 +47,6 @@ var ToggleSettingView = Backbone.View.extend(
 	* Toggles the current state of the setting
 	*/
 	toggleSetting: function(){
-		console.log("Checkbox toggled");
 		this.setting.toggler.toggle();
 	}
 
