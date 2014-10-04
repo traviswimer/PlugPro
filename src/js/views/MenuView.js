@@ -14,7 +14,6 @@ var MenuView = Backbone.View.extend(
 	*
 	* @augments Backbone.View
 	* @constructs
-	* @param {object} JST - Javascript HTML templates
 	* @param {object} toggleSettings - List of settings and their corresponding togglers
 	*/
 	initialize: function( options ){

@@ -2,6 +2,7 @@
 
 var chai = require('chai');
 var expect = chai.expect;
+var sinon = require("sinon");
 
 var rewire = require('../../rewire_helper');
 var MenuView = rewire('views/MenuView');
@@ -14,32 +15,64 @@ describe("MenuView", function(){
 
 	var JST;
 	var menuView;
+	var fakeToggleSettings;
 
-	MenuView.__set__( "ToggleSettingView", new Backbone.View.extend() );
 
 	beforeEach(function(){
+		MenuView.__set__( "ToggleSettingView", Backbone.View.extend() );
+
 		window.plugPro.JST = templateLoader([
 			'menu.html',
 			'toggle_setting.html'
 		]);
+		
 
 		$('body').html("<div id='app-menu'><div class='list'></div></div><div id='plugpro-menu'></div>");
-		menuView = new MenuView({
-			"fakeToggleSetting": {}
-		});
+		fakeToggleSettings = {
+			"toggleSettings": {
+				"fakeSetting1": {},
+				"fakeSetting2": {}
+			}
+		};
+		
+
+		menuView = new MenuView( fakeToggleSettings );
 		$('#app-menu').append( menuView.$el );
+
 	});
 
-	it("should show and hide", function(){
-		menuView.render();
+	describe("initialize", function(){
 
-		$('.list').css('left', '0px');
-		menuView.updateVisibility();
-		expect( $('#plugpro-menu').hasClass('expanded') ).to.be.true;
+		it("should add toggleSettings to list", function(){
+			expect( menuView.settingViews.length ).to.equal(2);
+		});
 
-		$('.list').css('left', '10px');
-		menuView.updateVisibility();
-		expect( $('#plugpro-menu').hasClass('expanded') ).to.be.false;
+		it("should load menu template", function(){
+
+			sinon.spy( window.plugPro.JST, 'menu.html' )
+
+			menuView = new MenuView( fakeToggleSettings );
+			$('#app-menu').append( menuView.$el );
+
+			expect( window.plugPro.JST['menu.html'].calledOnce ).to.be.true;
+		});
+
+	});
+
+	describe("updateVisibility", function(){
+
+		it("should show and hide", function(){
+			menuView.render();
+
+			$('.list').css('left', '0px');
+			menuView.updateVisibility();
+			expect( $('#plugpro-menu').hasClass('expanded') ).to.be.true;
+
+			$('.list').css('left', '10px');
+			menuView.updateVisibility();
+			expect( $('#plugpro-menu').hasClass('expanded') ).to.be.false;
+		});
+
 	});
 
 });
