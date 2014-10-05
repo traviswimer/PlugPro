@@ -1,7 +1,9 @@
 /**
- * View for the PlugPro Menu
+ * View for "video view"
  * @module views/views/VideoViewView
  */
+
+var VideoChatView = require("./VideoChatView");
 
 var VideoViewView = {
 	
@@ -17,7 +19,18 @@ var VideoViewView = {
 		this.activeTimeout;
 		$('#playback').append("<div id='video-cover'></div>");
 
+		this.videoChatView = new VideoChatView();
+		$('#room').append( this.videoChatView.$el );
+		this.videoChatView.render();
+		$('#plugpro-videochat').css({
+			"right": "15px"
+		});
+
 		$('body').addClass('plugpro-video');
+
+		$('.app-right').css({
+			"right": ($('.app-right').width() * -1) + "px"
+		});
 
 		$('body, #playback-container').on( "mousemove", this.makeActive.bind(this) );
 
@@ -28,7 +41,6 @@ var VideoViewView = {
 	},
 
 	makeActive: function( event ){
-		console.log(event);
 		$('body').removeClass('inactive');
 		if( this.activeTimeout ){
 			clearTimeout( this.activeTimeout );

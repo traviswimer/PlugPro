@@ -20,3 +20,12 @@ __p += '<div class="setting-title">' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["video_chat.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class=\'plugpro-messages\'>\n</div>\n<div>\n\t<form id="plugpro-chat-input-form" action="?">\n\t\t<input type="text" value="" placeholder="Click here to join the conversation" maxlength="256">\n\t</form>\n</div>';
+
+}
+return __p
+}})();
