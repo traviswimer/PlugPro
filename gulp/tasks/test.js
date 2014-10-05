@@ -6,6 +6,7 @@ var istanbulEnforcer = require('gulp-istanbul-enforcer');
 var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
 var jsdom = require('jsdom').jsdom;
+var plumber = require('gulp-plumber');
 
 gulp.task('test', function(callback) {
 
@@ -71,11 +72,13 @@ gulp.task('test', function(callback) {
 
 
 	gulp.src( [config.js.src + '/**/*.js'] )
+		.pipe( plumber() )
 		// Instrument source code
 		.pipe( istanbul() )
 		.on('finish', function (){
 			// Load tests into mocha
 			gulp.src( [config.js.tests + '/**/*_test.js'] )
+				.pipe( plumber() )
 				.pipe(
 					mocha({
 						reporter: 'spec'

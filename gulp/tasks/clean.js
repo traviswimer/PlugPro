@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var config = require('../config');
 
 var clean = require('gulp-clean');
+var plumber = require('gulp-plumber');
 
 gulp.task('clean', function () {
 
@@ -14,5 +15,6 @@ gulp.task('clean', function () {
 	}
 
 	return gulp.src( cleanDir, {read: false} )
+		.pipe( plumber() )
 		.pipe( clean() );
 });

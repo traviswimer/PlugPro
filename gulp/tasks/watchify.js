@@ -5,11 +5,13 @@ var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var browserify = require('browserify');
+var plumber = require('gulp-plumber');
 
 var bundleOptions = require('../browserifyBundles');
 
 function rebundle( bundler, dest, file ){
 	return bundler.bundle()
+		.pipe( plumber() )
 		.on( 'error', gutil.log.bind(gutil, 'Browserify Error') )
 		.pipe( source( file ) )
 		.pipe( gulp.dest( dest ) );
