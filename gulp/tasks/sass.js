@@ -15,9 +15,9 @@ gulp.task('sass', function (){
 		buildDir = config.css.build;
 	}
 
-	return gulp.src( config.css.src )
+	return gulp.src( config.css.src + '/**/*.scss' )
 		.pipe( plumber() )
-		.pipe( sass().on('error', function(){}) )
+		.pipe( sass() )
 		.pipe( gulp.dest( buildDir ) )
 		.on( 'error', gutil.log );
 });

@@ -16,7 +16,7 @@ module.exports = {
 		pkg: pkg + '/images',
 	},
 	css:{
-		src: src + '/css/*.scss',
+		src: src + '/css',
 		build: build + '/css',
 		pkg: pkg + '/css',
 	},
