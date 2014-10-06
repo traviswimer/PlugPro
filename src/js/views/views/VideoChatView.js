@@ -29,6 +29,10 @@ var VideoChatView = Backbone.View.extend(
 		this.$el.append( this.chatHTML );
 		this.messageList = this.$el.find('.plugpro-messages');
 
+		API.on( API.CHAT, this.addChatMessage.bind(this) );
+	},
+
+	createMinimizeChatButton: function(){
 		var $minimizeDiv = $( document.createElement('div') );
 		$minimizeDiv.addClass( 'plugpro-minimize-chat-button' );
 		$minimizeDiv.html( "Minimize Chat" );
@@ -38,9 +42,6 @@ var VideoChatView = Backbone.View.extend(
 			"opacity": 0
 		});
 		$minimizeDiv.click( this.minimizeChat.bind(this) );
-		
-		API.on( API.CHAT, this.addChatMessage.bind(this) );
-
 	},
 
 	addChatMessage: function( messageData ){
@@ -50,13 +51,14 @@ var VideoChatView = Backbone.View.extend(
 		$messageDiv.html( chatHTML );
 		this.messageList.append( $messageDiv );
 
+		// Have message expand-in
 		var renderedHeight = $messageDiv.height();
 		$messageDiv.height(0);
 		$messageDiv.animate({
 			"height": renderedHeight + "px"
 		}, 400, "easeInCubic");
 
-		// Remove message after 30 seconds
+		// Have message shrink-out after 30 seconds
 		setTimeout( function(){
 			$messageDiv.animate({
 				"height": 0
