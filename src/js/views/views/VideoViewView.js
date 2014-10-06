@@ -17,20 +17,14 @@ var VideoViewView = {
 	render: function(){
 
 		this.activeTimeout;
+		$('body').addClass('plugpro-video');
+		
 		$('#playback').append("<div id='video-cover'></div>");
 
 		this.videoChatView = new VideoChatView();
 		$('#room').append( this.videoChatView.$el );
 		this.videoChatView.render();
-		$('#plugpro-videochat').css({
-			"right": "15px"
-		});
-
-		$('body').addClass('plugpro-video');
-
-		$('.app-right').css({
-			"right": ($('.app-right').width() * -1) + "px"
-		});
+		this.videoChatView.minimizeChat();
 
 		$('body, #playback-container').on( "mousemove", this.makeActive.bind(this) );
 
