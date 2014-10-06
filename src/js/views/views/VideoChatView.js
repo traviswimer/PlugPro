@@ -29,6 +29,8 @@ var VideoChatView = Backbone.View.extend(
 		this.$el.append( this.chatHTML );
 		this.messageList = this.$el.find('.plugpro-messages');
 
+		this.createMinimizeChatButton();
+
 		API.on( API.CHAT, this.addChatMessage.bind(this) );
 	},
 
