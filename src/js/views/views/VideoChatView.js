@@ -18,7 +18,6 @@ var VideoChatView = Backbone.View.extend(
 
 		this.chatHTML = JST['video_chat.html']();
 
-
 	},
 
 	id: "plugpro-videochat",
@@ -29,6 +28,16 @@ var VideoChatView = Backbone.View.extend(
 	render: function(){
 		this.$el.append( this.chatHTML );
 		this.messageList = this.$el.find('.plugpro-messages');
+
+		var $minimizeDiv = $( document.createElement('div') );
+		$minimizeDiv.addClass( 'plugpro-minimize-chat-button' );
+		$minimizeDiv.html( "Minimize Chat" );
+		$('.app-right').append( $minimizeDiv );
+		$minimizeDiv.css({
+			"left": -115 + "px",
+			"opacity": 0
+		});
+		$minimizeDiv.click( this.minimizeChat.bind(this) );
 		
 		API.on( API.CHAT, this.addChatMessage.bind(this) );
 
@@ -58,7 +67,8 @@ var VideoChatView = Backbone.View.extend(
 	},
 
 	events: {
-		"submit #plugpro-chat-input-form": "sendChatMessage"
+		"submit #plugpro-chat-input-form": "sendChatMessage",
+		"click .plugpro-expand-chat-button": "expandChat"
 	},
 
 	sendChatMessage: function( evt ){
@@ -69,6 +79,35 @@ var VideoChatView = Backbone.View.extend(
 		chatInput.val("");
 
 		return false;
+	},
+
+	expandChat: function( evt ){
+		this.$el.css({
+			"right": ($('.app-right').width() * -1) + "px"
+		});
+
+		$('.app-right').find('.plugpro-minimize-chat-button').css({
+			"right": ($('.app-right').width() * -1) + "px",
+			"opacity": ""
+		});
+
+		$('.app-right').css({
+			"right": 0 + "px"
+		});
+	},
+
+	minimizeChat: function( evt ){
+		$('.app-right').css({
+			"right": ($('.app-right').width() * -1) + "px"
+		});
+
+		$('.app-right').find('.plugpro-minimize-chat-button').css({
+			"opacity": 0
+		});
+
+		this.$el.css({
+			"right": 15 + "px"
+		});
 	}
 
 });

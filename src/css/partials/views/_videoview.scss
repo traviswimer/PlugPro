@@ -55,6 +55,31 @@ $overlay-opacity: 0.7;
 		opacity: $overlay-opacity;
 	}
 
+	.plugpro-expand-chat-button{
+		background-color: #1C1F25;
+		cursor: pointer;
+		opacity: $overlay-opacity;
+		padding: 10px;
+		position: absolute;
+		right: 0;
+		top: -40px;
+	}
+
+	.plugpro-minimize-chat-button{
+		background-color: #1C1F25;
+		box-sizing: border-box;
+		cursor: pointer;
+		height: 40px;
+		opacity: $overlay-opacity;
+		padding: 10px;
+		position: absolute;
+		left: 0;
+		top: 60px;
+		width: 115px;
+
+		@extend .fade-out;
+	}
+
 	// Apply fadeout when inactive
 	&.inactive{
 		#playback-controls{
@@ -92,30 +117,51 @@ $overlay-opacity: 0.7;
 
 			@extend .fade-out;
 		}
+
+		.plugpro-expand-chat-button{
+			opacity: 0;
+
+			@extend .fade-out;
+		}
+
+		.plugpro-minimize-chat-button{
+			opacity: 0;
+
+			@extend .fade-out;
+		}
 	}
 
 	#plugpro-videochat{
 		@include transition( right 1.0s ease-in 0s );
-		bottom: 62px;
+		bottom: 0px;
 		box-sizing: border-box;
 		position: absolute;
+		height: 650px;
 		right: -345px;
 		width: 347px;
 		z-index: 7;
 
-		.plugpro-chat-message{
-			background-color: #000;
-			border-radius: 4px;
-			color: #FFF;
-			margin: 4px 5px;
-			padding: 4px;
-			width: 335px;
-			opacity: 0.7;
+		.plugpro-messages{
+			bottom: 100px;
+			max-height: 550px;
+			overflow: hidden;
+			position: absolute;
+
+			.plugpro-chat-message{
+				background-color: #000;
+				border-radius: 4px;
+				color: #FFF;
+				margin: 4px 5px;
+				padding: 4px;
+				width: 335px;
+				opacity: 0.7;
+			}
 		}
 
 		input{
 			background-color: #444;
 			border: 1px solid #FFF;
+			bottom: 73px;
 			color: #EEE;
 			font-family: Roboto, sans-serif;
 			font-size: 12px;
@@ -124,6 +170,7 @@ $overlay-opacity: 0.7;
 			opacity: 0.3;
 			outline: 0;
 			padding: 4px;
+			position: absolute;
 			width: 335px;
 
 			&:focus{
