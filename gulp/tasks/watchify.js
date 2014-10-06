@@ -13,7 +13,6 @@ function rebundle( bundler, dest, file ){
 	gutil.log( gutil.colors.yellow( "Browserifying " + file ) );
 	return bundler.bundle()
 		.pipe( plumber() )
-		.on( 'error', gutil.log.bind(gutil, 'Browserify Error') )
 		.pipe( source( file ) )
 		.pipe( gulp.dest( dest ) );
 }
