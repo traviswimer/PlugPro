@@ -9,10 +9,6 @@ var VideoChatView = require("./VideoChatView");
 
 var VideoViewView = {
 	
-	initialize: function( options ){
-
-	},
-
 	/**
 	* Renders the "video" view
 	*/
