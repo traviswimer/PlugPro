@@ -17,7 +17,6 @@ var VideoChatView = Backbone.View.extend(
 		var JST = window.plugPro.JST;
 
 		this.chatHTML = JST['video_chat.html']();
-
 	},
 
 	id: "plugpro-videochat",
