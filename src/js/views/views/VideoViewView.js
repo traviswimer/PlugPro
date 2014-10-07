@@ -3,6 +3,8 @@
  * @module views/views/VideoViewView
  */
 
+var $ = window.$;
+
 var VideoChatView = require("./VideoChatView");
 
 var VideoViewView = {
@@ -18,7 +20,7 @@ var VideoViewView = {
 
 		this.activeTimeout;
 		$('body').addClass('plugpro-video');
-		
+
 		$('#playback').append("<div id='video-cover'></div>");
 
 		this.videoChatView = new VideoChatView();
