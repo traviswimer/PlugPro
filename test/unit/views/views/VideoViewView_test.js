@@ -108,15 +108,35 @@ describe("VideoViewView", function(){
 		});
 
 		it("should add soundcloud artwork if available", function(){
+			// jsDOM seems to have a bug with setting the background-image style,
+			// so this test is rather awful.
+
 			API.getMedia = function(){
 				return {
 					"image": "sndcdn-large"
 				}
 			};
 
-			var jqueryObjectStub = sinon.stub({
-				css: function(){}
-			});
+			VideoViewView.updateArtwork();
+
+			var bgImage = $('#video-cover').css( "background-image" );
+			expect( bgImage ).to.equal("");
+
+		});
+
+		it("should set background to none if soundcloud artwork not available", function(){
+
+			API.getMedia = function(){
+				return {
+					"image": "fakeImage"
+				}
+			};
+
+			VideoViewView.updateArtwork();
+
+			var bgImage = $('#video-cover').css( "background-image" );
+			expect( bgImage ).to.equal("none");
+
 		});
 
 	});
