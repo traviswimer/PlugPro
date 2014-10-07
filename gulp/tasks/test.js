@@ -14,7 +14,7 @@ gulp.task('test', function(callback) {
 
 		// Initialize jsDOM
 		var document = global.document = jsdom('<html><head><script></script></head><body></body></html>');
-		global.window = document.createWindow();
+		global.window = document.parentWindow;
 
 	}
 
