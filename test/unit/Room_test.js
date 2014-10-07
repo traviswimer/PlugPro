@@ -42,6 +42,9 @@ describe("Room", function(){
 
 		it("should emit load", function( done ){
 
+			$('body').append( "<div id='app-menu'><div class='list'></div></div>" );
+			$('body').append( "<div id='plug_pro_chrome_extension_id'></div>" );
+			
 			room.on('load', function(){
 				done();
 			});
