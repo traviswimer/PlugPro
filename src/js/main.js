@@ -33,7 +33,7 @@ room.on("load", function(){
 		autowoot: autowootToggle
 	}
 
-	var videoView = require('./views/views/VideoViewView');
+	var videoView = require('./views/video/VideoViewView');
 	videoView.render();
 
 });
