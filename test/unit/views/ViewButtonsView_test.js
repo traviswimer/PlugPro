@@ -29,7 +29,7 @@ describe("ViewButtonsView", function(){
 
 	});
 
-	describe("initialize", function(){
+	describe("initialize()", function(){
 
 		it("should set buttonsHTML", function(){
 			expect( viewButtonsView.buttonsHTML ).to.not.be.undefined;
@@ -37,7 +37,7 @@ describe("ViewButtonsView", function(){
 
 	});
 
-	describe("render", function(){
+	describe("render()", function(){
 
 		beforeEach(function(){
 			sinon.stub( viewButtonsView, "loadView" );
@@ -59,7 +59,7 @@ describe("ViewButtonsView", function(){
 
 	});
 
-	describe("handleButtonClick", function(){
+	describe("handleButtonClick()", function(){
 
 		beforeEach(function(){
 			sinon.stub( viewButtonsView, "loadView" );
@@ -86,6 +86,41 @@ describe("ViewButtonsView", function(){
 			};
 			viewButtonsView.handleButtonClick( fakeEvent );
 			expect( viewButtonsView.loadView.called ).to.be.false;
+		});
+
+	});
+
+
+	describe("loadView()", function(){
+
+		var fakeView;
+
+		beforeEach(function(){
+			fakeView = {
+				render: function(){}
+			};
+			sinon.stub( fakeView, "render" );
+			sinon.stub( viewButtonsView, "removeCurrentView" );
+		});
+
+		afterEach(function(){
+			viewButtonsView.removeCurrentView.restore();
+			fakeView.render.restore();
+		});
+
+		it("should remove current view", function(){
+			viewButtonsView.loadView( fakeView );
+			expect( viewButtonsView.removeCurrentView.calledOnce ).to.be.true;
+		});
+
+		it("should set new current view", function(){
+			viewButtonsView.loadView( fakeView );
+			expect( viewButtonsView.currentView ).to.equal( fakeView );
+		});
+
+		it("should render new view", function(){
+			viewButtonsView.loadView( fakeView );
+			expect( fakeView.render.calledOnce ).to.be.true;
 		});
 
 	});
