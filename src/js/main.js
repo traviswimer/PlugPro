@@ -11,6 +11,7 @@ var room = new Room();
 room.on("load", function(){
 
 	var Menu = require('./views/MenuView');
+	var ViewButtonsView = require('./views/ViewButtonsView');
 
 	var Toggle = require('./settings/Toggle');
 	var AutoWootToggle = require('./settings/AutoWootToggle');
@@ -32,6 +33,10 @@ room.on("load", function(){
 	plugPro.settings = {
 		autowoot: autowootToggle
 	}
+
+	var buttonView = new ViewButtonsView();
+	$('#room').append( buttonView.el );
+	buttonView.render();
 
 	var videoView = require('./views/video/VideoViewView');
 	videoView.render();

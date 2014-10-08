@@ -1,0 +1,21 @@
+#plugpro-view-buttons{
+	left: 0;
+	position: absolute;
+	top: 64px;
+	z-index: 2;
+
+	.plugpro-view-button{
+		background-color: #0A0A0A;
+		color: #FFF;
+		cursor: pointer;
+		font-size: 20px;
+		font-weight: bold;
+		margin: 1px 0;
+		opacity: 0.7;
+		padding: 15px;
+
+		&:hover{
+			background-color: #1A1A1A;
+		}
+	}
+}

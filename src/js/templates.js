@@ -29,3 +29,12 @@ __p += '<div class="plugpro-expand-chat-button">Expand Chat</div>\n<div class=\'
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["view_buttons.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="plugpro-view-button">Pro</div>\n<div class="plugpro-view-button">Video</div>\n<div class="plugpro-view-button">Avatars</div>';
+
+}
+return __p
+}})();
