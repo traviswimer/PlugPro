@@ -70,7 +70,7 @@ var VideoChatView = Backbone.View.extend(
 			},
 			300,
 			"linear",
-			$message.remove
+			$message.remove.bind( $message )
 		);
 	},
 
