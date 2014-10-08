@@ -57,13 +57,13 @@ var VideoChatView = Backbone.View.extend(
 		$messageDiv.height(0);
 		$messageDiv.animate({
 			"height": renderedHeight + "px"
-		}, 400, "easeInCubic");
+		}, 300, "linear");
 
 		// Have message shrink-out after 30 seconds
 		setTimeout( function(){
 			$messageDiv.animate({
 				"height": 0
-			}, 400, "easeInCubic", function(){
+			}, 300, "linear", function(){
 				$messageDiv.remove();
 			});
 		}, 30000 );
