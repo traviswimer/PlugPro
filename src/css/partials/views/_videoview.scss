@@ -129,6 +129,12 @@ $overlay-opacity: 0.7;
 
 			@extend .fade-out;
 		}
+
+		#plugpro-view-buttons{
+			opacity: 0;
+
+			@extend .fade-out;
+		}
 	}
 
 	#plugpro-videochat{
