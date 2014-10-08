@@ -4,6 +4,7 @@
  */
 
  var VideoView = require('./video/VideoViewView');
+ var AvatarsView = require('./avatars/AvatarsViewView');
 
 var ViewButtonsView = Backbone.View.extend(
 /** @lends ViewButtonsView.prototype */
@@ -41,7 +42,7 @@ var ViewButtonsView = Backbone.View.extend(
 		}else if( viewName === "video" ){
 			this.loadView( VideoView );
 		}else if( viewName === "avatars" ){
-
+			this.loadView( AvatarsView );
 		}
 	},
 
