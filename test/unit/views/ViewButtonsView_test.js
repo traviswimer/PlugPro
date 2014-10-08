@@ -70,12 +70,20 @@ describe("ViewButtonsView", function(){
 		});
 
 		it("should call loadView if valid view", function(){
-			$('body').html("<div id='fake-button' data-view-name='video'></div>");
+			$('body').html("<div id='fake-button1' data-view-name='video'></div>");
+			$('body').append("<div id='fake-button2' data-view-name='avatars'></div>");
+			
 			var fakeEvent = {
-				currentTarget: $('#fake-button')[0]
+				currentTarget: $('#fake-button1')[0]
 			};
 			viewButtonsView.handleButtonClick( fakeEvent );
 			expect( viewButtonsView.loadView.calledOnce ).to.be.true;
+			
+			fakeEvent = {
+				currentTarget: $('#fake-button2')[0]
+			};
+			viewButtonsView.handleButtonClick( fakeEvent );
+			expect( viewButtonsView.loadView.calledTwice ).to.be.true;
 		});
 
 
@@ -137,7 +145,7 @@ describe("ViewButtonsView", function(){
 
 			viewButtonsView.removeCurrentView();
 			expect( viewButtonsView.currentView.destroy.calledOnce ).to.be.true;
-			
+
 			viewButtonsView.currentView.destroy.restore();
 		});
 
