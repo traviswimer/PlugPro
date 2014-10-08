@@ -38,6 +38,7 @@ var VideoViewView = {
 		$('body').removeClass('inactive');
 		if( this.activeTimeout ){
 			clearTimeout( this.activeTimeout );
+			this.activeTimeout = undefined;
 		}
 		$('#video-cover').remove();
 		this.videoChatView.destroy();

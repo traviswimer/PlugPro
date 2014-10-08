@@ -18,7 +18,8 @@ describe("VideoViewView", function(){
 		$('body').html("");
 		fakeChatView = Backbone.View.extend({
 			minimizeChat: function(){},
-			render: function(){}
+			render: function(){},
+			destroy: function(){}
 		});
 		VideoViewView.__set__( 'VideoChatView', fakeChatView );
 	});
@@ -65,6 +66,49 @@ describe("VideoViewView", function(){
 			VideoViewView.render();
 			expect( VideoViewView.makeActive.calledOnce ).to.be.true;
 			expect( VideoViewView.updateArtwork.calledOnce ).to.be.true;
+		});
+
+	});
+
+	describe("destroy()", function(){
+
+		beforeEach(function(){
+			sinon.stub( VideoViewView.videoChatView, "destroy" );
+			sinon.stub( API, "off" );
+		});
+
+		afterEach(function(){
+			VideoViewView.videoChatView.destroy.restore();
+			API.off.restore();
+		});
+
+		it("should remove body classes", function(){
+			$('body').addClass('inactive');
+			$('body').addClass('plugpro-video');
+			VideoViewView.destroy();
+			expect( $('body').hasClass('inactive') ).to.be.false;
+			expect( $('body').hasClass('plugpro-video') ).to.be.false;
+		});
+
+		it("should clear active timeout if exists", function(){
+			VideoViewView.activeTimeout = setTimeout(function(){}, 5000);
+			VideoViewView.destroy();
+			expect( VideoViewView.activeTimeout ).to.be.undefined;
+		});
+
+		it("should remove video cover", function(){
+			VideoViewView.destroy();
+			expect( $('#video-cover').length ).to.equal(0);
+		});
+
+		it("should destroy chat view", function(){
+			VideoViewView.destroy();
+			expect( VideoViewView.videoChatView.destroy.calledOnce ).to.be.true;
+		});
+
+		it("should remove chat listener", function(){
+			VideoViewView.destroy();
+			expect( API.off.calledOnce ).to.be.true;
 		});
 
 	});
