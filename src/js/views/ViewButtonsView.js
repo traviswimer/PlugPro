@@ -31,7 +31,7 @@ var ViewButtonsView = Backbone.View.extend(
 	},
 
 	events: {
-		"click #plugpro-pro-view-button": "handleButtonClick"
+		"click .plugpro-view-button": "handleButtonClick"
 	},
 
 	handleButtonClick: function( evt ){

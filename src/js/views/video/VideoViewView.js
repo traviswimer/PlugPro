@@ -26,10 +26,22 @@ var VideoViewView = {
 
 		$('body, #playback-container').on( "mousemove", this.makeActive.bind(this) );
 
-		API.on( API.ADVANCE, this.updateArtwork.bind(this) );
+		this.songAdvanceCallback = this.updateArtwork.bind(this);
+		API.on( API.ADVANCE, this.songAdvanceCallback );
 
 		this.makeActive();
 		this.updateArtwork();
+	},
+
+	destroy: function(){
+		$('body').removeClass('plugpro-video');
+		$('body').removeClass('inactive');
+		if( this.activeTimeout ){
+			clearTimeout( this.activeTimeout );
+		}
+		$('#video-cover').remove();
+		this.videoChatView.destroy();
+		API.off( API.ADVANCE, this.songAdvanceCallback );
 	},
 
 	makeActive: function( event ){

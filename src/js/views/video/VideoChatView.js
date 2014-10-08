@@ -30,11 +30,19 @@ var VideoChatView = Backbone.View.extend(
 
 		this.createMinimizeChatButton();
 
-		API.on( API.CHAT, this.addChatMessage.bind(this) );
+		this.chatCallback = this.addChatMessage.bind(this);
+		API.on( API.CHAT, this.chatCallback );
+	},
+
+	destroy: function(){
+		API.off( API.CHAT, this.chatCallback );
+		this.expandChat();
+		this.$minimizeDiv.remove();
+		this.remove();
 	},
 
 	createMinimizeChatButton: function(){
-		var $minimizeDiv = $( document.createElement('div') );
+		var $minimizeDiv = this.$minimizeDiv = $( document.createElement('div') );
 		$minimizeDiv.addClass( 'plugpro-minimize-chat-button' );
 		$minimizeDiv.html( "Minimize Chat" );
 		$('.app-right').append( $minimizeDiv );
