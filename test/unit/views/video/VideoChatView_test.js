@@ -66,6 +66,47 @@ describe("VideoChatView", function(){
 
 	});
 
+	describe("destroy()", function(){
+
+		beforeEach(function(){
+			videoChatView.$minimizeDiv = {
+				remove: function(){}
+			};
+			sinon.stub( videoChatView.$minimizeDiv, "remove" );
+			sinon.stub( videoChatView, "remove" );
+			sinon.stub( videoChatView, "expandChat" );
+			sinon.stub( API, "off" );
+		});
+
+		afterEach(function(){
+			videoChatView.$minimizeDiv.remove.restore();
+			videoChatView.remove.restore();
+			videoChatView.expandChat.restore();
+			API.off.restore();
+		});
+
+		it("should remove chat listener", function(){
+			videoChatView.destroy();
+			expect( API.off.calledOnce ).to.be.true;
+		});
+
+		it("should expand chat", function(){
+			videoChatView.destroy();
+			expect( videoChatView.expandChat.calledOnce ).to.be.true;
+		});
+
+		it("should remove minimize button", function(){
+			videoChatView.destroy();
+			expect( videoChatView.$minimizeDiv.remove.calledOnce ).to.be.true;
+		});
+
+		it("should remove the whole chat view", function(){
+			videoChatView.destroy();
+			expect( videoChatView.remove.calledOnce ).to.be.true;
+		});
+
+	});
+
 	describe("createMinimizeChatButton()", function(){
 
 		beforeEach(function(){
