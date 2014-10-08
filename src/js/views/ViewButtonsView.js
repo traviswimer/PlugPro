@@ -3,6 +3,8 @@
  * @module views/ViewButtonsView
  */
 
+ var VideoView = require('./video/VideoViewView');
+
 var ViewButtonsView = Backbone.View.extend(
 /** @lends ViewButtonsView.prototype */
 {
@@ -24,6 +26,35 @@ var ViewButtonsView = Backbone.View.extend(
 	*/
 	render: function(){
 		this.$el.append( this.buttonsHTML );
+		this.loadView( VideoView );
+	},
+
+	events: {
+		"click #plugpro-pro-view-button": "handleButtonClick"
+	},
+
+	handleButtonClick: function( evt ){
+		var viewName = $( evt.currentTarget ).data('view-name');
+
+		if( viewName === "pro" ){
+
+		}else if( viewName === "video" ){
+			this.loadView( VideoView );
+		}else if( viewName === "avatars" ){
+
+		}
+	},
+
+	loadView: function( newView ){
+		this.removeCurrentView();
+		this.currentView = newView;
+		newView.render();
+	},
+
+	removeCurrentView: function(){
+		if( this.currentView ){
+			this.currentView.destroy();
+		}
 	}
 
 });

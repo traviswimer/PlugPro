@@ -33,7 +33,7 @@ return __p
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="plugpro-view-button">Pro</div>\n<div class="plugpro-view-button">Video</div>\n<div class="plugpro-view-button">Avatars</div>';
+__p += '<div data-view-name="pro" class="plugpro-view-button">Pro</div>\n<div data-view-name="video" class="plugpro-view-button">Video</div>\n<div data-view-name="avatars" class="plugpro-view-button">Avatars</div>';
 
 }
 return __p
