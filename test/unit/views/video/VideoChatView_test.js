@@ -174,6 +174,9 @@ describe("VideoChatView", function(){
 			$('body').html("<div class='app-right'><div class='plugpro-minimize-chat-button'></div></div>");
 		
 			$('.app-right').width( 100 );
+			$('.app-right').css({
+				"right": "20px"
+			})
 		});
 
 		it("should move minimize button to show full width", function(){
@@ -189,6 +192,22 @@ describe("VideoChatView", function(){
 			videoChatView.expandChat();
 
 			expect( $('.app-right').css('right') ).to.equal( '0px' );
+		});
+
+	});
+
+	describe("minimizeChat()", function(){
+
+		beforeEach(function(){
+			$('body').html("<div class='app-right'><div class='plugpro-minimize-chat-button'></div></div>");
+		
+			$('.app-right').width( 100 );
+		});
+
+		it("should move chat off the screen", function(){
+			videoChatView.minimizeChat();
+
+			expect( $('.app-right').css('right') ).to.equal( '-100px' );
 		});
 
 	});

@@ -118,4 +118,34 @@ describe("AutoWootToggle", function(){
 
 	});
 
+	describe("clickWoot()", function(){
+
+		var wootButton;
+		var toggle;
+
+		beforeEach(function(){
+			wootButton = document.createElement("div");
+			wootButton.id = "woot";
+			$('body').append( wootButton );
+
+
+			toggle = new Toggle();
+		});
+
+		afterEach(function(){
+			$('body').html("");
+		});
+
+		it("should click the woot button", function( done ){
+			autoWoot = new AutoWootToggle( toggle, 10 );
+
+			$('#woot').click(function(){
+				done();
+			});
+
+			autoWoot.clickWoot();
+		});
+
+	});
+
 });
