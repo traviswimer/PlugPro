@@ -167,4 +167,29 @@ describe("VideoChatView", function(){
 		});
 
 	});
+
+	describe("expandChat()", function(){
+
+		beforeEach(function(){
+			$('body').html("<div class='app-right'><div class='plugpro-minimize-chat-button'></div></div>");
+		
+			$('.app-right').width( 100 );
+		});
+
+		it("should move minimize button to show full width", function(){
+			videoChatView.expandChat();
+
+			var $button = $('.app-right').find('.plugpro-minimize-chat-button');
+
+			var right = $button.css('right');
+			expect( right ).to.equal( '-100px' );
+		});
+
+		it("should move chat to the far right of screen", function(){
+			videoChatView.expandChat();
+
+			expect( $('.app-right').css('right') ).to.equal( '0px' );
+		});
+
+	});
 });
