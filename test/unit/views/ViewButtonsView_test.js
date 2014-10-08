@@ -126,4 +126,26 @@ describe("ViewButtonsView", function(){
 	});
 
 
+	describe("removeCurrentView()", function(){
+
+		it("should destroy current view", function(){
+
+			viewButtonsView.currentView = {
+				destroy: function(){}
+			};
+			sinon.stub( viewButtonsView.currentView, "destroy" );
+
+			viewButtonsView.removeCurrentView();
+			expect( viewButtonsView.currentView.destroy.calledOnce ).to.be.true;
+			
+			viewButtonsView.currentView.destroy.restore();
+		});
+
+		it("should not call destroy if current view not defined", function(){
+			viewButtonsView.removeCurrentView();
+		});
+
+	});
+
+
 });
