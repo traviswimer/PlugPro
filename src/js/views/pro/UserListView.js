@@ -3,6 +3,8 @@
  * @module views/pro/UserListView
  */
 
+var repositionAndCenter = require('./repositionAndCenter');
+
 var UserListView = Backbone.View.extend({
 
 	id: "plugpro-user-lists",
@@ -14,27 +16,35 @@ var UserListView = Backbone.View.extend({
 	
 	render: function(){
 		this.$el.append( this.userlistHTML );
-		this.reposition();
+
+		var usersList = API.getUsers();
+
+		usersList.forEach( this.appendUser.bind(this) );
+	},
+
+	appendUser: function( user ){
+		this.$el.find('.plugpro-userlist-list').append("<div>"+user.username+"</div>")
 	},
 
 	destroy: function(){
 	},
 
-	reposition: function(){
+	reposition: function( paneSizes ){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var leftPosition = windowWidth / 3;
+		var leftPosition = windowWidth * 0.3;
 		var height = windowHeight - 108;
 
 		this.$el.css({
 			"left": leftPosition + "px",
-			"height": height + "px"
+			"height": height + "px",
+			"width": paneSizes.userlist + "px"
 		});
 
-		$('#vote').css({
-			"left": leftPosition + "px"
-		});
+		$('#vote').width( this.$el.width() );
+
+		repositionAndCenter( $('#vote'), this.$el );
 
 	}
 
