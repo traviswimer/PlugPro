@@ -1,0 +1,44 @@
+.plugpro-pro{
+
+	.app-right{
+		width: 50%;
+		z-index: 7;
+	}
+
+	#chat{
+		display: block !important;
+	}
+
+	#user-lists{
+		display: none !important;
+	}
+
+	#waitlist{
+		display: none !important;
+	}
+
+
+	#plugpro-user-lists{
+		background-color: #444;
+		top: 54px;
+		min-width: 200px;
+		position: absolute;
+	}
+
+	#plugpro-waitlist{
+		background-color: #444;
+		top: 54px;
+		min-width: 200px;
+		position: absolute;
+	}
+
+	.pro-bg-cover{
+		background-color: #0a0a0a;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 6;
+	}
+}

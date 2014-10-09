@@ -20,6 +20,15 @@ __p += '<div class="setting-title">' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["userlist.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="plugpro-userlist-list"></div>\n';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["video_chat.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
@@ -34,6 +43,15 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div data-view-name="pro" class="plugpro-view-button">Pro</div>\n<div data-view-name="video" class="plugpro-view-button">Video</div>\n<div data-view-name="avatars" class="plugpro-view-button">Avatars</div>';
+
+}
+return __p
+}})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["waitlist.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="plugpro-waitlist-list"></div>\n';
 
 }
 return __p
