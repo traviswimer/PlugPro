@@ -28,6 +28,7 @@
 	#plugpro-play-history{
 		background-color: #111317;
 		bottom: 54px;
+		top: auto !important;
 
 		.row{
 			border-bottom: 1px solid #222;
@@ -57,7 +58,7 @@
 				.timestamp{
 					top: 58px;
 				}
-				
+
 			}
 			
 		}
@@ -141,6 +142,7 @@
 		background-color: #0A0A0A;
 		top: 87px;
 		min-width: 260px;
+		overflow-y: auto;
 		padding: 4px;
 		position: absolute;
 	}

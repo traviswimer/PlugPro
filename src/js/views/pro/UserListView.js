@@ -37,7 +37,8 @@ var UserListView = Backbone.View.extend({
 
 		var leftPosition = 0;
 		var viewButtonsHeight = $('#plugpro-view-buttons').outerHeight();
-		var height = windowHeight - 108 - viewButtonsHeight;
+		var voteHeight = $('#vote').outerHeight();
+		var height = windowHeight - 108 - viewButtonsHeight - voteHeight;
 
 		this.$el.css({
 			"left": leftPosition + "px",
