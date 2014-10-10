@@ -23,39 +23,43 @@
 		display: none;
 	}
 
-	#history-panel{
+
+
+	#plugpro-play-history{
+		background-color: #111317;
 		bottom: 54px;
-		top: auto !important;
+
+		.row{
+			border-bottom: 1px solid #222;
+		}
 
 		.media-list.history{
 			width: 100% !important;
 
-			.jspContainer{
-				width: 100% !important;
+			.meta{
+				border-bottom: none;
 
-				.jspPane{
-					width: 97% !important;
-
-					.media-list.history .meta span{
-						top: 3px;
-					}
-
-					.author{
-						top: 3px !important;
-						width: 100%;
-					}
-
-					.name{
-						text-align: left;
-						top: 20px;
-						width: 100%;
-					}
-
-					.timestamp{
-						top: 58px;
-					}
+				span{
+					top: 3px !important;
 				}
+
+				.author{
+					top: 3px !important;
+					width: 100%;
+				}
+
+				.name{
+					text-align: left;
+					top: 20px !important;
+					width: 100%;
+				}
+
+				.timestamp{
+					top: 58px;
+				}
+				
 			}
+			
 		}
 	}
 

@@ -9,6 +9,31 @@ __p += '<div class="inner-pro-menu">\n\t<img src="' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["play_history.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="row playlist-media-item">\n\t<img src="' +
+((__t = ( media.image )) == null ? '' : __t) +
+'">\n\t<div class="meta">\n\t\t<span class="author">' +
+((__t = ( media.author )) == null ? '' : __t) +
+' - ' +
+((__t = ( media.title )) == null ? '' : __t) +
+'</span>\n\t\t<span class="name">' +
+((__t = ( user.username )) == null ? '' : __t) +
+'</span>\n\t</div>\n\t<div class="score">\n\t\t<div class="item positive">\n\t\t\t<i class="icon icon-history-positive"></i><span>' +
+((__t = ( score.positive )) == null ? '' : __t) +
+'</span>\n\t\t</div>\n\t\t<div class="item grabs">\n\t\t\t<i class="icon icon-history-grabs"></i><span>' +
+((__t = ( score.grabs )) == null ? '' : __t) +
+'</span>\n\t\t</div>\n\t\t<div class="item negative">\n\t\t\t<i class="icon icon-history-negative"></i><span>' +
+((__t = ( score.negative )) == null ? '' : __t) +
+'</span>\n\t\t</div>\n\t\t<div class="item listeners">\n\t\t\t<i class="icon icon-history-listeners"></i><span>' +
+((__t = ( score.listeners )) == null ? '' : __t) +
+'</span>\n\t\t</div>\n\t</div>\n</div>';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["toggle_setting.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;

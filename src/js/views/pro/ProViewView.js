@@ -5,6 +5,7 @@
 
 var WaitlistView = require('./WaitlistView');
 var UserListView = require('./UserListView');
+var PlayHistoryView = require('./PlayHistoryView');
 
 var ProViewView = {
 	
@@ -15,9 +16,9 @@ var ProViewView = {
 		var JST = window.plugPro.JST;
 		
 		$('#chat-button').click();
-		if( $('#history-panel').css("display") !== "block" ){
+		/*if( $('#history-panel').css("display") !== "block" ){
 			$('#history-button').click();
-		}
+		}*/
 
 		$('body').addClass('plugpro-pro');
 
@@ -30,6 +31,10 @@ var ProViewView = {
 		this.userListView = new UserListView();
 		$('.pro-bg-cover').append( this.userListView.el );
 		this.userListView.render();
+
+		this.playHistoryView = new PlayHistoryView();
+		$('.pro-bg-cover').append( this.playHistoryView.el );
+		this.playHistoryView.render();
 
 		var windowWidth = $(window).width();
 
@@ -57,7 +62,7 @@ var ProViewView = {
 		$(window).off( 'resize', this.callbackToReposition );
 
 		$('body').removeClass('plugpro-pro');
-		$('#history-button').click();
+		//$('#history-button').click();
 		$('#room').find('.pro-bg-cover').remove();
 		$('#plugpro-view-buttons').attr("style", "");
 		$('#plugpro-view-buttons').css({
@@ -85,6 +90,7 @@ var ProViewView = {
 		$('#plugpro-view-buttons').width( this.paneSizes.userlist );
 
 
+		/*
 		if( $('#history-panel').html() !== "" ){
 
 
@@ -98,7 +104,8 @@ var ProViewView = {
 				clearInterval( this.initialInterval );
 				this.initialInterval = undefined;
 			}
-		}
+		}*/
+		clearInterval( this.initialInterval );
 
 
 		var headerWidth = windowWidth - this.paneSizes.chat;
@@ -106,6 +113,7 @@ var ProViewView = {
 
 		this.waitlistView.reposition( this.paneSizes );
 		this.userListView.reposition( this.paneSizes );
+		this.playHistoryView.reposition( this.paneSizes );
 	}
 
 };

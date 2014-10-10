@@ -1,0 +1,21 @@
+<div class="row playlist-media-item">
+	<img src="<%= media.image %>">
+	<div class="meta">
+		<span class="author"><%= media.author %> - <%= media.title %></span>
+		<span class="name"><%= user.username %></span>
+	</div>
+	<div class="score">
+		<div class="item positive">
+			<i class="icon icon-history-positive"></i><span><%= score.positive %></span>
+		</div>
+		<div class="item grabs">
+			<i class="icon icon-history-grabs"></i><span><%= score.grabs %></span>
+		</div>
+		<div class="item negative">
+			<i class="icon icon-history-negative"></i><span><%= score.negative %></span>
+		</div>
+		<div class="item listeners">
+			<i class="icon icon-history-listeners"></i><span><%= score.listeners %></span>
+		</div>
+	</div>
+</div>
