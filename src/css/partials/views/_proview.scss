@@ -2,16 +2,78 @@
 
 	#plugpro-view-buttons{
 		background-color: #282C35;
+		height: 33px;
+		overflow: hidden;
 		top: 54px;
 
 		.plugpro-view-button{
-			margin: 1px 1px 1px 0;
+			box-sizing: border-box;
+			float: left;
+			margin: 0;
+			padding: 3px 6px;
+			width: percentage( 1/3 );
+
+			&:not(:last-child){
+				border-right: 1px solid #1A1A1A;
+			}
+		}
+	}
+
+	#history-button{
+		display: none;
+	}
+
+	#history-panel{
+		bottom: 54px;
+		top: auto !important;
+
+		.media-list.history{
+			width: 100% !important;
+
+			.jspContainer{
+				width: 100% !important;
+
+				.jspPane{
+					width: 97% !important;
+
+					.media-list.history .meta span{
+						top: 3px;
+					}
+
+					.author{
+						top: 3px !important;
+						width: 100%;
+					}
+
+					.name{
+						text-align: left;
+						top: 20px;
+						width: 100%;
+					}
+
+					.timestamp{
+						top: 58px;
+					}
+				}
+			}
 		}
 	}
 
 	.app-right{
 		top: 0;
 		z-index: 7;
+	}
+
+	#chat-header{
+		height: 54px;
+	}
+
+	#chat-messages{
+		top: 54px;
+	}
+
+	#chat-input-field{
+		width: 95% !important;
 	}
 
 	#chat{
@@ -33,13 +95,6 @@
 
 	#chat-input{
 		width: 95%;
-	}
-
-	#now-playing-bar{
-		background-color: #1C1F25;
-		border-top: 1px solid #0C0F15;
-		left: 108px !important;
-		top: 54px;
 	}
 
 	#room-meta{
@@ -79,16 +134,15 @@
 	}
 
 	#plugpro-user-lists{
-		background-color: #444;
-		top: 54px;
+		background-color: #0A0A0A;
+		top: 87px;
 		min-width: 260px;
 		padding: 4px;
 		position: absolute;
 	}
 
 	#plugpro-waitlist{
-		background-color: #444;
-		border-right: 2px solid #333;
+		background-color: #0A0A0A;
 		bottom: 54px;
 		min-width: 200px;
 		padding: 4px;
@@ -101,7 +155,7 @@
 	}
 
 	.pro-bg-cover{
-		background-color: #0a0a0a;
+		background-color: #040404;
 		height: 100%;
 		left: 0;
 		position: absolute;

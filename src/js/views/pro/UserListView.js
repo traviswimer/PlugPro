@@ -27,14 +27,17 @@ var UserListView = Backbone.View.extend({
 	},
 
 	destroy: function(){
+		$('#vote').attr("style", "");
+		this.remove();
 	},
 
 	reposition: function( paneSizes ){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var leftPosition = windowWidth * 0.3;
-		var height = windowHeight - 108;
+		var leftPosition = 0;
+		var viewButtonsHeight = $('#plugpro-view-buttons').outerHeight();
+		var height = windowHeight - 108 - viewButtonsHeight;
 
 		this.$el.css({
 			"left": leftPosition + "px",
@@ -42,9 +45,12 @@ var UserListView = Backbone.View.extend({
 			"width": paneSizes.userlist + "px"
 		});
 
-		$('#vote').width( this.$el.width() );
+		$('#vote').width( this.$el.outerWidth() );
+		$('#vote').css({
+			"left": 0
+		});
 
-		repositionAndCenter( $('#vote'), this.$el );
+		//repositionAndCenter( $('#vote'), this.$el );
 
 	}
 

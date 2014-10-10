@@ -18,26 +18,31 @@ var WaitlistView = Backbone.View.extend({
 	},
 
 	destroy: function(){
+		$('#dj-button').attr("style", "");
+		this.remove();
 	},
 
 	reposition: function( paneSizes ){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var viewButtonsHeight = $('#plugpro-view-buttons').height();
+		var leftPosition = paneSizes.userlist;
+		var height = (windowHeight - 109) / 2;
 
-		var leftPosition = 0;
-		var height = windowHeight - viewButtonsHeight - 108;
+		var halfPane = paneSizes.middle/2;
 
 		this.$el.css({
-			"left": leftPosition + "px",
+			"left": (leftPosition + halfPane) + "px",
 			"height": height + "px",
-			"width": (paneSizes.waitlist - 2) + "px"
+			"width": halfPane + "px"
 		});
 
-		$('#dj-button').width( this.$el.width() );
+		$('#dj-button').width( this.$el.outerWidth() );
+		$('#dj-button').css({
+			"left": this.$el.css("left")
+		});
 
-		repositionAndCenter( $('#dj-button'), this.$el );
+		//repositionAndCenter( $('#dj-button'), this.$el );
 	}
 
 });

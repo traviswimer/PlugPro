@@ -1,12 +1,3 @@
-(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["dj.html"] = function(obj) {
-obj || (obj = {});
-var __t, __p = '', __e = _.escape;
-with (obj) {
-__p += 'DJ!!';
-
-}
-return __p
-}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
