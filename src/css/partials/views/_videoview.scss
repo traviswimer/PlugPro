@@ -82,6 +82,8 @@ $overlay-opacity: 0.7;
 
 	// Apply fadeout when inactive
 	&.inactive{
+		cursor: none;
+
 		#playback-controls{
 			opacity: 0;
 
