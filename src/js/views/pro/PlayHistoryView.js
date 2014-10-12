@@ -1,9 +1,9 @@
 /**
  * View for the room users list
- * @module views/pro/UserListView
+ * @module views/pro/PlayHistoryView
  */
 
-var UserListView = Backbone.View.extend({
+var PlayHistoryView = Backbone.View.extend({
 
 	id: "plugpro-play-history",
 	className: "media-list history",
@@ -54,4 +54,4 @@ var UserListView = Backbone.View.extend({
 
 });
 
-module.exports = UserListView;
+module.exports = PlayHistoryView;
