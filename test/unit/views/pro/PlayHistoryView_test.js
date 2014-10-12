@@ -75,4 +75,23 @@ describe("PlayHistoryView", function(){
 
 	});
 
+
+	describe("destroy()", function(){
+
+		beforeEach(function(){
+			sinon.stub( playHistoryView, "remove" );
+		});
+
+		afterEach(function(){
+			playHistoryView.remove.restore();
+		});
+
+		it("should remove the entire view", function(){
+			playHistoryView.destroy();
+
+			expect( playHistoryView.remove.called ).to.be.true;
+		});
+
+	});
+
 });
