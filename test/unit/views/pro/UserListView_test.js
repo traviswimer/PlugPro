@@ -25,7 +25,7 @@ describe("UserListView", function(){
 	describe("initialize()", function(){
 
 		it("should define html template", function(){
-			expect( userListView.historyHTML ).to.equal( fakeTemplate );
+			expect( userListView.userlistHTML ).to.equal( fakeTemplate );
 		});
 
 	});
