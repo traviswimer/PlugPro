@@ -19,10 +19,28 @@ describe("PlayHistoryView", function(){
 		playHistoryView = new PlayHistoryView();
 	});
 
-	describe("initialize", function(){
+	describe("initialize()", function(){
 
 		it("should define html template", function(){
 			expect( playHistoryView.historyHTML ).to.not.be.undefined;
+		});
+
+	});
+
+
+	describe("render()", function(){
+
+		beforeEach(function(){
+			API.getHistory = function(){
+				return [{},{}];
+			};
+			sinon.stub( playHistoryView, "appendSong" );
+		});
+
+		it("should append all songs", function(){
+			playHistoryView.render();
+
+			expect( playHistoryView.appendSong.calledTwice ).to.be.true;
 		});
 
 	});
