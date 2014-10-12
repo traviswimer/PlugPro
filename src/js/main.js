@@ -38,8 +38,5 @@ room.on("load", function(){
 	$('#room').append( buttonView.el );
 	buttonView.render();
 
-	//var videoView = require('./views/video/VideoViewView');
-	//videoView.render();
-
 });
 room.init();
