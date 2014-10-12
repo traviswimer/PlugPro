@@ -52,6 +52,8 @@ var ProViewView = {
 		this.callbackToReposition = this.reposition.bind(this);
 
 		$(window).on( 'resize', this.callbackToReposition );
+		$('#plugpro-play-history, #plugpro-user-lists, #plugpro-waitlist')
+			.on( 'resize', this.callbackToReposition );
 
 		this.initialInterval = setInterval( this.callbackToReposition, 200 );
 

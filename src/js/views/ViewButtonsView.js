@@ -51,6 +51,9 @@ var ViewButtonsView = Backbone.View.extend(
 		if( newView !== this.currentView ){
 			this.removeCurrentView();
 			this.currentView = newView;
+			if( newView.initialize ){
+				newView.initialize();
+			}
 			newView.render();
 		}
 	},
