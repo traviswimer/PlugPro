@@ -51,10 +51,9 @@ var ProViewView = {
 
 		this.callbackToReposition = this.reposition.bind(this);
 
+		// Counteract plug's resizing events
 		$(window).on( 'resize', this.callbackToReposition );
-		$('#plugpro-play-history, #plugpro-user-lists, #plugpro-waitlist')
-			.on( 'resize', this.callbackToReposition );
-
+		$('#app-menu, #footer').click( this.callbackToReposition );
 		this.initialInterval = setInterval( this.callbackToReposition, 200 );
 
 		this.reposition();
@@ -89,8 +88,9 @@ var ProViewView = {
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
+		var chatHeight = (windowHeight - 54);
 		$('.app-right').css({
-			"height": (windowHeight - 54) + "px",
+			"height": chatHeight + "px",
 			"width": this.paneSizes.chat
 		});
 
