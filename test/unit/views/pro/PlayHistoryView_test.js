@@ -37,10 +37,40 @@ describe("PlayHistoryView", function(){
 			sinon.stub( playHistoryView, "appendSong" );
 		});
 
+		afterEach(function(){
+			playHistoryView.appendSong.restore();
+		});
+
 		it("should append all songs", function(){
 			playHistoryView.render();
 
 			expect( playHistoryView.appendSong.calledTwice ).to.be.true;
+		});
+
+	});
+
+
+	describe("appendSong()", function(){
+
+		var fakeTemplate = "history_template";
+
+		beforeEach(function(){
+
+			sinon.stub( playHistoryView, "historyHTML", function(){
+				return fakeTemplate
+			});
+			sinon.stub( playHistoryView.$el, "append" );
+		});
+
+		afterEach(function(){
+			playHistoryView.$el.append.restore();
+			playHistoryView.historyHTML.restore();
+		});
+
+		it("should append song template", function(){
+			playHistoryView.appendSong({});
+
+			expect( playHistoryView.$el.append.calledWith( fakeTemplate ) ).to.be.true;
 		});
 
 	});
