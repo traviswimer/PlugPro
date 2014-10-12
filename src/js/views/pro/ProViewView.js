@@ -9,6 +9,12 @@ var PlayHistoryView = require('./PlayHistoryView');
 
 var ProViewView = {
 	
+	initialize: function(){
+		this.waitlistView = new WaitlistView();
+		this.userListView = new UserListView();
+		this.playHistoryView = new PlayHistoryView();
+	},
+
 	/**
 	* Renders the "avatar" view
 	*/
@@ -24,15 +30,13 @@ var ProViewView = {
 
 		$('#room').append("<div class='pro-bg-cover'></div>");
 
-		this.waitlistView = new WaitlistView();
+
 		$('.pro-bg-cover').append( this.waitlistView.el );
 		this.waitlistView.render();
 
-		this.userListView = new UserListView();
 		$('.pro-bg-cover').append( this.userListView.el );
 		this.userListView.render();
 
-		this.playHistoryView = new PlayHistoryView();
 		$('.pro-bg-cover').append( this.playHistoryView.el );
 		this.playHistoryView.render();
 
@@ -72,6 +76,7 @@ var ProViewView = {
 		$('#room-meta').attr("style", "");
 		this.waitlistView.destroy();
 		this.userListView.destroy();
+		this.playHistoryView.destroy();
 
 		$(window).trigger('resize');
 	},
