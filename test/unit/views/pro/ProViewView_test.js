@@ -133,7 +133,15 @@ describe("ProViewView", function(){
 			ProViewView.playHistoryView.destroy.restore();
 		});
 
-		it("should add bg cover", function(){
+		it("should only clear intialization interval if it exists", function(){
+
+			ProViewView.initialInterval = setTimeout(function(){}, 5000);
+			ProViewView.destroy();
+
+			expect( ProViewView.initialInterval ).to.be.undefined;
+
+			ProViewView.destroy(); // This would throw an error if clear called while undefined
+
 		});
 
 	});
