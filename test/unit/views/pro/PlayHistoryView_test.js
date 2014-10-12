@@ -94,4 +94,23 @@ describe("PlayHistoryView", function(){
 
 	});
 
+
+	describe("reposition()", function(){
+
+		var paneSizes;
+
+		beforeEach(function(){
+			paneSizes = {
+				userlist: 20,
+				middle: 10
+			};
+		});
+
+		it("should not throw error", function(){
+			playHistoryView.reposition( paneSizes );
+			// Not sure of worthwhile way to test these DOM manipulations
+		});
+
+	});
+
 });
