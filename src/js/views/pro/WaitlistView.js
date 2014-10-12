@@ -2,7 +2,6 @@
  * View for the room waitlist
  * @module views/pro/WaitlistView
  */
-var repositionAndCenter = require('./repositionAndCenter');
 
 var WaitlistView = Backbone.View.extend({
 
@@ -42,7 +41,6 @@ var WaitlistView = Backbone.View.extend({
 			"left": this.$el.css("left")
 		});
 
-		//repositionAndCenter( $('#dj-button'), this.$el );
 	}
 
 });

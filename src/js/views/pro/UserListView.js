@@ -3,8 +3,6 @@
  * @module views/pro/UserListView
  */
 
-var repositionAndCenter = require('./repositionAndCenter');
-
 var UserListView = Backbone.View.extend({
 
 	id: "plugpro-user-lists",
@@ -50,8 +48,6 @@ var UserListView = Backbone.View.extend({
 		$('#vote').css({
 			"left": 0
 		});
-
-		//repositionAndCenter( $('#vote'), this.$el );
 
 	}
 
