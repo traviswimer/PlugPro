@@ -3,6 +3,9 @@
  * @module views/pro/UserListView
  */
 
+ var UserListCollection = require('../../collections/UserListCollection');
+ var UserView = require('./UserView');
+
 var UserListView = Backbone.View.extend({
 
 	id: "plugpro-user-lists",
@@ -10,18 +13,27 @@ var UserListView = Backbone.View.extend({
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.userlistHTML = JST['userlist.html']();
+		this.userListCollection = new UserListCollection();
 	},
 	
 	render: function(){
 		this.$el.append( this.userlistHTML );
 
-		var usersList = API.getUsers();
+		this.userListCollection.fetch();
 
-		usersList.forEach( this.appendUser.bind(this) );
+		this.childViews = [];
+		this.userListCollection.each( this.appendUser.bind(this) );
 	},
 
-	appendUser: function( user ){
-		this.$el.find('.plugpro-userlist-list').append("<div>"+user.username+"</div>")
+	appendUser: function( userModel ){
+		var userView = new UserView({
+			model: userModel
+		});
+
+		this.childViews.push( userView );
+
+		this.$el.find('.plugpro-userlist-list').append( userView.el );
+		userView.render();
 	},
 
 	destroy: function(){

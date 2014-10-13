@@ -145,6 +145,22 @@
 		overflow-y: auto;
 		padding: 4px;
 		position: absolute;
+
+		.plugpro-userlist-list{
+
+			.plugpro-user{
+				padding: 0 4px;
+
+				.icon{
+					margin-top: 1px;
+				}
+
+				.name{
+					margin-left: 20px;
+				}
+			}
+
+		}
 	}
 
 	#plugpro-waitlist{

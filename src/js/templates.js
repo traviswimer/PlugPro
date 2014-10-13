@@ -45,6 +45,24 @@ __p += '<div class="setting-title">' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["user.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+
+ if( iconClass ){ ;
+__p += '\n<i class="icon ' +
+((__t = ( iconClass )) == null ? '' : __t) +
+'"></i>\n';
+ } ;
+__p += '\n<span class="name">' +
+((__t = ( username )) == null ? '' : __t) +
+'</span>';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["userlist.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
