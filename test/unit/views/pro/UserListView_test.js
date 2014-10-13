@@ -51,9 +51,52 @@ describe("UserListView", function(){
 			sinon.stub( userListView, "appendUser" );
 		});
 
+		afterEach(function(){
+			userListView.userListCollection.fetch.restore();
+			userListView.userListCollection.each.restore();
+			userListView.appendUser.restore();
+		});
+
 		it("should fetch collection", function(){
 			userListView.render();
 			expect( userListView.userListCollection.fetch.called ).to.be.true;
+		});
+
+	});
+
+	describe("appendUser()", function(){
+
+		it("should create user views", function(){
+			userListView.childViews = [];
+			userListView.appendUser({});
+			expect( userListView.childViews.length ).to.equal( 1 );
+		});
+
+	});
+
+	describe("destroy()", function(){
+
+		beforeEach(function(){
+			sinon.stub( userListView, "remove" );
+		});
+
+		afterEach(function(){
+			userListView.remove.restore();
+		});
+
+		it("should remove entire view", function(){
+			userListView.destroy({});
+			expect( userListView.remove.called ).to.be.true;
+		});
+
+	});
+
+	describe("reposition()", function(){
+
+		it("should not throw error", function(){
+			userListView.reposition({
+				userlist: 10
+			});
 		});
 
 	});
