@@ -49,6 +49,14 @@ describe("UserView", function(){
 			expect( userView.$el.addClass.called ).to.be.true;
 		});
 
+		it("should not add class if none provided", function(){
+			userView.model = new Backbone.Model({
+				userClass: ""
+			});
+			userView.render();
+			expect( userView.$el.addClass.called ).to.be.false;
+		});
+
 	});
 
 	describe("destroy()", function(){
