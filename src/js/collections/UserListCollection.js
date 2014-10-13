@@ -2,6 +2,7 @@ var UserListCollection = Backbone.Collection.extend({
 	fetch : function(){
 		var users = API.getUsers();
 		users = users.map(function( user ){
+
 			var iconClass = "";
 			var role = parseInt( user.role );
 			if( role === 5 || role === 4 ){
@@ -14,7 +15,19 @@ var UserListCollection = Backbone.Collection.extend({
 				iconClass = "icon-chat-dj";
 			}
 
+			var userClass = "";
+			var grab = user.grab;
+			var vote = parseInt( user.vote );
+			if( grab ){
+				userClass = "grabbed";
+			}else if( vote === 1 ){
+				userClass = "wooted";
+			}else if( vote === -1 ){
+				userClass = "mehed";
+			}
+
 			user.iconClass = iconClass;
+			user.userClass = userClass;
 
 			return user;
 		});

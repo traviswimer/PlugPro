@@ -13,6 +13,11 @@ var UserListView = Backbone.View.extend({
 	},
 	
 	render: function(){
+		var userClass = this.model.get('userClass');
+		if( userClass !== "" ){
+			this.$el.addClass( userClass );
+		}
+
 		this.$el.append(
 			this.userHTML(
 				this.model.attributes
