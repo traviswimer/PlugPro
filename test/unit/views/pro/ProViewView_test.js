@@ -15,6 +15,7 @@ describe("ProViewView", function(){
 	var fakeWaitlistView;
 	var fakeUserListView;
 	var fakePlayHistoryView;
+	var fakeArtworkView;
 
 	beforeEach(function(){
 		$('body').html("<div id='room'></div>");
@@ -27,6 +28,7 @@ describe("ProViewView", function(){
 		ProViewView.waitlistView = new FakeView();
 		ProViewView.userListView = new FakeView();
 		ProViewView.playHistoryView = new FakeView();
+		ProViewView.artworkView = new FakeView();
 		
 	});
 
@@ -60,9 +62,17 @@ describe("ProViewView", function(){
 			});
 			ProViewView.__set__( 'PlayHistoryView', fakePlayHistoryView );
 
+			fakeArtworkView = Backbone.View.extend({
+				render: function(){},
+				destroy: function(){},
+				reposition: function(){}
+			});
+			ProViewView.__set__( 'ArtworkView', fakeArtworkView );
+
 			ProViewView.waitlistView = undefined;
 			ProViewView.userListView = undefined;
 			ProViewView.playHistoryView = undefined;
+			ProViewView.artworkView = undefined;
 		});
 
 		it("should add views", function(){
@@ -70,6 +80,7 @@ describe("ProViewView", function(){
 			expect( ProViewView.waitlistView ).to.not.be.undefined;
 			expect( ProViewView.userListView ).to.not.be.undefined;
 			expect( ProViewView.playHistoryView ).to.not.be.undefined;
+			expect( ProViewView.artworkView ).to.not.be.undefined;
 		});
 
 	});
