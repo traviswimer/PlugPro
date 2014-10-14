@@ -147,6 +147,7 @@
 		overflow-y: auto;
 		padding: 4px;
 		position: absolute;
+		z-index: 3;
 
 		.plugpro-userlist-list{
 
@@ -193,6 +194,7 @@
 	}
 
 	#plugpro-artwork{
+		overflow: hidden;
 		position: absolute;
 		top: 54px;
 		z-index: 2;
