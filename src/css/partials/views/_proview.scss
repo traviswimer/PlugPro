@@ -28,7 +28,9 @@
 	#plugpro-play-history{
 		background-color: #111317;
 		bottom: 54px;
+		position: absolute;
 		top: auto !important;
+		z-index: 3;
 
 		.row{
 			border-bottom: 1px solid #222;
@@ -181,11 +183,22 @@
 		min-width: 200px;
 		padding: 4px;
 		position: absolute;
+		z-index: 3;
 	}
 
 	#plugpro-dj{
 		background-color: #44D;
 		position: absolute;
+		z-index: 3;
+	}
+
+	#plugpro-artwork{
+		position: absolute;
+		z-index: 2;
+
+		img{
+			width: 100%;
+		}
 	}
 
 	.pro-bg-cover{

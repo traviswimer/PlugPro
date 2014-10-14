@@ -1,3 +1,14 @@
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["artwork.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<img src="' +
+((__t = ( url )) == null ? '' : __t) +
+'" alt="Album Artwork">';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
