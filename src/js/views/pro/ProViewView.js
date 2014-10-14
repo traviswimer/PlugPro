@@ -6,6 +6,8 @@
 var WaitlistView = require('./WaitlistView');
 var UserListView = require('./UserListView');
 var PlayHistoryView = require('./PlayHistoryView');
+var ArtworkView = require('./ArtworkView');
+var panes = require('./panes');
 
 var ProViewView = {
 	
@@ -13,6 +15,7 @@ var ProViewView = {
 		this.waitlistView = new WaitlistView();
 		this.userListView = new UserListView();
 		this.playHistoryView = new PlayHistoryView();
+		this.artworkView = new ArtworkView();
 	},
 
 	/**
@@ -40,14 +43,17 @@ var ProViewView = {
 		$('.pro-bg-cover').append( this.playHistoryView.el );
 		this.playHistoryView.render();
 
+		$('.pro-bg-cover').append( this.artworkView.el );
+		this.artworkView.render();
+
 		var windowWidth = $(window).width();
 
 		// Set pane defaults
-		this.paneSizes = {
+		/*this.paneSizes = {
 			"middle": windowWidth * 0.5,
 			"userlist": windowWidth * 0.25,
 			"chat": windowWidth * 0.25
-		};
+		};*/
 
 		this.callbackToReposition = this.reposition.bind(this);
 
@@ -78,6 +84,7 @@ var ProViewView = {
 		this.waitlistView.destroy();
 		this.userListView.destroy();
 		this.playHistoryView.destroy();
+		this.artworkView.destroy();
 
 		$(window).trigger('resize');
 	},
@@ -85,26 +92,28 @@ var ProViewView = {
 	reposition: function(){
 		var self = this;
 
+		panes.update();
+
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
 		var chatHeight = (windowHeight - 54);
 		$('.app-right').css({
 			"height": chatHeight + "px",
-			"width": this.paneSizes.chat
+			"width": panes.get('chat')
 		});
 
-		$('#plugpro-view-buttons').width( this.paneSizes.userlist );
+		$('#plugpro-view-buttons').width( panes.get('userlist') );
 
 
 		/*
 		if( $('#history-panel').html() !== "" ){
 
 
-			$('#history-panel').width( this.paneSizes.middle/2 );
+			$('#history-panel').width( panes.middle/2 );
 			$('#history-panel').height( (windowHeight - 109) / 2 );
 			$('#history-panel').css({
-				"left": this.paneSizes.userlist + "px"
+				"left": panes.userlist + "px"
 			});
 
 			if( this.initialInterval ){
@@ -115,12 +124,13 @@ var ProViewView = {
 		clearInterval( this.initialInterval );
 
 
-		var headerWidth = windowWidth - this.paneSizes.chat;
+		var headerWidth = windowWidth - panes.get('chat');
 		$('#room-meta').width( headerWidth );
 
-		this.waitlistView.reposition( this.paneSizes );
-		this.userListView.reposition( this.paneSizes );
-		this.playHistoryView.reposition( this.paneSizes );
+		this.waitlistView.reposition();
+		this.userListView.reposition();
+		this.playHistoryView.reposition();
+		this.artworkView.reposition();
 	}
 
 };

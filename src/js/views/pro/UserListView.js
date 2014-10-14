@@ -3,8 +3,9 @@
  * @module views/pro/UserListView
  */
 
- var UserListCollection = require('../../collections/UserListCollection');
- var UserView = require('./UserView');
+var UserListCollection = require('../../collections/UserListCollection');
+var UserView = require('./UserView');
+var panes = require('./panes');
 
 var UserListView = Backbone.View.extend({
 
@@ -41,7 +42,7 @@ var UserListView = Backbone.View.extend({
 		this.remove();
 	},
 
-	reposition: function( paneSizes ){
+	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
@@ -53,7 +54,7 @@ var UserListView = Backbone.View.extend({
 		this.$el.css({
 			"left": leftPosition + "px",
 			"height": height + "px",
-			"width": paneSizes.userlist + "px"
+			"width": panes.get('userlist') + "px"
 		});
 
 		$('#vote').width( this.$el.outerWidth() );

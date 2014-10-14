@@ -2,6 +2,7 @@
  * View for the room users list
  * @module views/pro/PlayHistoryView
  */
+var panes = require('./panes');
 
 var PlayHistoryView = Backbone.View.extend({
 
@@ -32,17 +33,17 @@ var PlayHistoryView = Backbone.View.extend({
 		this.remove();
 	},
 
-	reposition: function( paneSizes ){
+	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var leftPosition = paneSizes.userlist;
+		var leftPosition = panes.get('userlist');
 		var height = (windowHeight - 108) / 2;
 
 		this.$el.css({
 			"left": leftPosition + "px",
 			"height": height + "px",
-			"width": paneSizes.middle/2 + "px"
+			"width": panes.get('middle')/2 + "px"
 		});
 
 		$('#vote').width( this.$el.outerWidth() );

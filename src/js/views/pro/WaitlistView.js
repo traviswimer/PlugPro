@@ -2,6 +2,7 @@
  * View for the room waitlist
  * @module views/pro/WaitlistView
  */
+var panes = require('./panes');
 
 var WaitlistView = Backbone.View.extend({
 
@@ -21,14 +22,14 @@ var WaitlistView = Backbone.View.extend({
 		this.remove();
 	},
 
-	reposition: function( paneSizes ){
+	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var leftPosition = paneSizes.userlist;
+		var leftPosition = panes.get('userlist');
 		var height = (windowHeight - 109) / 2;
 
-		var halfPane = paneSizes.middle/2;
+		var halfPane = panes.get('middle')/2;
 
 		this.$el.css({
 			"left": (leftPosition + halfPane) + "px",
