@@ -14,9 +14,19 @@ var ArtworkView = Backbone.View.extend({
 	},
 
 	render: function(){
+		this.setDefaultImage();
 		this.fetchArtwork();
-
 		API.on( API.ADVANCE, this.fetchArtwork.bind(this) );
+	},
+
+	setDefaultImage: function(){
+		this.$el.html(
+			this.artworkHTML({
+				url: 'chrome-extension://' + $('#plug_pro_chrome_extension_id').val() + "/images/logo_large.png"
+			})
+		);
+
+		this.reposition();
 	},
 
 	fetchArtwork: function(){
@@ -28,6 +38,7 @@ var ArtworkView = Backbone.View.extend({
 
 	displayArtwork: function( data ){
 		if( data.results.length === 0 ){
+			this.setDefaultImage();
 			return;
 		}
 
@@ -55,13 +66,17 @@ var ArtworkView = Backbone.View.extend({
 		var height = (windowHeight - 109) / 2;
 
 		var imageHeight = this.$el.find('img').height();
-		var offset = (imageHeight - height) / -2;
+		var offset = (imageHeight - height) / 2;
 
 		this.$el.css({
 			"left": leftPosition + "px",
 			"height": height + "px",
-			"top": offset + "px",
 			"width": panes.get('middle') + "px"
+		});
+
+		var smallImageHeight = this.$el.find('.plugpro-artwork-small').height();
+		this.$el.find('.plugpro-artwork-small').css({
+			top: (height/2) - (smallImageHeight/2) + "px"
 		});
 
 	}

@@ -2,7 +2,9 @@
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<img src="' +
+__p += '<img class="plugpro-artwork-background" src="' +
+((__t = ( url )) == null ? '' : __t) +
+'" alt="Album Artwork Background">\n<img class="plugpro-artwork-small" src="' +
 ((__t = ( url )) == null ? '' : __t) +
 '" alt="Album Artwork">';
 
