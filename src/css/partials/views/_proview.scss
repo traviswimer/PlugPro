@@ -152,6 +152,8 @@
 		.plugpro-userlist-list{
 
 			.plugpro-user{
+				border: 2px solid #0A0A0A;
+				margin: 2px 0;
 				padding: 0 4px;
 
 				.icon{
@@ -163,15 +165,15 @@
 				}
 
 				&.wooted{
-					background-color: #90AD2F;
+					border: 2px solid #90AD2F;
 				}
 
 				&.grabbed{
-					background-color: #AA74FF;
+					border: 2px solid #AA74FF;
 				}
 
 				&.mehed{
-					background-color: #C42E3B;
+					border: 2px solid #C42E3B;
 				}
 			}
 
