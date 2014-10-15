@@ -21,7 +21,9 @@ var PlayHistoryView = Backbone.View.extend({
 
 		var historyList = API.getHistory();
 
-		historyList.forEach( this.appendSong.bind(this) );
+		if( historyList && historyList.length ){
+			historyList.forEach( this.appendSong.bind(this) );
+		}
 	},
 
 	appendSong: function( songInfo ){

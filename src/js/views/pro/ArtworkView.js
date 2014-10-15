@@ -31,6 +31,11 @@ var ArtworkView = Backbone.View.extend({
 
 	fetchArtwork: function(){
 		var currentSong = API.getMedia();
+
+		if( !currentSong ){
+			return;
+		}
+
 		var searchTerm = currentSong.author +" "+ currentSong.title;
 		var itunesURL = "https://itunes.apple.com/search?term="+ searchTerm +"&callback=?";
 		$.getJSON( itunesURL, null, this.displayArtwork.bind(this) );

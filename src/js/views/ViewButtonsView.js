@@ -3,9 +3,9 @@
  * @module views/ViewButtonsView
  */
 
- var ProView = require('./pro/ProViewView');
- var VideoView = require('./video/VideoViewView');
- var AvatarsView = require('./avatars/AvatarsViewView');
+var ProView = require('./pro/ProViewView');
+var VideoView = require('./video/VideoViewView');
+var AvatarsView = require('./avatars/AvatarsViewView');
 
 var ViewButtonsView = Backbone.View.extend(
 /** @lends ViewButtonsView.prototype */
@@ -29,10 +29,34 @@ var ViewButtonsView = Backbone.View.extend(
 	render: function(){
 		this.$el.append( this.buttonsHTML );
 		this.loadView( ProView );
+
+		// Detect room change
+		$('#dashboard').on( "click", this.handleRoomChange.bind( this ) );
 	},
 
 	events: {
 		"click .plugpro-view-button": "handleButtonClick"
+	},
+
+	handleRoomChange: function(){
+		console.log("dashboardCLICK");
+		if( $('#room-loader').length > 0 ){
+		console.log("room change!!!!");
+			if( this.newRoomInterval ){
+				clearInterval( this.newRoomInterval );
+			}
+			this.newRoomInterval = setInterval( this.checkForRoomChangeComplete.bind(this), 300 );
+		}
+	},
+
+	checkForRoomChangeComplete: function(){
+		if( $('#room-loader').length === 0 ){
+			clearInterval( this.newRoomInterval );
+			this.newRoomInterval = undefined;
+			this.removeCurrentView();
+			this.currentView = undefined;
+			this.loadView( ProView );
+		}
 	},
 
 	handleButtonClick: function( evt ){
