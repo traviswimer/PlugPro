@@ -107,22 +107,7 @@ var ProViewView = {
 
 		$('#plugpro-view-buttons').width( panes.get('userlist') );
 
-
-		/*
-		if( $('#history-panel').html() !== "" ){
-
-
-			$('#history-panel').width( panes.middle/2 );
-			$('#history-panel').height( (windowHeight - 109) / 2 );
-			$('#history-panel').css({
-				"left": panes.userlist + "px"
-			});
-
-			if( this.initialInterval ){
-				clearInterval( this.initialInterval );
-				this.initialInterval = undefined;
-			}
-		}*/
+		$('#chat-messages').height( windowHeight - 160 );
 		clearInterval( this.initialInterval );
 
 

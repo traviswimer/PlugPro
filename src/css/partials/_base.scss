@@ -33,6 +33,15 @@ body #playlist-button{
 .is-dj .name, .is-staff .name{
 	color: #FBFFA5 !important;
 }
+#playlist-activate-button span{
+	color: #FBFFA5 !important;
+}
+#playlist-menu .menu .row .count{
+	color: #FBFFA5 !important;
+}
+#playlist-menu .menu .row.selected{
+	background-color: #D87F0E !important;
+}
 
 // Remove social media icons (seriously, who uses those?)
 .social-menu{
