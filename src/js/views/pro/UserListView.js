@@ -24,6 +24,7 @@ var UserListView = Backbone.View.extend({
 
 		API.on( API.USER_JOIN, this.userListCollection.fetch.bind( this.userListCollection ) );
 		API.on( API.USER_LEAVE, this.userListCollection.fetch.bind( this.userListCollection ) );
+		API.on( API.ADVANCE, this.userListCollection.fetch.bind( this.userListCollection ) );
 		
 		API.on( API.VOTE_UPDATE, this.onUserUpdate.bind(this) );
 		API.on( API.GRAB_UPDATE, this.onUserUpdate.bind(this) );
