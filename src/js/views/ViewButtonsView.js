@@ -28,7 +28,7 @@ var ViewButtonsView = Backbone.View.extend(
 	*/
 	render: function(){
 		this.$el.append( this.buttonsHTML );
-		this.loadView( VideoView );
+		this.loadView( ProView );
 	},
 
 	events: {
