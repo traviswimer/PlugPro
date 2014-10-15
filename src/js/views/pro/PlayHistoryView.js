@@ -12,6 +12,8 @@ var PlayHistoryView = Backbone.View.extend({
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.historyHTML = JST['play_history.html'];
+
+		API.on( API.HISTORY_UPDATE, this.render.bind(this) );
 	},
 	
 	render: function(){
