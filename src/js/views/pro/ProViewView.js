@@ -107,6 +107,9 @@ var ProViewView = {
 
 		$('#plugpro-view-buttons').width( panes.get('userlist') );
 
+		var nowPlayingWidth = windowWidth - $('#room-bar').outerWidth() - panes.get('chat') - 54;
+		$('#now-playing-bar').width( nowPlayingWidth );
+
 		$('#chat-messages').height( windowHeight - 160 );
 		clearInterval( this.initialInterval );
 
