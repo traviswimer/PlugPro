@@ -37,13 +37,24 @@ var ArtworkView = Backbone.View.extend({
 	},
 
 	displayArtwork: function( data ){
+		var imgResult;
+
 		if( data.results.length === 0 ){
-			this.setDefaultImage();
-			return;
+
+			var songInfo = API.getMedia();
+
+			if( songInfo.image.indexOf('sndcdn') !== -1 ){
+				imgResult = songInfo.image.replace( '-large', '-t500x500' );
+			}else{
+				this.setDefaultImage();
+				return;
+			}
+
+		}else{
+			imgResult = data.results[0].artworkUrl100;
 		}
 
-		var firstResult = data.results[0];
-		var artworkURL = firstResult.artworkUrl100.replace( "100x100", "600x600" );
+		var artworkURL = imgResult.replace( "100x100", "600x600" );
 
 		this.$el.html(
 			this.artworkHTML({
