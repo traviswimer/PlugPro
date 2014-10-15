@@ -53,7 +53,11 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class="setting-title">' +
 ((__t = ( title )) == null ? '' : __t) +
-'</div>\n<div class="toggle-button">\n\t<input type="checkbox">\n</div>\n';
+'</div>\n<div class="onoffswitch">\n\t<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="' +
+((__t = ( title )) == null ? '' : __t) +
+'">\n\t<label class="onoffswitch-label" for="' +
+((__t = ( title )) == null ? '' : __t) +
+'">\n\t\t<span class="onoffswitch-inner"></span>\n\t\t<span class="onoffswitch-switch"></span>\n\t</label>\n</div>';
 
 }
 return __p
