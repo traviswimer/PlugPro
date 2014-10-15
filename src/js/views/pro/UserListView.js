@@ -20,10 +20,31 @@ var UserListView = Backbone.View.extend({
 	render: function(){
 		this.$el.append( this.userlistHTML );
 
-		this.userListCollection.fetch();
+		this.userListCollection.on( "reset", this.onListUpdate.bind(this) );
 
+		API.on( API.USER_JOIN, this.userListCollection.fetch.bind( this.userListCollection ) );
+		API.on( API.USER_LEAVE, this.userListCollection.fetch.bind( this.userListCollection ) );
+		
+		API.on( API.VOTE_UPDATE, this.onUserUpdate.bind(this) );
+		API.on( API.GRAB_UPDATE, this.onUserUpdate.bind(this) );
+
+		this.userListCollection.fetch();
+	},
+
+	onListUpdate: function(){
+		this.fragment = document.createDocumentFragment();
+		this.$el.find('.plugpro-userlist-list').html("");
 		this.childViews = [];
 		this.userListCollection.each( this.appendUser.bind(this) );
+
+		this.$el.find('.plugpro-userlist-list').append( this.fragment );
+	},
+
+	onUserUpdate: function( data ){
+		var user = data.user;
+
+		var userModel = this.userListCollection.get( user.id );
+		userModel.set( "vote", data.vote );
 	},
 
 	appendUser: function( userModel ){
@@ -32,8 +53,8 @@ var UserListView = Backbone.View.extend({
 		});
 
 		this.childViews.push( userView );
+		this.fragment.appendChild( userView.el );
 
-		this.$el.find('.plugpro-userlist-list').append( userView.el );
 		userView.render();
 	},
 
