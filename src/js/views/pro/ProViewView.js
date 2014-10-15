@@ -59,7 +59,7 @@ var ProViewView = {
 
 		// Counteract plug's resizing events
 		$(window).on( 'resize', this.callbackToReposition );
-		$('#app-menu, #footer').click( this.callbackToReposition );
+		$('#app-menu, #footer').on( "click", this.callbackToReposition );
 		this.initialInterval = setInterval( this.callbackToReposition, 200 );
 
 		this.reposition();
@@ -71,6 +71,7 @@ var ProViewView = {
 			this.initialInterval = undefined;
 		}
 		$(window).off( 'resize', this.callbackToReposition );
+		$('#app-menu, #footer').off( "click", this.callbackToReposition );
 
 		$('body').removeClass('plugpro-pro');
 		//$('#history-button').click();
