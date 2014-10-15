@@ -79,6 +79,7 @@ var ProViewView = {
 		$('#plugpro-view-buttons').css({
 			"width": "auto"
 		});
+		$('.app-right').width( 345 );
 		$('#history-panel').attr("style", "");
 		$('#room-meta').attr("style", "");
 		this.waitlistView.destroy();
