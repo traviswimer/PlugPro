@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "PlugPro",
-   "version": "0.0.11",
+   "version": "1.0.0",
 
    "description": "A more usable and professional layout for the Plug.DJ music community",
    "icons": {
