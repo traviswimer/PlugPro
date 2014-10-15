@@ -54,15 +54,16 @@ var WaitlistView = Backbone.View.extend({
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
 
-		var leftPosition = panes.get('userlist');
+		var userlistWidth = panes.get('userlist');
+		var middleWidth = panes.get('middle');
 		var height = (windowHeight - 109) / 2;
 
-		var halfPane = panes.get('middle')/2;
+		var width = 250;
 
 		this.$el.css({
-			"left": (leftPosition + halfPane) + "px",
+			"left": (userlistWidth + middleWidth - width) + "px",
 			"height": height + "px",
-			"width": halfPane + "px"
+			"width": width + "px"
 		});
 
 		$('#dj-button').width( this.$el.outerWidth() );

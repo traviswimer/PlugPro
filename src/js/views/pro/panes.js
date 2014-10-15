@@ -3,9 +3,9 @@ var panes = {};
 
 function updatePanes(){
 	var windowWidth = $(window).width();
-	panes["middle"] = windowWidth * 0.5;
-	panes["userlist"] = windowWidth * 0.25;
-	panes["chat"] = windowWidth * 0.25;
+	panes["userlist"] = 300;
+	panes["middle"] = (windowWidth - panes["userlist"]) * (2/3);
+	panes["chat"] = windowWidth - panes["middle"] - panes["userlist"];
 };
 updatePanes();
 

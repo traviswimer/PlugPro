@@ -45,12 +45,7 @@ var PlayHistoryView = Backbone.View.extend({
 		this.$el.css({
 			"left": leftPosition + "px",
 			"height": height + "px",
-			"width": panes.get('middle')/2 + "px"
-		});
-
-		$('#vote').width( this.$el.outerWidth() );
-		$('#vote').css({
-			"left": 0
+			"width": panes.get('middle') - 250 + "px"
 		});
 
 	}
