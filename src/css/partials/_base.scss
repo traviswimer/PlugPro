@@ -1,3 +1,4 @@
+// Scrollbars
 ::-webkit-scrollbar{
 	width: 12px;
 	height: 12px;
@@ -9,4 +10,28 @@
 
 ::-webkit-scrollbar-thumb{
 	background: #323742;
+}
+
+// footer
+body #playlist-button{
+	background: -webkit-linear-gradient(top,#FFC876 0,#D87F0E 100%);
+	background: linear-gradient(top, #FFC876 0,#D87F0E  100%) !important;
+}
+
+// vote
+#grab .bottom, #grab.selected{
+	background: #C0C006;
+}
+
+// Remove all the awful purple icons
+.icon{
+	background-image: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') !important;
+}
+.media-list.history .score .grabs span{
+	color: #FBFFA5 !important;
+}
+
+// Remove social media icons (seriously, who uses those?)
+.social-menu{
+	display: none !important;
 }

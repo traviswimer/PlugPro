@@ -169,7 +169,7 @@
 				}
 
 				&.grabbed{
-					border: 2px solid #AA74FF;
+					border: 2px solid #C0C006;
 				}
 
 				&.mehed{
@@ -184,9 +184,39 @@
 		background-color: #0A0A0A;
 		bottom: 54px;
 		min-width: 200px;
+		overflow-y: scroll;
 		padding: 4px;
+		padding-bottom: 61px;
 		position: absolute;
 		z-index: 3;
+
+
+		.plugpro-waitlist-list{
+			.plugpro-waitlist-user{
+				border-bottom: 1px solid #282C35;
+				margin: 2px 0;
+				overflow: hidden;
+				padding: 0 4px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				.position{
+					color: #808691;
+					font-size: 16px;
+					font-weight: bold;
+				}
+
+				.icon{
+					margin-top: 1px;
+				}
+
+				.name{
+					color: #FFF;
+					margin-left: 20px;
+				}
+
+			}
+		}
 	}
 
 	#plugpro-dj{

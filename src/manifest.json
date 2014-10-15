@@ -46,6 +46,7 @@
       "images/star.png",
       "images/close.png",
       "images/delete.png",
+      "images/icons.png",
       "backgrounds/*",
       "js/init.js"
    ]
