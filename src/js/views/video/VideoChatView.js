@@ -13,7 +13,7 @@ var VideoChatView = Backbone.View.extend(
 	* @augments Backbone.View
 	* @constructs
 	*/
-	initialize: function( options ){
+	initialize: function(){
 		var JST = window.plugPro.JST;
 
 		this.chatHTML = JST['video_chat.html']();
@@ -53,6 +53,10 @@ var VideoChatView = Backbone.View.extend(
 		$minimizeDiv.click( this.minimizeChat.bind(this) );
 	},
 
+	/**
+	* Adds a chat message and sets timer to fade out
+	* @param {object} messageData - Message data received from plug's API
+	*/
 	addChatMessage: function( messageData ){
 		var chatHTML = messageData.un +": "+ messageData.message;
 		var $messageDiv = $( document.createElement('div') );
@@ -71,6 +75,10 @@ var VideoChatView = Backbone.View.extend(
 		setTimeout( this.animateMessageOut.bind( this, $messageDiv ), 30000 );
 	},
 
+	/**
+	* Make chat message fade out
+	* @param {object} $message - jQuery object for the message DOM element
+	*/
 	animateMessageOut: function( $message ){
 		$message.animate(
 			{
@@ -87,6 +95,10 @@ var VideoChatView = Backbone.View.extend(
 		"click .plugpro-expand-chat-button": "expandChat"
 	},
 
+	/**
+	* Make chat message fade out
+	* @param {object} evt - Chat form submit event object
+	*/
 	sendChatMessage: function( evt ){
 		evt.preventDefault();
 		
@@ -97,6 +109,10 @@ var VideoChatView = Backbone.View.extend(
 		return false;
 	},
 
+	/**
+	* Make chat message fade out
+	* @param {object} evt - Event object from clicking "expand chat" button
+	*/
 	expandChat: function( evt ){
 		this.$el.css({
 			"right": ($('.app-right').width() * -1) + "px"
@@ -112,6 +128,10 @@ var VideoChatView = Backbone.View.extend(
 		});
 	},
 
+	/**
+	* Make chat message fade out
+	* @param {object} evt - Event object from clicking "minimize chat" button
+	*/
 	minimizeChat: function( evt ){
 		$('.app-right').css({
 			"right": ($('.app-right').width() * -1) + "px"
