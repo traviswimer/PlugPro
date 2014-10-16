@@ -25,9 +25,6 @@ var ProViewView = {
 		var JST = window.plugPro.JST;
 		
 		$('#chat-button').click();
-		/*if( $('#history-panel').css("display") !== "block" ){
-			$('#history-button').click();
-		}*/
 
 		$('body').addClass('plugpro-pro');
 
@@ -47,13 +44,6 @@ var ProViewView = {
 		this.artworkView.render();
 
 		var windowWidth = $(window).width();
-
-		// Set pane defaults
-		/*this.paneSizes = {
-			"middle": windowWidth * 0.5,
-			"userlist": windowWidth * 0.25,
-			"chat": windowWidth * 0.25
-		};*/
 
 		this.callbackToReposition = this.reposition.bind(this);
 
