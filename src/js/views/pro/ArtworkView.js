@@ -1,5 +1,5 @@
 /**
- * View for the room waitlist
+ * View for album artwork
  * @module views/pro/ArtworkView
  */
 var panes = require('./panes');

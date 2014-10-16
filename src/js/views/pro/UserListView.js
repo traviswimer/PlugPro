@@ -7,16 +7,27 @@ var UserListCollection = require('../../collections/UserListCollection');
 var UserView = require('./UserView');
 var panes = require('./panes');
 
-var UserListView = Backbone.View.extend({
-
-	id: "plugpro-user-lists",
-
+var UserListView = Backbone.View.extend(
+/** @lends UserListView.prototype */
+{
+	/**
+	* Adds DOM elements and functionality for room user list in the Pro-View
+	* @class UserListView
+	*
+	* @augments Backbone.View
+	* @constructs
+	*/
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.userlistHTML = JST['userlist.html']();
 		this.userListCollection = new UserListCollection();
 	},
+
+	id: "plugpro-user-lists",
 	
+	/**
+	* Render the UserListView
+	*/
 	render: function(){
 		this.$el.append( this.userlistHTML );
 
@@ -32,6 +43,9 @@ var UserListView = Backbone.View.extend({
 		this.userListCollection.fetch();
 	},
 
+	/**
+	* re-renders the entire user list
+	*/
 	onListUpdate: function(){
 		this.fragment = document.createDocumentFragment();
 		this.$el.find('.plugpro-userlist-list').html("");
@@ -41,6 +55,10 @@ var UserListView = Backbone.View.extend({
 		this.$el.find('.plugpro-userlist-list').append( this.fragment );
 	},
 
+	/**
+	* Updates user model
+	* @param {object} data - User data provided by Plug.dj API
+	*/
 	onUserUpdate: function( data ){
 		var user = data.user;
 
@@ -48,6 +66,10 @@ var UserListView = Backbone.View.extend({
 		userModel.set( "vote", data.vote );
 	},
 
+	/**
+	* Adds UserView to the DOM
+	* @param {object} userModel - Model to use for view data
+	*/
 	appendUser: function( userModel ){
 		var userView = new UserView({
 			model: userModel
@@ -59,11 +81,17 @@ var UserListView = Backbone.View.extend({
 		userView.render();
 	},
 
+	/**
+	* Destroy the UserListView
+	*/
 	destroy: function(){
 		$('#vote').attr("style", "");
 		this.remove();
 	},
 
+	/**
+	* Move DOM elements to the correct positions
+	*/
 	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();

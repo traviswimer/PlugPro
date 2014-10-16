@@ -1,6 +1,6 @@
 /**
  * View for "video view"
- * @module views/views/VideoViewView
+ * @module views/video/VideoViewView
  */
 
 var $ = window.$;

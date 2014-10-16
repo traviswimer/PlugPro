@@ -1,12 +1,18 @@
 /**
- * View for the room users list
+ * View for waitlist user
  * @module views/pro/WaitlistUserView
  */
 
-var WaitlistUserView = Backbone.View.extend({
-
-	className: "plugpro-waitlist-user",
-
+var WaitlistUserView = Backbone.View.extend(
+/** @lends WaitlistUserView.prototype */
+{
+	/**
+	* Adds DOM elements and functionality for user within waitlist
+	* @class WaitlistUserView
+	*
+	* @augments Backbone.View
+	* @constructs
+	*/
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.userHTML = JST['waitlist_user.html'];
@@ -15,6 +21,11 @@ var WaitlistUserView = Backbone.View.extend({
 		this.model.on('remove', this.destroy, this);
 	},
 	
+	className: "plugpro-waitlist-user",
+
+	/**
+	* Render the WaitlistUserView
+	*/
 	render: function(){
 		this.$el.html("");
 
@@ -39,6 +50,9 @@ var WaitlistUserView = Backbone.View.extend({
 		);
 	},
 
+	/**
+	* Destroy the WaitlistUserView
+	*/
 	destroy: function(){
 		this.remove();
 	}

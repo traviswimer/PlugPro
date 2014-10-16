@@ -1,5 +1,5 @@
 /**
- * View for the room users list
+ * View for the room play history
  * @module views/pro/PlayHistoryView
  */
 var panes = require('./panes');

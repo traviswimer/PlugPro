@@ -6,16 +6,27 @@ var WaitlistCollection = require('../../collections/WaitlistCollection');
 var WaitlistUserView = require('./WaitlistUserView');
 var panes = require('./panes');
 
-var WaitlistView = Backbone.View.extend({
-
-	id: "plugpro-waitlist",
-
+var WaitlistView = Backbone.View.extend(
+/** @lends WaitlistView.prototype */
+{
+	/**
+	* Adds DOM elements and functionality for waitlist in the Pro-View
+	* @class WaitlistView
+	*
+	* @augments Backbone.View
+	* @constructs
+	*/
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.waitlistHTML = JST['waitlist.html']();
 		this.waitlistCollection = new WaitlistCollection();
 	},
 
+	id: "plugpro-waitlist",
+
+	/**
+	* Render the WaitlistView
+	*/
 	render: function(){
 		this.$el.append( this.waitlistHTML );
 
@@ -25,6 +36,9 @@ var WaitlistView = Backbone.View.extend({
 		this.waitlistCollection.fetch();
 	},
 
+	/**
+	* Re-render the entire waitlist
+	*/
 	onListUpdate: function(){
 		this.fragment = document.createDocumentFragment();
 		this.$el.find('.plugpro-waitlist-list').html("");
@@ -34,6 +48,10 @@ var WaitlistView = Backbone.View.extend({
 		this.$el.find('.plugpro-waitlist-list').append( this.fragment );
 	},
 
+	/**
+	* Add user view to the DOM
+	* @param {object} userModel - Model to use for user view data
+	*/
 	appendUser: function( userModel ){
 		var userView = new WaitlistUserView({
 			model: userModel
@@ -45,11 +63,17 @@ var WaitlistView = Backbone.View.extend({
 		userView.render();
 	},
 
+	/**
+	* Render the WaitlistView
+	*/
 	destroy: function(){
 		$('#dj-button').attr("style", "");
 		this.remove();
 	},
 
+	/**
+	* Move DOM elements to the correct positions
+	*/
 	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();

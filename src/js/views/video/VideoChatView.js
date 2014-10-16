@@ -1,6 +1,6 @@
 /**
- * View for the PlugPro Menu
- * @module views/views/VideoChatView
+ * View for the chat in video view
+ * @module views/video/VideoChatView
  */
 
 var VideoChatView = Backbone.View.extend(
@@ -34,6 +34,9 @@ var VideoChatView = Backbone.View.extend(
 		API.on( API.CHAT, this.chatCallback );
 	},
 
+	/**
+	* Destroy the VideoChatView
+	*/
 	destroy: function(){
 		API.off( API.CHAT, this.chatCallback );
 		this.expandChat();
@@ -41,6 +44,9 @@ var VideoChatView = Backbone.View.extend(
 		this.remove();
 	},
 
+	/**
+	* Adds "minimize chat" button to the DOM
+	*/
 	createMinimizeChatButton: function(){
 		var $minimizeDiv = this.$minimizeDiv = $( document.createElement('div') );
 		$minimizeDiv.addClass( 'plugpro-minimize-chat-button' );

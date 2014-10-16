@@ -1,6 +1,6 @@
 /**
  * View for "avatar view"
- * @module views/views/AvatarViewView
+ * @module views/avatars/AvatarViewView
  */
 
 var AvatarsViewView = {
@@ -11,7 +11,10 @@ var AvatarsViewView = {
 	render: function(){
 		$('body').addClass('plugpro-avatars');
 	},
-
+	
+	/**
+	* Destroys the "avatar" view
+	*/
 	destroy: function(){
 		$('body').removeClass('plugpro-avatars');
 	}

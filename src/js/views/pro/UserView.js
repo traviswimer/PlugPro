@@ -1,12 +1,18 @@
 /**
- * View for the room users list
+ * View for the room user
  * @module views/pro/UserView
  */
 
-var UserListView = Backbone.View.extend({
-
-	className: "plugpro-user",
-
+var UserView = Backbone.View.extend(
+/** @lends UserView.prototype */
+{
+	/**
+	* Adds DOM elements and functionality for user within room user list
+	* @class UserView
+	*
+	* @augments Backbone.View
+	* @constructs
+	*/
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.userHTML = JST['user.html'];
@@ -15,6 +21,11 @@ var UserListView = Backbone.View.extend({
 		this.model.on('remove', this.destroy, this);
 	},
 	
+	className: "plugpro-user",
+
+	/**
+	* Render the UserView
+	*/
 	render: function(){
 		this.$el.html("");
 
@@ -54,10 +65,13 @@ var UserListView = Backbone.View.extend({
 		);
 	},
 
+	/**
+	* Destroy the UserView
+	*/
 	destroy: function(){
 		this.remove();
 	}
 
 });
 
-module.exports = UserListView;
+module.exports = UserView;
