@@ -33,6 +33,9 @@ var VideoViewView = {
 		this.updateArtwork();
 	},
 
+	/**
+	* Destroys the "video" view
+	*/
 	destroy: function(){
 		$('body').removeClass('plugpro-video');
 		$('body').removeClass('inactive');
@@ -45,6 +48,9 @@ var VideoViewView = {
 		API.off( API.ADVANCE, this.songAdvanceCallback );
 	},
 
+	/**
+	* Ends inactive state, making elements visible again
+	*/
 	makeActive: function( event ){
 		$('body').removeClass('inactive');
 		if( this.activeTimeout ){
@@ -54,10 +60,16 @@ var VideoViewView = {
 		this.activeTimeout = setTimeout( this.makeInactive.bind(this), 2000 );
 	},
 
+	/**
+	* Set inactive state, making elements invisible
+	*/
 	makeInactive: function(){
 		$('body').addClass('inactive');
 	},
 
+	/**
+	* Makes video screen to show image instead of video if it is a soundcloud track
+	*/
 	updateArtwork: function(){
 		var songInfo = API.getMedia();
 
