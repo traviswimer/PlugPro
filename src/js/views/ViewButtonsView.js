@@ -38,10 +38,11 @@ var ViewButtonsView = Backbone.View.extend(
 		"click .plugpro-view-button": "handleButtonClick"
 	},
 
+	/**
+	* Called when a potential room change is detected
+	*/
 	handleRoomChange: function(){
-		console.log("dashboardCLICK");
 		if( $('#room-loader').length > 0 ){
-		console.log("room change!!!!");
 			if( this.newRoomInterval ){
 				clearInterval( this.newRoomInterval );
 			}
@@ -49,6 +50,9 @@ var ViewButtonsView = Backbone.View.extend(
 		}
 	},
 
+	/**
+	* Called when user has successfully switched rooms
+	*/
 	checkForRoomChangeComplete: function(){
 		if( $('#room-loader').length === 0 ){
 			clearInterval( this.newRoomInterval );
@@ -59,6 +63,10 @@ var ViewButtonsView = Backbone.View.extend(
 		}
 	},
 
+	/**
+	* Loads the correct view when a user clicks a view button
+	* @param {object} evt - The click event object
+	*/
 	handleButtonClick: function( evt ){
 		var viewName = $( evt.currentTarget ).data('view-name');
 
@@ -71,6 +79,10 @@ var ViewButtonsView = Backbone.View.extend(
 		}
 	},
 
+	/**
+	* Destroys current view and loads the one specifed
+	* @param {object} newView - The view object to load
+	*/
 	loadView: function( newView ){
 		if( newView !== this.currentView ){
 			this.removeCurrentView();
@@ -82,6 +94,9 @@ var ViewButtonsView = Backbone.View.extend(
 		}
 	},
 
+	/**
+	* Destroys the current view if it exists
+	*/
 	removeCurrentView: function(){
 		if( this.currentView ){
 			this.currentView.destroy();
