@@ -4,21 +4,35 @@
  */
 var panes = require('./panes');
 
-var ArtworkView = Backbone.View.extend({
-
-	id: "plugpro-artwork",
-
+var ArtworkView = Backbone.View.extend(
+/** @lends ArtworkView.prototype */
+{
+	/**
+	* Adds DOM elements and functionality for album artwork in the Pro-View
+	* @class ArtworkView
+	*
+	* @augments Backbone.View
+	* @constructs
+	*/
 	initialize: function(){
 		var JST = window.plugPro.JST;
 		this.artworkHTML = JST['artwork.html'];
 	},
 
+	id: "plugpro-artwork",
+
+	/**
+	* Render the ArtworkView
+	*/
 	render: function(){
 		this.setDefaultImage();
 		this.fetchArtwork();
 		API.on( API.ADVANCE, this.fetchArtwork.bind(this) );
 	},
 
+	/**
+	* Set artwork as Pro logo by default
+	*/
 	setDefaultImage: function(){
 		this.$el.html(
 			this.artworkHTML({
@@ -29,6 +43,9 @@ var ArtworkView = Backbone.View.extend({
 		this.reposition();
 	},
 
+	/**
+	* Fetches album artwork from itunes
+	*/
 	fetchArtwork: function(){
 		var currentSong = API.getMedia();
 
@@ -41,6 +58,10 @@ var ArtworkView = Backbone.View.extend({
 		$.getJSON( itunesURL, null, this.displayArtwork.bind(this) );
 	},
 
+	/**
+	* Adds album artwork to the DOM
+	* @param {object} data - The song data provided by itunes
+	*/
 	displayArtwork: function( data ){
 		var imgResult;
 
@@ -70,10 +91,16 @@ var ArtworkView = Backbone.View.extend({
 		this.reposition();
 	},
 
+	/**
+	* Destroy the ArtworkView
+	*/
 	destroy: function(){
 		this.remove();
 	},
 
+	/**
+	* Move DOM elements to the correct positions
+	*/
 	reposition: function(){
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();

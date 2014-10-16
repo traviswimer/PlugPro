@@ -91,6 +91,7 @@ var MenuView = Backbone.View.extend(
 
 	/**
 	* Determine correct transition event name
+	* @param {object} el - DOM element to check for transiton event existence
 	* @returns {string} The name of the transition event used by the user's browser
 	*/
 	getTransitionEvent: function( el ){
