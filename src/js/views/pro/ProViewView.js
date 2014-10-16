@@ -11,6 +11,9 @@ var panes = require('./panes');
 
 var ProViewView = {
 	
+	/**
+	* Initializes the "Pro" view
+	*/
 	initialize: function(){
 		this.waitlistView = new WaitlistView();
 		this.userListView = new UserListView();
@@ -19,7 +22,7 @@ var ProViewView = {
 	},
 
 	/**
-	* Renders the "avatar" view
+	* Renders the "Pro" view
 	*/
 	render: function(){
 		var JST = window.plugPro.JST;
@@ -55,6 +58,9 @@ var ProViewView = {
 		this.reposition();
 	},
 
+	/**
+	* Destroys the "Pro" view
+	*/
 	destroy: function(){
 		if( this.initialInterval ){
 			clearInterval( this.initialInterval );
@@ -81,6 +87,9 @@ var ProViewView = {
 		$(window).trigger('resize');
 	},
 
+	/**
+	* Move DOM elements to the correct positions
+	*/
 	reposition: function(){
 		var self = this;
 
