@@ -7,6 +7,8 @@ var ProView = require('./pro/ProViewView');
 var VideoView = require('./video/VideoViewView');
 var AvatarsView = require('./avatars/AvatarsViewView');
 
+var storage = require('../storage/storage');
+
 var ViewButtonsView = Backbone.View.extend(
 /** @lends ViewButtonsView.prototype */
 {
@@ -29,6 +31,13 @@ var ViewButtonsView = Backbone.View.extend(
 	render: function(){
 		this.$el.append( this.buttonsHTML );
 		this.loadView( ProView );
+
+		var savedViewName = storage.getSetting( "currentView" );
+		if( typeof savedViewName !== "undefined" ){
+			this.setView( savedViewName );
+		}else{
+			this.setView( "pro" );
+		}
 
 		// Detect room change
 		$('#dashboard').on( "click", this.handleRoomChange.bind( this ) );
@@ -70,13 +79,24 @@ var ViewButtonsView = Backbone.View.extend(
 	handleButtonClick: function( evt ){
 		var viewName = $( evt.currentTarget ).data('view-name');
 
-		if( viewName === "pro" ){
-			this.loadView( ProView );
-		}else if( viewName === "video" ){
+		this.setView( viewName );
+	},
+
+	/**
+	* Loads a view base on name string
+	* @param {string} viewName - The name of the view to load
+	*/
+	setView: function( viewName ){
+		if( viewName === "video" ){
 			this.loadView( VideoView );
 		}else if( viewName === "avatars" ){
 			this.loadView( AvatarsView );
+		}else{
+			viewName = "pro";// In case of invalid view name
+			this.loadView( ProView );
 		}
+
+		storage.setSetting( "currentView", viewName );
 	},
 
 	/**
