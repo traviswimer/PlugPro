@@ -26,10 +26,10 @@ module.exports = {
 		}
 	},
 	getSetting: function( name ){
-		return lsData.setting[ name ];
+		return lsData.settings[ name ];
 	},
 	setSetting: function( name, value ){
-		lsData.setting[ name ] = value;
+		lsData.settings[ name ] = value;
 		saveLocalStorage();
 	},
 	getViewSizes: function( view, element ){

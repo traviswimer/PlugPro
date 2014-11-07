@@ -3,15 +3,24 @@
  * @module settings/Toggle
  */
 
+ var storage = require('../storage/storage');
+
 /**
  * Toggle setting constructor
  * @constructor
  * @param {boolean} defaultOn - The default toggle state to use.
  * @param {object} storage - The storage API to use for saving the setting.
  */
-function Toggle( defaultOn, storage ){
-	this.isOn = defaultOn || false;
-	this.storage = storage;
+function Toggle( defaultOn, settingName ){
+
+	this.settingName = settingName;
+
+	var savedSetting = storage.getSetting( this.settingName );
+	if( typeof savedSetting !== "undefined" ){
+		this.isOn = savedSetting;
+	}else{
+		this.isOn = defaultOn || false;
+	}
 
 	this.listeners = {
 		"change": []
@@ -70,9 +79,9 @@ Toggle.prototype.onChange = function( callback ){
  * Stores the current ON/OFF state
  */
 Toggle.prototype.saveSetting = function(){
-	/*if( typeof this.localStorageName === "string" ){
-		this.storage.set(this.localStorageName, this.isOn);
-	}*/
+	if( typeof this.settingName === "string" ){
+		storage.setSetting( this.settingName, this.isOn );
+	}
 };
 
 

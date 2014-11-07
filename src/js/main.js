@@ -20,7 +20,7 @@ room.on("load", function(){
 	storage.init();
 
 	// Add Autowoot
-	var toggle = new Toggle( true );
+	var toggle = new Toggle( true, "autowoot" );
 	var userId = API.getUser().id;
 	var autowootToggle = new AutoWootToggle( toggle, userId );
 
