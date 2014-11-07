@@ -16,6 +16,9 @@ room.on("load", function(){
 	var Toggle = require('./settings/Toggle');
 	var AutoWootToggle = require('./settings/AutoWootToggle');
 
+	var storage = require('./storage/storage');
+	storage.init();
+
 	// Add Autowoot
 	var toggle = new Toggle( true );
 	var userId = API.getUser().id;
