@@ -17,7 +17,8 @@ module.exports = {
 					"pro": {},
 					"video": {},
 					"avatars": {}
-				}
+				},
+				lastVersionUsed: "0.0.0"
 			};
 
 			saveLocalStorage();
@@ -38,5 +39,12 @@ module.exports = {
 	setViewSizes: function( view, element, value ){
 		lsData.viewSizes[ name ][element] = value;
 		saveLocalStorage();
+	},
+	getVersion: function(){
+		var lastVersionsUsed = lsData.lastVersionUsed;
+		lsData.lastVersionUsed = window.plugPro.version;
+		saveLocalStorage();
+
+		return lastVersionsUsed;
 	}
 }

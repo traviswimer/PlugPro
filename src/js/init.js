@@ -4,14 +4,20 @@ var resourceAdder = require('./util/resourceAdder');
 /** Initializes PlugPro */
 function init(){
 
-	resourceAdder.addStyle('css/plug_pro.css');
-	resourceAdder.addScript('js/plug_pro.js');
-
 	var extId = document.createElement('input');
 	extId.id = "plug_pro_chrome_extension_id";
 	extId.type = "hidden";
 	extId.value = chrome.runtime.id;
 	document.body.appendChild(extId);
+
+	var extVersion = document.createElement('input');
+	extVersion.id = "plug_pro_chrome_extension_version";
+	extVersion.type = "hidden";
+	extVersion.value = chrome.runtime.getManifest().version;
+	document.body.appendChild(extVersion);
+
+	resourceAdder.addStyle('css/plug_pro.css');
+	resourceAdder.addScript('js/plug_pro.js');
 
 	/*
 	var addViewSelector = setInterval(function(){

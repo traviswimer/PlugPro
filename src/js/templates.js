@@ -62,6 +62,26 @@ __p += '<div class="setting-title">' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["updates_modal.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="plugpro-bg-fader"></div>\n<div class="plugpro-modal">\n\t<div class="plugpro-modal-scrollable">\n\t\t<div class="plugpro-modal-logo"><img src="' +
+((__t = ( chromeDir )) == null ? '' : __t) +
+'/images/logo_large.png" alt="PlugPro Logo" height="100"></div>\n\t\t<div class="plug-pro-modal-title">Updated to v' +
+((__t = ( version )) == null ? '' : __t) +
+'</div>\n\t\t<ul>\n\t\t\t';
+ _.each(updates, function(item) { ;
+__p += '\n\t\t\t<li>' +
+((__t = ( item )) == null ? '' : __t) +
+'</li>\n\t\t\t';
+ }); ;
+__p += '\n\t\t</ul>\n\t</div>\n\t<div class="plugpro-modal-close-button">Close</div>\n</div>\n';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["user.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;

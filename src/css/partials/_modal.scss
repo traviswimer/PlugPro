@@ -1,0 +1,52 @@
+.plugpro-bg-fader{
+	background-color: #777;
+	height: 100%;
+	left: 0;
+	opacity: 0.6;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000000;
+}
+
+.plugpro-modal{
+	background-color: #000;
+	color: #FFF;
+	height: 400px;
+	left: 50%;
+	margin: -200px 0 0 -300px;
+	position: fixed;
+	top: 50%;
+	width: 600px;
+	z-index: 1000001;
+
+	.plugpro-modal-scrollable{
+		height: 250px;
+		margin: 40px;
+		overflow: auto;
+	}
+
+	.plugpro-modal-logo{
+		text-align: center;
+	}
+
+	.plug-pro-modal-title{
+		font-size: 25px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.plugpro-modal-close-button{
+		background-color: #009CDD;
+		bottom: 0;
+		box-sizing: border-box;
+		color: #FFF;
+		cursor: pointer;
+		font-size: 35px;
+		font-weight: bold;
+		padding: 9px;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+	}
+}

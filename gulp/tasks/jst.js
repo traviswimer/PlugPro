@@ -11,7 +11,7 @@ gulp.task('jst', function() {
 		.pipe(
 			template({
 				namespace: 'plugPro"]["JST' // This is completely ridiculous
-			})
+			}).on( 'error', console.error.bind(console) )
 		)
 		.pipe( concat("templates.js") )
 		.pipe( gulp.dest( config.js.src ) );

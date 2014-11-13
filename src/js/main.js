@@ -1,6 +1,7 @@
 
 // create global API object
 var plugPro = window.plugPro = {};
+plugPro.updates = require("./updates");
 
 // Load html templates
 var JST = require("./templates");
@@ -9,6 +10,9 @@ var Room = require('./Room');
 var room = new Room();
 
 room.on("load", function(){
+
+	plugPro.version = $('#plug_pro_chrome_extension_version').val();
+	plugPro.id = $('#plug_pro_chrome_extension_id').val();
 
 	var Menu = require('./views/MenuView');
 	var ViewButtonsView = require('./views/ViewButtonsView');
@@ -40,6 +44,15 @@ room.on("load", function(){
 	var buttonView = new ViewButtonsView();
 	$('#room').append( buttonView.el );
 	buttonView.render();
+
+
+	var lastVersionUsed = storage.getVersion();
+	if( window.plugPro.updates[ plugPro.version ] && lastVersionUsed !== plugPro.version ){
+		var UpdatesModalView = require('./views/UpdatesModalView');
+		var updatesModalView = new UpdatesModalView();
+		$('body').append( updatesModalView.el );
+		updatesModalView.render();
+	}
 
 });
 room.init();

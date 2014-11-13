@@ -1,0 +1,13 @@
+<div class="plugpro-bg-fader"></div>
+<div class="plugpro-modal">
+	<div class="plugpro-modal-scrollable">
+		<div class="plugpro-modal-logo"><img src="<%= chromeDir %>/images/logo_large.png" alt="PlugPro Logo" height="100"></div>
+		<div class="plug-pro-modal-title">Updated to v<%= version %></div>
+		<ul>
+			<% _.each(updates, function(item) { %>
+			<li><%= item %></li>
+			<% }); %>
+		</ul>
+	</div>
+	<div class="plugpro-modal-close-button">Close</div>
+</div>

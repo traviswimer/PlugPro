@@ -4,9 +4,9 @@ chrome.runtime.onInstalled.addListener(function(install){
 	// Detect as update by default
 	var injectFileName = "on_update.js";
 
-	// Check if it is actually the first install
+	// If user had just installed, do nothing
 	if( install.reason === "install" ){
-		injectFileName = "on_install.js";
+		return;
 	}
 
 	chrome.tabs.query(
