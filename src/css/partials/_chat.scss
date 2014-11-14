@@ -24,4 +24,27 @@
 		}
 	}
 	z-index: 30 !important;
+
+
+	// Chat image styles
+	.plugpro-chat-image-container{
+		position: relative;
+
+		.plugpro-chat-image-url{
+			display: none;
+		}
+		.plugpro-chat-image{
+			max-height: 200px;
+			max-width: 100%;
+			width: auto;
+		}
+		.plugpro-chat-image-close{
+			cursor: pointer;
+			display: none;
+			height: 34px;
+			position: absolute;
+			right: 0;
+			width: 34px;
+		}
+	}
 }

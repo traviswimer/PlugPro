@@ -11,6 +11,23 @@ __p += '<img class="plugpro-artwork-background" src="' +
 }
 return __p
 }})();
+(function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["chat_image.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<span class="plugpro-chat-image-container">\n\t<span class="plugpro-chat-image-url"><a href="' +
+((__t = ( imgUrl )) == null ? '' : __t) +
+'" target="_blank">' +
+((__t = ( imgUrl )) == null ? '' : __t) +
+'</a></span>\n\t<img src="' +
+((__t = ( chromeDir )) == null ? '' : __t) +
+'/images/spinner.gif" class="plugpro-chat-image-spinner" alt="chat image">\n\t<div class="plugpro-image-wrapper">\n\t\t<img class="plugpro-chat-image-close" src="' +
+((__t = ( chromeDir )) == null ? '' : __t) +
+'/images/close.png">\n\t</div>\n</span>';
+
+}
+return __p
+}})();
 (function() {(window["plugPro"]["JST"] = window["plugPro"]["JST"] || {})["menu.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;

@@ -15,12 +15,13 @@ function ChatImages( toggler, userId ){
 
 	this.newChatCallback = this.convertUrlsToImages.bind( this );
 
+	this.urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.//=]*[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG])/g;
+
 	toggler.onChange( this.setState.bind( this ) );
 
 	if( toggler.isOn ){
 		this.setState( true );
 	}
-
 
 }
 
@@ -45,8 +46,7 @@ ChatImages.prototype.convertUrlsToImages = function( chatData ){
 	var message = chatData.message;
 
 	// Check for image URLs
-	var urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.//=]*[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG])/g;
-	var imgArray = message.match(urlRegex);
+	var imgArray = message.match( this.urlRegex );
 
 	imgArray = imgArray || [];
 
@@ -56,7 +56,17 @@ ChatImages.prototype.convertUrlsToImages = function( chatData ){
 };
 
 ChatImages.prototype.checkValidImage = function( imgUrl, chatId ){
+	var JST = window.plugPro.JST;
+
 	var that = this;
+	var $imageLink = $('#chat-messages > div[data-cid="'+chatId+'"] a[href="'+imgUrl+'"]');
+
+	$imageLink.replaceWith( JST['chat_image.html']({
+		imgUrl: imgUrl,
+		chromeDir: 'chrome-extension://' + window.plugPro.id
+	}) );
+
+
 
 	var img = new Image();
 	img.onerror = function(){
@@ -67,34 +77,37 @@ ChatImages.prototype.checkValidImage = function( imgUrl, chatId ){
 		that.addImageToChat(img, chatId);
 	};
 
+	img.className = "plugpro-chat-image";
 	img.src = imgUrl;
 
 }
 
 ChatImages.prototype.addImageToChat = function( img, chatId ){
 	var chatScroller = document.getElementById("chat-messages");
+
 	// I have no clue why 1 pixel needs to be added, but it seems to work.
 	var currentChatScroll = chatScroller.scrollHeight - chatScroller.scrollTop - chatScroller.offsetHeight + 1;
 
-	// No clue why plug uses a class for an id...
-	var chatContainer = $('#chat-messages > div[data-cid='+chatId+']')[0];
-	img.style.width = "60%";
-
-	var closeBtn = document.createElement('div');
-	closeBtn.style.cursor = "pointer";
-	closeBtn.style.textDecoration = "underline";
-	closeBtn.style.fontSize = "10px";
-	closeBtn.innerHTML = "(close)";
-
-	closeBtn.addEventListener('click', function(){
-		chatContainer.removeChild(img);
-		chatContainer.removeChild(closeBtn);
-	});
-
+	var chatContainer = $('#chat-messages > div[data-cid='+chatId+']');
 
 	if( chatContainer ){
-		chatContainer.appendChild(img);
-		chatContainer.appendChild(closeBtn);
+		var imageContainer = chatContainer.find('.plugpro-chat-image-container');
+
+		var $closeButton = chatContainer.find('.plugpro-chat-image-close');
+		$closeButton.show();
+
+		var $imageUrl = chatContainer.find('.plugpro-chat-image-url');
+		var $imageWrapper = chatContainer.find('.plugpro-image-wrapper');
+
+		$closeButton.click(function(){
+			$imageWrapper.remove();
+			$imageUrl.show();
+		});
+
+		imageContainer.find('.plugpro-chat-image-spinner').remove();
+		$imageWrapper.append(img);
+
+		//$closeButton.css( "left", $(img).width() );
 	}
 
 	// If currently scrolled to bottom, keep it that way when the 
