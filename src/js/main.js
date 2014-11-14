@@ -19,19 +19,26 @@ room.on("load", function(){
 
 	var Toggle = require('./settings/Toggle');
 	var AutoWootToggle = require('./settings/AutoWootToggle');
+	var ChatImagesToggle = require('./settings/ChatImagesToggle');
 
 	var storage = require('./storage/storage');
 	storage.init();
 
-	// Add Autowoot
-	var toggle = new Toggle( true, "autowoot" );
 	var userId = API.getUser().id;
-	var autowootToggle = new AutoWootToggle( toggle, userId );
+
+	// Autowoot
+	var awToggle = new Toggle( true, "autowoot" );
+	var autowootToggle = new AutoWootToggle( awToggle, userId );
+
+	// Chat images
+	var ciToggle = new Toggle( true, "chatImages" );
+	var chatImagesToggle = new ChatImagesToggle( ciToggle, userId );
 
 	// Add PlugPro menu
 	var menu = new Menu( {
 		toggleSettings: {
-			"AutoWoot": autowootToggle
+			"AutoWoot": autowootToggle,
+			"Chat Images": chatImagesToggle
 		}
 	});
 	$('#app-menu').append( menu.$el );
