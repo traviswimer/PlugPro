@@ -54,8 +54,9 @@ var ArtworkView = Backbone.View.extend(
 		}
 
 		var searchTerm = currentSong.author +" "+ currentSong.title;
-		var itunesURL = "https://itunes.apple.com/search?term="+ searchTerm +"&callback=?";
-		$.getJSON( itunesURL, null, this.displayArtwork.bind(this) );
+		var imgSearchURL = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&safe=active&rsz=1&imgsz=large&q="+ searchTerm +"&callback=?";
+		//var itunesURL = "https://itunes.apple.com/search?term="+ searchTerm +"&callback=?";
+		$.getJSON( imgSearchURL, null, this.displayArtwork.bind(this) );
 	},
 
 	/**
@@ -64,8 +65,9 @@ var ArtworkView = Backbone.View.extend(
 	*/
 	displayArtwork: function( data ){
 		var imgResult;
+		console.log(data);
 
-		if( data.results.length === 0 ){
+		if( data.responseData.results.length === 0 ){
 
 			var songInfo = API.getMedia();
 
@@ -77,7 +79,8 @@ var ArtworkView = Backbone.View.extend(
 			}
 
 		}else{
-			imgResult = data.results[0].artworkUrl100;
+			//imgResult = data.results[0].artworkUrl100;
+			imgResult = data.responseData.results[0].unescapedUrl;
 		}
 
 		var artworkURL = imgResult.replace( "100x100", "600x600" );
