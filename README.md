@@ -51,3 +51,9 @@ In general, you should probably leave a comment in the issues before working on 
 
 
 
+# License
+
+This code is released under the MIT license, because I'm cool like that.
+
+The "PlugPro" name and the PlugPro logo are property of Travis Wimer.
+PlugPro &copy; 2015 Travis Wimer All Rights Reserved.
