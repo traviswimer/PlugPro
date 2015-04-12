@@ -21,9 +21,7 @@ __p += '<span class="plugpro-chat-image-container">\n\t<span class="plugpro-chat
 ((__t = ( imgUrl )) == null ? '' : __t) +
 '</a></span>\n\t<img src="' +
 ((__t = ( chromeDir )) == null ? '' : __t) +
-'/images/spinner.gif" class="plugpro-chat-image-spinner" alt="chat image">\n\t<div class="plugpro-image-wrapper">\n\t\t<img class="plugpro-chat-image-close" src="' +
-((__t = ( chromeDir )) == null ? '' : __t) +
-'/images/close.png">\n\t</div>\n</span>';
+'/images/spinner.gif" class="plugpro-chat-image-spinner" alt="chat image">\n\t<div class="plugpro-image-wrapper">\n\t\t<div class="plugpro-chat-image-close">&times;</div>\n\t</div>\n</span>';
 
 }
 return __p

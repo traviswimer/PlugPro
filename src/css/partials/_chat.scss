@@ -41,10 +41,18 @@
 		.plugpro-chat-image-close{
 			cursor: pointer;
 			display: none;
-			height: 34px;
 			position: absolute;
-			right: 0;
-			width: 34px;
+			left: 0;
+			width: 1em;
+			height: 1em;
+			font-family: "times new roman", arial;
+			font-size: 1.25rem;
+			line-height: 1;
+			text-align: center;
+			color: #fff;
+			background: rgba(255,0,0,0.5);
+			padding: .05em .1em .05em 0;
+			text-shadow: 0 .05em .1em rgba(0,0,0,0.5);
 		}
 	}
 }
