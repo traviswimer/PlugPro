@@ -63,8 +63,7 @@ room.on("load", function(){
 	
 	// Mute / Unmute audio via spacebar
 	$('body').on('keyup',function(e){
-		console.log(e);
-
+		
 		// Make sure focus isn't on an input
 		if ( e.keyCode != 32 || $(e.target).prop('tagName') != 'BODY' ){
 			return true;

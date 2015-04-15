@@ -65,7 +65,6 @@ var ArtworkView = Backbone.View.extend(
 	*/
 	displayArtwork: function( data ){
 		var imgResult;
-		console.log(data);
 
 		if( data.responseData.results.length === 0 ){
 
