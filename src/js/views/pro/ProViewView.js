@@ -26,6 +26,9 @@ var ProViewView = {
 	*/
 	render: function(){
 		var JST = window.plugPro.JST;
+
+		// Store the time when this view was loaded
+		this.loadTime = new Date();
 		
 		$('#chat-button').click();
 
@@ -110,7 +113,12 @@ var ProViewView = {
 		$('#now-playing-bar').width( nowPlayingWidth );
 
 		$('#chat-messages').height( windowHeight - 160 );
-		clearInterval( this.initialInterval );
+
+		// Wait 5 seconds before clearing the interval.
+		// This fixes a bug where the layout wouldn't always render correctly.
+		if( new Date() > this.loadTime + 5000 ){
+			clearInterval( this.initialInterval );
+		}
 
 
 		var headerWidth = windowWidth - panes.get('chat');

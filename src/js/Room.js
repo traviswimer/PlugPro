@@ -67,7 +67,8 @@ function checkRoomLoaded(){
 	if( $('#room').length > 0 &&
 		$('#plug_pro_chrome_extension_id') &&
 		$('#room-loader').length === 0 &&
-		$('#app-menu').find('.list')[0]
+		$('#app-menu').find('.list')[0] &&
+		API && API.getUsers().length !== 0 
 	){
 		clearInterval( this.loadedCheckInterval );
 		this.emit( "load" );
