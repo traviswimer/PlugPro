@@ -30,9 +30,11 @@ return __p
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="inner-pro-menu">\n\t<img src="' +
+__p += '<div class="inner-pro-menu">\n\t<a class="github-link" href="https://github.com/traviswimer/PlugPro" target="_blank">\n\t\t<img src="' +
 ((__t = ( chromeDir )) == null ? '' : __t) +
-'/images/logo_large.png" alt="PlugPro" class="pro-logo">\n\t<ul id="pro-toggle-settings" class="inner-pro-menu">\n\t\t\n\t</lu>\n</div>\n';
+'/images/github_logo.png" alt="Github">\n\t\t<div class="github-text">Contribute on Github</div>\n\t</a>\n\t<img src="' +
+((__t = ( chromeDir )) == null ? '' : __t) +
+'/images/logo_large.png" alt="PlugPro" class="pro-logo">\n\t<ul id="pro-toggle-settings">\n\t\t\n\t</lu>\n</div>\n';
 
 }
 return __p

@@ -15,8 +15,7 @@
 	}
 
 	.inner-pro-menu{
-		margin: 10px;
-		margin-left: 190px;
+		margin-left: 180px;
 		text-align: center;
 
 		.pro-logo{
@@ -24,8 +23,35 @@
 			margin: 0 auto 7px;
 		}
 
+		.github-link{
+			background-color: #8B0;
+			color: #fff;
+			display: block;
+			font-size: 23px;
+			margin-bottom: 18px;
+			overflow: hidden;
+			padding: 7px 20px;
+			text-decoration: none;
+
+			&:hover{
+				background-color: #A9E800;
+			}
+
+
+			img{
+				float: left;
+			}
+
+			.github-text{
+				font-weight: bold;
+				margin-left: 70px;
+			}
+		}
+
 		#pro-toggle-settings{
 			@extend .unstyled_list;
+
+			margin: 0 10px;
 
 			li{
 				border-bottom: 1px solid #aaa;
